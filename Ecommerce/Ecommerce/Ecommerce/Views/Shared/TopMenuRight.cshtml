@@ -1,0 +1,22 @@
+﻿@model List<Model.EF.Menu>
+
+<ul class="navUser-section toplinks-wrapper">
+    <li class="navUser-item d-none d-sm-block">
+        <a class="navUser-action navUser-item--compare" href="compare.html" data-compare-nav> Compare </a>
+    </li>
+    @foreach (var item in Model)
+    {
+        <li class="navUser-item">
+            <a class="navUser-action has-dropdown" href="@item.Link" data-dropdown="accountSelection" aria-controls="accountSelection" aria-expanded="false" target="@item.Target">
+                <i class="fa fa-user"></i>
+                @item.Text
+                <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu" id="accountSelection" data-dropdown-content aria-hidden="true" tabindex="-1">
+
+                <li class="dropdown-menu-item"> <a href="login.html">Sign in</a></li>
+                <li class="dropdown-menu-item">  <a href="/dang-ky">Register</a></li>
+            </ul>
+        </li>
+    }
+</ul>

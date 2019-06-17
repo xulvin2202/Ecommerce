@@ -1,0 +1,84 @@
+﻿@model Model.EF.User
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+@section header{ Cập nhật}
+<div class="row clearfix">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="header">
+
+            </div>
+            <div class="body">
+                <form id="basic-form" method="post" novalidate>
+                    @using (Html.BeginForm("Edit", "User", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <hr />
+                            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                            @if (ViewBag.Success != null)
+                            {
+                                <div class="alert alert-success">@ViewBag.Success</div>
+                            }
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label>Mật khẩu</label>
+                                    <input type="password" id="Password" name="Password" placeholder="Nhập mật khẩu" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label>Tên</label>
+                                    <input type="text" id="Name" name="Name" placeholder="Nhập tên" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label>Địa chỉ</label>
+                                    <input type="text" id="Address" name="Address" placeholder="Nhập địa chỉ" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label>Email</label>
+                                    <input type="text" id="Email" name="Email" placeholder="Nhập email" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label>Điện thoại</label>
+                                    <input type="text" id="Phone" name="Phone" placeholder="Nhập số điện thoại" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-4">
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.Status)
+                                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Edit" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            @Html.ActionLink("Quay lại", "Index")
+                        </div>
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
