@@ -25,12 +25,12 @@ namespace Model.Dao
             return db.Products.Where(x => x.Name.Contains(keyword)).Select(x => x.Name).ToList();
         }
 
-        public IEnumerable<Product> ListAllPaging(string searchString, int page, int pageSize)
+        public IEnumerable<Product> ListAllPaging(string searchString/*, int page, int pageSize*/)
         {
-            IQueryable<Product> model = db.Products;
+            IQueryable<Product> model = db.Products.OrderByDescending(x=>x.CreateDate);
             if (!string.IsNullOrEmpty(searchString))
             {
-                model = model.Where(x => x.Name.Contains(searchString) || x.Name.Contains(searchString));
+                model = model.Where(x => x.Name.Contains(searchString) );
             }
 
             return model.OrderByDescending(x => x.CreateDate);

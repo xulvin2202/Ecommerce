@@ -73,6 +73,11 @@ namespace Ecommerce
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "Ecommerce.Controllers" }
+            ); routes.MapRoute(
+                name: "Search",
+                url: "tim-kiem",
+                defaults: new { controller = "Product", action = "Search", id = UrlParameter.Optional },
+                namespaces: new[] { "Ecommerce.Controllers" }
             );
 
         }

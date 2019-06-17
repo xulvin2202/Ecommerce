@@ -85,7 +85,7 @@
                                     <svg class="icon-caret-circle" width="16" height="16"><use xlink:href="#icon-caret-circle-down"></use></svg>
                                 </a>
                                 @{ Html.RenderAction("ProductCategory", "Product");}
-                               
+
                             </div>
 
                             <a href="#" class="mobileMenu-toggle mobileMenu--vertical" data-mobile-menu-toggle="menumobile--verticalCategories" aria-controls="menumobile--verticalCategories">
@@ -96,7 +96,7 @@
                         <div class="col-8 logo-container text-center">
                             <a href="/" target="_self" class="header-logo">
                                 <div class="header-logo-image-container">
-                                    <img class="header-logo-image" href="/"  target="_self" src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/s-5jeysafj8q/images/stencil/250x100/logo_1544415020__65511.original.png" alt="SB-ClickBoom" title="SB-ClickBoom">
+                                    <img class="header-logo-image" href="/" target="_self" src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/s-5jeysafj8q/images/stencil/250x100/logo_1544415020__65511.original.png" alt="SB-ClickBoom" title="SB-ClickBoom">
                                 </div>
                             </a>
                         </div>
@@ -106,7 +106,7 @@
                             <form class="sb-searchpro" action="https://sb-clickboom.mybigcommerce.com/search.php">
                                 <fieldset class="form-fieldset">
                                     <div class="input-group input-search">
-                                        <input class="form-control input-search" data-search-quick name="search_query" data-error-message="Search field cannot be empty." placeholder="Search the store" autocomplete="off">
+                                        <input class="form-control input-search" type="text"  id="txtKeysearch" name="keysearch" placeholder="Search the store" autocomplete="off">
                                         <div class="input-group-append">
                                             <div class="icon-search"><i class="fa fa-search"></i></div>
                                             <button class="btn btn-outline-secondary enter-search" type="submit"><i class="fa fa-search"></i><span>Search</span></button>
@@ -520,7 +520,7 @@
                                 <span class="mobileMenu-toggleIcon">Toggle menu</span>
                             </a>
                             @{ Html.RenderAction("HeaderCart", "Home");}
-                            
+
                         </div>
                     </div>
                 </div>
@@ -536,33 +536,33 @@
 
                         </div>
 
-                        </div>
-                        <div class="col-lg-9 col-md-10 col-9">
-                            <div class="sb-quickSearch" aria-hidden="true" tabindex="-1" data-prevent-quick-search-close>
-                               
-                                <!-- snippet location forms_search -->
-                                <form class="sb-searchpro" action="https://sb-clickboom.mybigcommerce.com/search.php">
-                                    <fieldset class="form-fieldset">
-                                        <div class="input-group input-search">
-                                            <input class="form-control input-search" value="@ViewBag.SearchString" name="search_query" data-error-message="Search field cannot be empty." placeholder="Nhập tìm kiếm..." autocomplete="off">
-                                            <div class="input-group-append">
-                                                <div class="icon-search"><i class="fa fa-search"></i></div>
-                                                <button class="btn btn-outline-secondary enter-search" type="submit"><i class="fa fa-search"></i><span>Search</span></button>
-                                            </div>
+                    </div>
+                    <div class="col-lg-9 col-md-10 col-9">
+                        <div class="sb-quickSearch" aria-hidden="true" tabindex="-1" data-prevent-quick-search-close>
+
+                            <!-- snippet location forms_search -->
+                            <form class="sb-searchpro" action="/tim-kiem" method="get">
+                                <fieldset class="form-fieldset">
+                                    <div class="input-group input-search">
+                                        <input class="form-control input-search" type="text" id="txtKeyword" name="keyword" placeholder="Nhập tìm kiếm...">
+                                        <div class="input-group-append">
+                                            <div class="icon-search"><i class="fa fa-search"></i></div>
+                                            <button class="btn btn-outline-secondary enter-search" type="submit"><i class="fa fa-search"></i><span>Search</span></button>
                                         </div>
+                                    </div>
 
-                                    </fieldset>
-                                </form>
-
-                                
-                                <div class="dropdown dropdown--quickSearch">
-                                    <section class="quickSearchResults " data-bind="html: results"></section>
-                                </div>
+                                </fieldset>
+                            </form>
 
 
+                            <div class="dropdown dropdown--quickSearch">
+                                <section class="quickSearchResults " data-bind="html: results"></section>
                             </div>
+
+
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </header>
@@ -621,7 +621,7 @@
         <section class="footer-center ">
             <div class="footer-center__first">
                 <div class="container">
-                  @{ Html.RenderAction("FooterTop", "Home");}
+                    @{ Html.RenderAction("FooterTop", "Home");}
                 </div>
             </div>
 
@@ -636,10 +636,10 @@
                     <div class="col-sm-12 col-12">
 
 
-                        
 
-                            @{ Html.RenderAction("FooterBottom", "Home");}
-                        
+
+                        @{ Html.RenderAction("FooterBottom", "Home");}
+
                     </div>
                 </div>
             </div>
@@ -720,12 +720,12 @@
     </footer>
 
     @*<div id="previewModal" class="modal modal--large" data-reveal>
-        <a href="#" class="modal-close" aria-label="Close" role="button">
-            <span aria-hidden="true">&#215;</span>
-        </a>
-        <div class="modal-content"></div>
-        <div class="loadingOverlay"></div>
-    </div>*@
+            <a href="#" class="modal-close" aria-label="Close" role="button">
+                <span aria-hidden="true">&#215;</span>
+            </a>
+            <div class="modal-content"></div>
+            <div class="loadingOverlay"></div>
+        </div>*@
 
     <div class="icons-svg-sprite">
         <svg xmlns="http://www.w3.org/2000/svg">
@@ -869,7 +869,7 @@
 
     <script>window.__webpack_public_path__ = "https://cdn11.bigcommerce.com/s-5jeysafj8q/stencil/d7a3b3a0-fb9a-0136-bca6-1b3c63b2f4dc/e/7d147310-fb9b-0136-a892-03abfbabe237/dist/";</script>
     <script src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/s-5jeysafj8q/stencil/d7a3b3a0-fb9a-0136-bca6-1b3c63b2f4dc/e/7d147310-fb9b-0136-a892-03abfbabe237/dist/theme-bundle.main.js"></script>
-    
+
 
     <script defer src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/s-5jeysafj8q/stencil/d7a3b3a0-fb9a-0136-bca6-1b3c63b2f4dc/e/7d147310-fb9b-0136-a892-03abfbabe237/modernizr-custom.js"></script>
     <script>
@@ -877,22 +877,22 @@
         window.stencilBootstrap("default", "{\"themeSettings\":{\"address_email\":\"contact@revo.com\",\"alert-backgroundColor\":\"#ffffff\",\"alert-color\":\"#4f4f4f\",\"alert-color-alt\":\"#ffffff\",\"applePay-button\":\"black\",\"bgimage_breadcrumbs\":\" \",\"bgimage_deal\":\" \",\"bgimage_newsletter\":\" \",\"bgimage_testimonial\":\" \",\"blockquote-cite-font-color\":\"#999999\",\"blog_size\":\"460x300\",\"blogdetail_size\":\"870x320\",\"blogdetail_style\":\"default\",\"body-bg\":\"#ffffff\",\"body-font\":\"Google_Poppins_400,500,600,700\",\"brand_size\":\"190x250\",\"brandpage_products_per_page\":12,\"button--default-borderColor\":\"#dfdfdf\",\"button--default-borderColorActive\":\"#454545\",\"button--default-borderColorHover\":\"#989898\",\"button--default-color\":\"#454545\",\"button--default-colorActive\":\"#454545\",\"button--default-colorHover\":\"#666666\",\"button--disabled-backgroundColor\":\"#dadada\",\"button--disabled-borderColor\":\"#dadada\",\"button--disabled-color\":\"#ffffff\",\"button--icon-svg-color\":\"#4f4f4f\",\"button--primary-backgroundColor\":\"#454545\",\"button--primary-backgroundColorActive\":\"#989898\",\"button--primary-backgroundColorHover\":\"#666666\",\"button--primary-color\":\"#ffffff\",\"button--primary-colorActive\":\"#ffffff\",\"button--primary-colorHover\":\"#ffffff\",\"card--alternate-backgroundColor\":\"#ffffff\",\"card--alternate-borderColor\":\"#ffffff\",\"card--alternate-color--hover\":\"#ffffff\",\"card-figcaption-button-background\":\"#ffffff\",\"card-figcaption-button-color\":\"#747474\",\"card-title-color\":\"#333333\",\"card-title-color-hover\":\"#f33333\",\"cardGallery_size\":\"60x60\",\"carousel-arrow-bgColor\":\"#f33333\",\"carousel-arrow-borderColor\":\"#ffffff\",\"carousel-arrow-color\":\"#989898\",\"carousel-bgColor\":\"#ffffff\",\"carousel-description-color\":\"#747474\",\"carousel-dot-bgColor\":\"#ffffff\",\"carousel-dot-color\":\"#747474\",\"carousel-dot-color-active\":\"#666666\",\"carousel-title-color\":\"#747474\",\"category_thumb_size\":\"200x200\",\"categorypage_products_per_page\":12,\"checkRadio-backgroundColor\":\"#ffffff\",\"checkRadio-borderColor\":\"#dfdfdf\",\"checkRadio-color\":\"#4f4f4f\",\"color-black\":\"#000000\",\"color-error\":\"#ff7d7d\",\"color-errorLight\":\"#ffdddd\",\"color-grey\":\"#4f4f4f\",\"color-greyDark\":\"#666666\",\"color-greyDarker\":\"#454545\",\"color-greyDarkest\":\"#747474\",\"color-greyLight\":\"#a5a5a5\",\"color-greyLighter\":\"#dfdfdf\",\"color-greyLightest\":\"#e8e8e8\",\"color-greyMedium\":\"#989898\",\"color-info\":\"#666666\",\"color-infoLight\":\"#dfdfdf\",\"color-primary\":\"#f33333\",\"color-primaryDark\":\"#454545\",\"color-primaryDarker\":\"#747474\",\"color-primaryLight\":\"#a5a5a5\",\"color-secondary\":\"#ffffff\",\"color-secondaryDark\":\"#e8e8e8\",\"color-secondaryDarker\":\"#e8e8e8\",\"color-success\":\"#69d66f\",\"color-successLight\":\"#d5ffd8\",\"color-textBase\":\"#444444\",\"color-textBase--active\":\"#f33333\",\"color-textBase--hover\":\"#f33333\",\"color-textHeading\":\"#222222\",\"color-textLink\":\"#4f4f4f\",\"color-textLink--active\":\"#f33333\",\"color-textLink--hover\":\"#f33333\",\"color-textSecondary\":\"#989898\",\"color-textSecondary--active\":\"#f33333\",\"color-textSecondary--hover\":\"#f33333\",\"color-warning\":\"#d4cb49\",\"color-warningLight\":\"#fffdea\",\"color-white\":\"#ffffff\",\"color-whitesBase\":\"#f8f8f8\",\"color_badge_product_sale_badges\":\"#ff5722\",\"color_hover_product_sale_badges\":\"#000000\",\"color_text_product_sale_badges\":\"#ffffff\",\"contact_address\":\"No 304, Sky Tower, New York, USA\",\"contact_keyapi\":\"AIzaSyBf-EZpcLV72omKDDxOlhG6-i8Ga8NenRo\",\"container-border-global-color-base\":\"#e5e5e5\",\"container-fill-base\":\"#ffffff\",\"container-fill-dark\":\"#f2f2f2\",\"deals_size\":\"360x360\",\"default_image_banner\":\"/assets/img/ProductDefault.gif\",\"default_image_brand\":\"/assets/img/ProductDefault.gif\",\"default_image_gift_certificate\":\"/assets/img/GiftCertificate.png\",\"default_image_product\":\"/assets/img/ProductDefault.gif\",\"dropdown--quickSearch-backgroundColor\":\"#e5e5e5\",\"extraslider_size\":\"100x100\",\"fontSize-h1\":28,\"fontSize-h2\":25,\"fontSize-h3\":22,\"fontSize-h4\":20,\"fontSize-h5\":15,\"fontSize-h6\":13,\"fontSize-root\":14,\"footer-backgroundColor\":\"#ffffff\",\"form-label-font-color\":\"#666666\",\"gallery_size\":\"400x400\",\"general_backtotop\":true,\"general_bannereffect\":\"effect10\",\"general_rtl\":\"ltr\",\"geotrust_ssl_common_name\":\"http://sb-furnicom.mybigcommerce.com/\",\"geotrust_ssl_seal_size\":\"M\",\"header-backgroundColor\":\"#ffffff\",\"headings-font\":\"Google_Poppins_400,500,600,700\",\"hide_content_navigation\":false,\"hide_mega_navigation\":false,\"home_section1\":\"section1\",\"home_section10\":\"section10\",\"home_section11\":\"section11\",\"home_section12\":\"section12\",\"home_section13\":\"section13\",\"home_section14\":\"section14\",\"home_section2\":\"section2\",\"home_section3\":\"section3\",\"home_section4\":\"section4\",\"home_section5\":\"section5\",\"home_section6\":\"section6\",\"home_section7\":\"section7\",\"home_section8\":\"section8\",\"home_section9\":\"section9\",\"homepage_blog_posts_count\":6,\"homepage_extraslider_featured_products\":6,\"homepage_extraslider_new_products\":6,\"homepage_extraslider_top_products\":10,\"homepage_featured_products_column_count\":10,\"homepage_featured_products_count\":12,\"homepage_listingtabs_activetab\":\"bestselling\",\"homepage_listingtabs_column\":5,\"homepage_listingtabs_count\":8,\"homepage_new_products_column_count\":10,\"homepage_new_products_count\":9,\"homepage_newletterpopup\":true,\"homepage_show_carousel\":true,\"homepage_show_carousel_arrows\":true,\"homepage_stretch_carousel_images\":false,\"homepage_top_products_column_count\":10,\"homepage_top_products_count\":9,\"icon-color\":\"#4f4f4f\",\"icon-color-hover\":\"#a5a5a5\",\"icon-ratingEmpty\":\"#dfdfdf\",\"icon-ratingFull\":\"#454545\",\"image_product_loading\":\"/assets/img/product-loading.gif\",\"input-bg-color\":\"#ffffff\",\"input-border-color\":\"#dfdfdf\",\"input-border-color-active\":\"#989898\",\"input-disabled-bg\":\"#ffffff\",\"input-font-color\":\"#454545\",\"label-backgroundColor\":\"#bfbfbf\",\"label-color\":\"#ffffff\",\"lastestblog_size\":\"270x180\",\"loadingOverlay-backgroundColor\":\"#ffffff\",\"logo-font\":\"Google_Poppins_400,500,600,700\",\"logo-position\":\"left\",\"logo_fontSize\":28,\"logo_size\":\"250x100\",\"navPages-color\":\"#333333\",\"navPages-color-hover\":\"#f33333\",\"navPages-subMenu-backgroundColor\":\"#e5e5e5\",\"navPages-subMenu-separatorColor\":\"#cccccc\",\"navUser-color\":\"#333333\",\"navUser-color-hover\":\"#757575\",\"navUser-dropdown-backgroundColor\":\"#ffffff\",\"navUser-dropdown-borderColor\":\"#cccccc\",\"navUser-indicator-backgroundColor\":\"#333333\",\"navigation_design\":\"alternate\",\"optimizedCheckout-backgroundImage\":\"\",\"optimizedCheckout-backgroundImage-size\":\"1000x400\",\"optimizedCheckout-body-backgroundColor\":\"#ffffff\",\"optimizedCheckout-buttonPrimary-backgroundColor\":\"#333333\",\"optimizedCheckout-buttonPrimary-backgroundColorActive\":\"#000000\",\"optimizedCheckout-buttonPrimary-backgroundColorDisabled\":\"#cccccc\",\"optimizedCheckout-buttonPrimary-backgroundColorHover\":\"#666666\",\"optimizedCheckout-buttonPrimary-borderColor\":\"#cccccc\",\"optimizedCheckout-buttonPrimary-borderColorActive\":\"transparent\",\"optimizedCheckout-buttonPrimary-borderColorDisabled\":\"transparent\",\"optimizedCheckout-buttonPrimary-borderColorHover\":\"transparent\",\"optimizedCheckout-buttonPrimary-color\":\"#ffffff\",\"optimizedCheckout-buttonPrimary-colorActive\":\"#ffffff\",\"optimizedCheckout-buttonPrimary-colorDisabled\":\"#ffffff\",\"optimizedCheckout-buttonPrimary-colorHover\":\"#ffffff\",\"optimizedCheckout-buttonPrimary-font\":\"Google_Poppins_400,500,700\",\"optimizedCheckout-buttonSecondary-backgroundColor\":\"#ffffff\",\"optimizedCheckout-buttonSecondary-backgroundColorActive\":\"#e5e5e5\",\"optimizedCheckout-buttonSecondary-backgroundColorHover\":\"#f5f5f5\",\"optimizedCheckout-buttonSecondary-borderColor\":\"#cccccc\",\"optimizedCheckout-buttonSecondary-borderColorActive\":\"#757575\",\"optimizedCheckout-buttonSecondary-borderColorHover\":\"#999999\",\"optimizedCheckout-buttonSecondary-color\":\"#333333\",\"optimizedCheckout-buttonSecondary-colorActive\":\"#000000\",\"optimizedCheckout-buttonSecondary-colorHover\":\"#333333\",\"optimizedCheckout-buttonSecondary-font\":\"Google_Poppins_400,500,700\",\"optimizedCheckout-colorFocus\":\"#4496f6\",\"optimizedCheckout-contentPrimary-color\":\"#333333\",\"optimizedCheckout-contentPrimary-font\":\"Google_Poppins_400,500,700\",\"optimizedCheckout-contentSecondary-color\":\"#757575\",\"optimizedCheckout-contentSecondary-font\":\"Google_Poppins_400,500,700\",\"optimizedCheckout-discountBanner-backgroundColor\":\"#e5e5e5\",\"optimizedCheckout-discountBanner-iconColor\":\"#333333\",\"optimizedCheckout-discountBanner-textColor\":\"#333333\",\"optimizedCheckout-form-textColor\":\"#666666\",\"optimizedCheckout-formChecklist-backgroundColor\":\"#ffffff\",\"optimizedCheckout-formChecklist-backgroundColorSelected\":\"#f5f5f5\",\"optimizedCheckout-formChecklist-borderColor\":\"#cccccc\",\"optimizedCheckout-formChecklist-color\":\"#333333\",\"optimizedCheckout-formField-backgroundColor\":\"#ffffff\",\"optimizedCheckout-formField-borderColor\":\"#cccccc\",\"optimizedCheckout-formField-errorColor\":\"#d14343\",\"optimizedCheckout-formField-inputControlColor\":\"#476bef\",\"optimizedCheckout-formField-placeholderColor\":\"#999999\",\"optimizedCheckout-formField-shadowColor\":\"#e5e5e5\",\"optimizedCheckout-formField-textColor\":\"#333333\",\"optimizedCheckout-header-backgroundColor\":\"#333333\",\"optimizedCheckout-header-borderColor\":\"#dddddd\",\"optimizedCheckout-header-textColor\":\"#333333\",\"optimizedCheckout-headingPrimary-color\":\"#333333\",\"optimizedCheckout-headingPrimary-font\":\"Google_Poppins_400,500,700\",\"optimizedCheckout-headingSecondary-color\":\"#333333\",\"optimizedCheckout-headingSecondary-font\":\"Google_Poppins_400,500,700\",\"optimizedCheckout-link-color\":\"#476bef\",\"optimizedCheckout-link-font\":\"Google_Poppins_400,500,700\",\"optimizedCheckout-link-hoverColor\":\"#002fe1\",\"optimizedCheckout-loadingToaster-backgroundColor\":\"#333333\",\"optimizedCheckout-loadingToaster-textColor\":\"#ffffff\",\"optimizedCheckout-logo\":\"\",\"optimizedCheckout-logo-position\":\"left\",\"optimizedCheckout-logo-size\":\"250x100\",\"optimizedCheckout-orderSummary-backgroundColor\":\"#ffffff\",\"optimizedCheckout-orderSummary-borderColor\":\"#dddddd\",\"optimizedCheckout-show-backgroundImage\":false,\"optimizedCheckout-show-logo\":\"none\",\"optimizedCheckout-step-backgroundColor\":\"#757575\",\"optimizedCheckout-step-borderColor\":\"#dddddd\",\"optimizedCheckout-step-textColor\":\"#ffffff\",\"overlay-backgroundColor\":\"#747474\",\"pace-progress-backgroundColor\":\"#989898\",\"price_ranges\":true,\"productLabel_size\":\"60x60\",\"product_list_display_gallery\":\"right\",\"product_list_display_mode\":\"grid-3\",\"product_sale_badges\":\"discount\",\"product_size\":\"500x500\",\"productgallery_size\":\"180x180\",\"productpage_related_products_count\":6,\"productpage_reviews_count\":6,\"productpage_similar_by_views_count\":6,\"productpage_videos_count\":4,\"productthumb_size\":\"100x100\",\"productview_thumb_size\":\"100x100\",\"restrict_to_login\":false,\"searchpage_products_per_page\":12,\"select-arrow-color\":\"#828282\",\"select-bg-color\":\"#ffffff\",\"settings_countdown\":true,\"settings_productgallery\":\"bottom\",\"settings_productlabel\":true,\"settings_producttab\":\"horizontal\",\"settings_sidebar\":\"left\",\"settings_sizechart\":false,\"settings_subcategory\":true,\"settings_subcategory_col\":\"5\",\"shop_by_brand_show_footer\":true,\"shop_by_price_visibility\":true,\"show_accept_discover\":true,\"show_accept_mastercard\":true,\"show_accept_paypal\":true,\"show_accept_visa\":true,\"show_account_form\":true,\"show_address_email\":true,\"show_american_express\":true,\"show_copyright_footer\":true,\"show_currency_form\":true,\"show_footer_info_1\":true,\"show_language_form\":true,\"show_on_topheader\":true,\"show_powered_by\":true,\"show_product_brand\":true,\"show_product_colorswatches\":false,\"show_product_compare\":true,\"show_product_details_tabs\":true,\"show_product_dimensions\":false,\"show_product_quick_view\":true,\"show_product_rating\":true,\"show_product_weight\":true,\"show_product_wishlist\":true,\"show_wishlist_link\":true,\"social_icon_placement_bottom\":\"bottom_none\",\"social_icon_placement_top\":true,\"spinner-borderColor-dark\":\"#989898\",\"spinner-borderColor-light\":\"#ffffff\",\"storeName-color\":\"#333333\",\"swatch_option_size\":\"22x22\",\"theme_style\":\"default\",\"thumb_size\":\"100x100\",\"zoom_size\":\"1580x1580\"},\"genericError\":\"Oops! Something went wrong.\",\"maintenanceMode\":{\"header\":null,\"message\":null,\"notice\":null,\"password\":null,\"securePath\":\"https://sb-clickboom.mybigcommerce.com\"},\"urls\":{\"account\":{\"add_address\":\"logindda8.html?action=add_shipping_address\",\"addresses\":\"login479d.html?action=address_book\",\"details\":\"login8e0b.html?action=account_details\",\"inbox\":\"login5df3.html?action=inbox\",\"index\":\"/account.php\",\"orders\":{\"all\":\"logind1fa.html?action=order_status\",\"completed\":\"login91d7.html?action=view_orders\",\"save_new_return\":\"/account.php?action=save_new_return\"},\"payment_methods\":{\"all\":\"/account.php?action=payment_methods\"},\"recent_items\":\"loginbb46.html?action=recent_items\",\"returns\":\"logine921.html?action=view_returns\",\"send_message\":\"login1273.html?action=send_message\",\"update_action\":\"login83b1.html?action=update_account\",\"wishlists\":{\"add\":\"login5946.html?action=addwishlist\",\"all\":\"/wishlist.php\",\"delete\":\"login41f5.html?action=deletewishlist\",\"edit\":\"/wishlist.php?action=editwishlist\"}},\"auth\":{\"check_login\":\"loginb320.html?action=check_login\",\"create_account\":\"logind85d.html?action=create_account\",\"forgot_password\":\"login8311.html?action=reset_password\",\"login\":\"/login.php\",\"logout\":\"login.html?action=logout\",\"save_new_account\":\"login5485.html?action=save_new_account\",\"save_new_password\":\"logina61b.html?action=save_new_password\",\"send_password_email\":\"/login.php?action=send_password_email\"},\"brands\":\"brands/index.html\",\"cart\":\"/cart.php\",\"checkout\":{\"multiple_address\":\"checkout.html?action=multiple\",\"single_address\":\"/checkout.php\"},\"compare\":\"/compare\",\"contact_us_submit\":\"pages187d.html?action=sendContactForm\",\"gift_certificate\":{\"balance\":\"index.html?action=balance\",\"purchase\":\"/giftcertificates.php\",\"redeem\":\"/giftcertificates.php?action=redeem\"},\"home\":\"index.html\",\"product\":{\"post_review\":\"/postreview.php\"},\"rss\":{\"products\":[]},\"search\":\"/search.php\",\"sitemap\":\"/sitemap.php\",\"subscribe\":{\"action\":\"/subscribe.php\"}}}").load();
     </script>
 
-   
 
 
 
 
-
-
+    <script src="~/Scripts/jquery-1.11.3.min.js"></script>
+    <script src="/Scripts/jquery-ui.js"></script>
+    <link href="/Content/jquery-ui.css" rel="stylesheet" />
 
     <script>
         window.SBNewsletterPopup(1, true);
     </script>
-
+    <script src="~/Scripts/baseController.js"></script>
     <script type="text/javascript" src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/r-6fbcb23fc6f57fe4b63f62d66e95155a1ce6b177/javascript/visitor_stencil.js"></script>
     <!-- snippet location footer -->
     <script src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/r-6fbcb23fc6f57fe4b63f62d66e95155a1ce6b177/javascript/jquery-3.1.1.min.js" crossorigin="anonymous">></script>
-    @RenderSection("jsFooter",required:false)
+    @RenderSection("jsFooter", required: false)
 </body>
 
 <!-- Mirrored from sb-clickboom.mybigcommerce.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 04 Jun 2019 01:37:47 GMT -->
