@@ -24,7 +24,12 @@ namespace Model.Dao
         {
             return db.Products.Where(x => x.Name.Contains(keyword)).Select(x => x.Name).ToList();
         }
+        public IEnumerable<Product> ListAllProduct()
+        {
+            IQueryable<Product> model = db.Products;
 
+            return model.OrderByDescending(x => x.CreateDate).ToList();
+        }
         public IEnumerable<Product> ListAllPaging(string searchString/*, int page, int pageSize*/)
         {
             IQueryable<Product> model = db.Products.OrderByDescending(x=>x.CreateDate);
@@ -92,11 +97,42 @@ namespace Model.Dao
                              CateName = x.Name,
                              CreateDate = x.CreatedDate,
                              ID = x.ID,
-                             Images = x.Images,
+                             Image = x.Images,
                              Name = x.Name,
                              MetaTitle = x.MetaTitle,
                              Price = x.Price,
                              PromotionPrice = x.Price
+                         });
+            model.OrderByDescending(x => x.CreateDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            return model.ToList();
+        }
+        public List<ProductViewModel> Search(string keyword, ref int totalRecord, int pageIndex = 1, int pageSize = 2)
+        {
+            totalRecord = db.Products.Where(x => x.Name == keyword).Count();
+            var model = (from a in db.Products
+                         join b in db.Categories
+                         on a.Category_ID equals b.ID
+                         where a.Name.Contains(keyword)
+                         select new
+                         {
+                             CateMetaTitle = b.MetaTitle,
+                             CateName = b.Name,
+                             CreatedDate = a.CreateDate,
+                             ID = a.ID,
+                             Image = a.Image,
+                             Name = a.Name,
+                             MetaTitle = a.MetaTitle,
+                             Price = a.Price
+                         }).AsEnumerable().Select(x => new ProductViewModel()
+                         {
+                             CateMetaTitle = x.MetaTitle,
+                             CateName = x.Name,
+                             CreateDate = x.CreatedDate,
+                             ID = x.ID,
+                             Image = x.Image,
+                             Name = x.Name,
+                             MetaTitle = x.MetaTitle,
+                             Price = x.Price
                          });
             model.OrderByDescending(x => x.CreateDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             return model.ToList();

@@ -106,7 +106,7 @@
                             <form class="sb-searchpro" action="https://sb-clickboom.mybigcommerce.com/search.php">
                                 <fieldset class="form-fieldset">
                                     <div class="input-group input-search">
-                                        <input class="form-control input-search" type="text"  id="txtKeysearch" name="keysearch" placeholder="Search the store" autocomplete="off">
+                                        <input class="form-control input-search" type="text" id="txtKeysearch" name="keysearch" placeholder="Search the store" autocomplete="off">
                                         <div class="input-group-append">
                                             <div class="icon-search"><i class="fa fa-search"></i></div>
                                             <button class="btn btn-outline-secondary enter-search" type="submit"><i class="fa fa-search"></i><span>Search</span></button>
@@ -501,30 +501,31 @@
                 <div class="container ">
                     <div class="row justify-content-between ">
                         <div class="col-3 logo-container">
-                            <a href="/" ref="nofollow" class="header-logo">
-                                <div class="header-logo-image-container">
-                                    <img class="header-logo-image" src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/s-5jeysafj8q/images/stencil/250x100/logo_1544415020__65511.original.png" alt="SB-ClickBoom" title="SB-ClickBoom">
+            <a href="/" ref="nofollow" class="header-logo">
+                <div class="header-logo-image-container">
+                    <img class="header-logo-image" src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/s-5jeysafj8q/images/stencil/250x100/logo_1544415020__65511.original.png" alt="SB-ClickBoom" title="SB-ClickBoom">
+                </div>
+            </a>
+        </div>
+                       
+                                <div class="header-megamenu col-9 ">
+
+
+                                    <nav class="navPages-horizontal navPages-container" id="menu">
+                                        <span class="mobileMenu-close fa fa-times"></span>
+                                        @{ Html.RenderAction("MainMenu", "Home");}
+
+                                    </nav>
+
+                                    <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
+                                        <span class="mobileMenu-toggleIcon">Toggle menu</span>
+                                    </a>
+                                    @{ Html.RenderAction("HeaderCart", "Home");}
+
                                 </div>
-                            </a>
-                        </div>
-                        <div class="header-megamenu col-9 ">
-
-
-                            <nav class="navPages-horizontal navPages-container" id="menu">
-                                <span class="mobileMenu-close fa fa-times"></span>
-                                @{ Html.RenderAction("MainMenu", "Home");}
-
-                            </nav>
-
-                            <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
-                                <span class="mobileMenu-toggleIcon">Toggle menu</span>
-                            </a>
-                            @{ Html.RenderAction("HeaderCart", "Home");}
-
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
         </div>
         <div class="header-bottom">
             <div class="container">
@@ -533,7 +534,7 @@
                         <div id="menu--verticalCategories" class="navPages-container navPages-verticalCategories">
 
                             @{Html.RenderAction("ProductCategory", "Product");}
-
+                         
                         </div>
 
                     </div>
@@ -547,7 +548,7 @@
                                         <input class="form-control input-search" type="text" id="txtKeyword" name="keyword" placeholder="Nhập tìm kiếm...">
                                         <div class="input-group-append">
                                             <div class="icon-search"><i class="fa fa-search"></i></div>
-                                            <button class="btn btn-outline-secondary enter-search" type="submit"><i class="fa fa-search"></i><span>Search</span></button>
+                                            <button class="btn btn-outline-secondary enter-search" type="submit"><i class="fa fa-search"></i><span>Search</span></input>
                                         </div>
                                     </div>
 
@@ -566,7 +567,7 @@
             </div>
         </div>
     </header>
-
+  
     <!-- snippet location Main Body -->
     @RenderSection("Slide", required: false)
 

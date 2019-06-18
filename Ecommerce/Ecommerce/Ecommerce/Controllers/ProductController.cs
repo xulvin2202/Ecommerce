@@ -11,9 +11,12 @@ namespace Ecommerce.Controllers
     public class ProductController : Controller
     {
         // GET: Product
+
         public ActionResult Index()
         {
-            return View();
+            var dao = new ProductDao();
+            var model = dao.ListAllProduct();
+            return View(model);
         }
         [ChildActionOnly]
         public PartialViewResult ProductCategory()
@@ -31,6 +34,10 @@ namespace Ecommerce.Controllers
 
             return View(model.ToPagedList(page, 8));
         }
+        public ActionResult ListAllProduct()
+        {
+            return View();
+        }
         public JsonResult ListName(string q)
         {
             var data = new ProductDao().ListName(q);
@@ -40,27 +47,27 @@ namespace Ecommerce.Controllers
                 status = true
             }, JsonRequestBehavior.AllowGet);
         }
-        //public ActionResult Search(string keyword, int page = 1, int pageSize = 1)
-        //{
-        //    int totalRecord = 0;
-        //    var model = new ProductDao().Search(keyword, ref totalRecord, page, pageSize);
+        public ActionResult Search(string keyword, int page = 1, int pageSize = 1)
+        {
+            int totalRecord = 0;
+            var model = new ProductDao().Search(keyword, ref totalRecord, page, pageSize);
 
-        //    ViewBag.Total = totalRecord;
-        //    ViewBag.Page = page;
-        //    ViewBag.Keyword = keyword;
-        //    int maxPage = 5;
-        //    int totalPage = 0;
+            ViewBag.Total = totalRecord;
+            ViewBag.Page = page;
+            ViewBag.Keyword = keyword;
+            int maxPage = 5;
+            int totalPage = 0;
 
-        //    totalPage = (int)Math.Ceiling((double)(totalRecord / pageSize));
-        //    ViewBag.TotalPage = totalPage;
-        //    ViewBag.MaxPage = maxPage;
-        //    ViewBag.First = 1;
-        //    ViewBag.Last = totalPage;
-        //    ViewBag.Next = page + 1;
-        //    ViewBag.Prev = page - 1;
+            totalPage = (int)Math.Ceiling((double)(totalRecord / pageSize));
+            ViewBag.TotalPage = totalPage;
+            ViewBag.MaxPage = maxPage;
+            ViewBag.First = 1;
+            ViewBag.Last = totalPage;
+            ViewBag.Next = page + 1;
+            ViewBag.Prev = page - 1;
 
-        //    return View(model);
-        //}
+            return View(model);
+        }
         public ActionResult Detail(long id)
         {
             var product = new ProductDao().ViewDetail(id);

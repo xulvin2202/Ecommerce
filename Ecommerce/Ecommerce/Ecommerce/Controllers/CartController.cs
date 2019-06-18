@@ -170,5 +170,9 @@ namespace Ecommerce.Controllers
         {
             return View();
         }
+        public ActionResult ErrorPayment()
+        {
+            return View();
+        }
     }
 }

@@ -138,7 +138,7 @@
                             <div class="CTAs d-flex align-items-center justify-content-center justify-content-md-end flex-column flex-md-row">
                                 <a href="#" id="btnContinue" class="button button--primary">Tiếp tục mua hàng</a>
                                 <a href="#" id="btnUpdate" class="button button--primary">Cập Nhật</a>
-                                <a href="#" id="btnPayment" class="button button--primary">Thanh Toán</a>
+                                @*<a href="#" id="btnPayment" class="button button--primary">Thanh Toán</a>*@
                                 <a href="#" id="btnDeleteAll" class="button button--primary">Xóa Toàn Bộ</a>
 
                             </div>
@@ -156,91 +156,20 @@
                                     <span>$1,038.50</span>
                                 </div>
                             </li>
-                            @*<li class="cart-total">
-                                    <div class="cart-total-label">
-                                        <strong>Shipping:</strong>
-                                    </div>
-                                    <div class="cart-total-value">
-                                        <button class="shipping-estimate-show">Add Info</button>
-                                        <button class="shipping-estimate-hide" style="display: none;">Cancel</button>
-                                    </div>
-
-                                    <div class="shipping-estimator u-hiddenVisually">
-                                        <form class="form estimator-form" data-shipping-estimator>
-                                            <dl>
-                                                <dt class="estimator-form-label">
-                                                    <label class="form-label" for="shipping-country">Country</label>
-                                                </dt>
-
-                                                <dd class="estimator-form-input">
-                                                    <select class="form-select" id="shipping-country" name="shipping-country" data-field-type="Country">
-                                                        <option>Country</option>
-                                                        <option value="232" selected="selected">
-                                                            Viet Nam
-                                                        </option>
-                                                    </select>
-                                                </dd>
-
-                                                <dt class="estimator-form-label">
-                                                    <label class="form-label" for="shipping-state">State/province</label>
-                                                </dt>
-
-                                                <dd class="estimator-form-input">
-                                                    <input class="form-input" type="text" id="shipping-state" name="shipping-state" data-field-type="State" placeholder="State/province">
-                                                </dd>
-
-                                                <dt class="estimator-form-label">
-                                                    <label class="form-label" for="shipping-city">Suburb/city</label>
-                                                </dt>
-                                                <dd class="estimator-form-input">
-                                                    <input class="form-input" type="text" id="shipping-city" name="shipping-city" value="" placeholder="Suburb/city">
-                                                </dd>
-
-                                                <dt class="estimator-form-label">
-                                                    <label class="form-label" for="shipping-zip">Zip/postcode</label>
-                                                </dt>
-                                                <dd class="estimator-form-input">
-                                                    <input class="form-input" type="text" id="shipping-zip" name="shipping-zip" value="" placeholder="Zip/postcode">
-                                                </dd>
-                                                <button class="button button--primary button--small shipping-estimate-submit">Estimate Shipping</button>
-                                            </dl>
-                                        </form>
-                                        <div class="shipping-quotes"></div>
-                                    </div>
-                                </li>
-                                <li class="cart-total">
-                                    <div class="cart-total-label">
-                                        <strong>Coupon Code:</strong>
-                                    </div>
-                                    <div class="cart-total-value">
-
-                                        <button class="coupon-code-add">Add Coupon</button>
-
-                                        <button class="coupon-code-cancel" style="display: none;">Cancel</button>
-                                    </div>
-
-                                    <div class="cart-form coupon-code" style="display: none;">
-                                        <form class="form form--hiddenLabels coupon-form" method="post" action="https://sb-clickboom.mybigcommerce.com/cart.php">
-                                            <label class="form-label" for="couponcode">Enter your coupon code</label>
-                                            <input class="form-input" data-error="Please enter your coupon code." id="couponcode" type="text" name="couponcode" value="" placeholder="Enter your coupon code">
-                                            <input class="button button--primary button--small" type="submit" value="Apply">
-                                            <input type="hidden" name="action" value="applycoupon">
-                                        </form>
-                                    </div>
-                                </li>*@
+                           
                             <li class="cart-total">
                                 <div class="cart-total-label">
                                     <strong>Grand total:</strong>
                                 </div>
                                 <div class="cart-total-value cart-total-grandTotal">
-                                    <span>$1,038.50</span>
+                                    <span></span>
                                 </div>
                             </li>
                         </ul>
                     </div>
               
                 <div class="cart-actions">
-                    <a class="button button--primary" href="checkout.html" title="Click here to proceed to checkout">Check Out</a>
+                    <a class="button button--primary" id="btnPayment" href="#" title="Nhấn vào để thanh toán">Thanh Toán</a>
                 </div>
 
 

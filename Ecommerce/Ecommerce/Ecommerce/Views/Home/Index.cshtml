@@ -13,6 +13,7 @@
     var ListBrand = (List<Model.EF.Brand>)ViewBag.Brand;
     var ListContent = (List<Model.EF.Content>)ViewBag.Content;
 }
+
 @section Slide{
     <div class="container">
         <div class="row">
@@ -257,7 +258,7 @@
                                                                 <a href="/them-gio-hang?productId=@item.ID&quantity=1" @*data-addtocart data-product-id="103"*@ @*data-wait-message="Add to Cart" class="action-link  button--cart"*@ title="Thêm vào giỏ hàng"><i class="fas fa-shopping-basket"></i></a>
                                                             </div>
 
-                                                            
+
 
 
 
@@ -268,12 +269,12 @@
 
 
 
-                                            
+
                                         }
                                     </div>
 
 
-                                   
+
 
 
 
@@ -553,7 +554,7 @@
 			"settings": {
 				"slidesToScroll": 1,
 				"slidesToShow": 3
-			}
+			}   
 		},
 		{
 			"breakpoint": 767,
@@ -611,13 +612,13 @@
                                                             </div>*@
 
                                                     }
-                                                    
+
 
                                                     <a href="@url" class="product-item-photo">
                                                         <img class="img-responsive lazyload" data-sizes="auto" src="@item.Image" alt="" title="">
                                                     </a>
 
-                                                  
+
 
 
 
@@ -692,7 +693,7 @@
 
                                                     <div class="button-group">
 
-                                                        
+
 
 
                                                         <div class="action-item addToCart">
@@ -700,7 +701,7 @@
                                                         </div>
 
 
-                                                        
+
 
                                                     </div>
                                                 </div>
@@ -843,13 +844,13 @@
 
                                                     }
 
-                                                  
+
 
                                                     <a href="@url" class="product-item-photo">
                                                         <img class="img-responsive lazyload" data-sizes="auto" src="@item.Image" alt="" title="">
                                                     </a>
 
-                                            
+
 
 
                                                 </div>
@@ -924,7 +925,7 @@
                                                     <div class="button-group">
 
                                                         <div class="action-item addToCart">
-                                                            <a href="/them-gio-hang?productId=@item.ID&quantity=1"  title="Thêm vào giỏ hàng"><i class="fas fa-shopping-basket"></i></a>
+                                                            <a href="/them-gio-hang?productId=@item.ID&quantity=1" title="Thêm vào giỏ hàng"><i class="fas fa-shopping-basket"></i></a>
                                                         </div>
 
                                                     </div>

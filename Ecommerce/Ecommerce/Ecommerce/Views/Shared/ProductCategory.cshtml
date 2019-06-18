@@ -1,8 +1,6 @@
 ﻿@model List<Model.EF.Category>
 
 
-<div>
-
     <a href="#" class="navPages-action megamenuToogle-wrapper hidden-sm hidden-xs"
        data-collapsible="verticalCategories"
        data-collapsible-disabled-breakpoint="medium"
@@ -42,12 +40,12 @@
                                     <ul class="navPage-subMenu-list grid-2">
                                         @foreach (var subsubmenu in submenu)
                                         {
-                                            
+
                                             <li class="navPage-subMenu-item">
                                                 <ul class="navPage-childList" id="navPages-vertical-24">
 
                                                     <li class="navPage-childList-item">
-                                                        <a href="/san-pham/@subsubmenu.MetaTitle-@subsubmenu.ID"  >@subsubmenu.Name</a>
+                                                        <a href="/san-pham/@subsubmenu.MetaTitle-@subsubmenu.ID">@subsubmenu.Name</a>
                                                     </li>
 
 
@@ -78,7 +76,7 @@
         </ul>
     </div>
 
-<a href="#" class="mobileMenu-toggle mobileMenu--vertical" data-mobile-menu-toggle="menu--verticalCategories" aria-controls="menu--verticalCategories">
-    <span class="mobileMenu-toggleIcon"> Vertical Categories</span>
-</a>
-</div>
+    <a href="#" class="mobileMenu-toggle mobileMenu--vertical" data-mobile-menu-toggle="menu--verticalCategories" aria-controls="menu--verticalCategories">
+        <span class="mobileMenu-toggleIcon"> Vertical Categories</span>
+    </a>
+
