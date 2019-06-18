@@ -208,6 +208,8 @@
 
         public System.Data.Entity.DbSet<Model.ViewModel.ProductViewModel> ProductViewModels { get; set; }
 
+       
+
         //public System.Data.Entity.DbSet<Ecommerce.Models.RegisterModel> RegisterModels { get; set; }
     }
 }

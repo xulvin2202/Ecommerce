@@ -34,8 +34,7 @@ namespace Ecommerce.Controllers
         [ChildActionOnly]
         public ActionResult TopMenuRight()
         {
-            var model = new EcommerceDao().ListByGroupId(2);
-            return PartialView(model);
+            return PartialView();
         }
         [ChildActionOnly]
         public ActionResult TopMenuLeft()

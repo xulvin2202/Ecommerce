@@ -1,69 +1,121 @@
-﻿<div id="left-sidebar" class="sidebar">
-    <div class="navbar-brand">
-        <a href="/Admin/Home/Index">
+﻿
+<div class="left-side-menu">
 
-            <img src="~/Assets/Admin/oculux/puffintheme.com/demo/oculux/assets/images/icon.svg" alt="Oculux Logo" class="img-fluid logo"><span>Oculux</span>
-        </a>
-        <button type="button" class="btn-toggle-offcanvas btn btn-sm float-right"><i class="lnr lnr-menu icon-close"></i></button>
-    </div>
-    <div class="sidebar-scroll">
-        <div class="user-account">
-            <div class="user_div">
+    <div class="slimscroll-menu">
 
-                <img src="~/Assets/Admin/oculux/puffintheme.com/demo/oculux/assets/images/user.png" class="user-photo" alt="User Profile Picture">
-            </div>
-            <div class="dropdown">
-                <span>Welcome,</span>
-                <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>Louis Pierce</strong></a>
-                <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
-                    <li><a href="page-profile.html"><i class="icon-user"></i>My Profile</a></li>
-                    <li><a href="app-inbox.html"><i class="icon-envelope-open"></i>Messages</a></li>
-                    <li><a href="javascript:void(0);"><i class="icon-settings"></i>Settings</a></li>
-                    <li class="divider"></li>
-                    <li><a href="page-login.html"><i class="icon-power"></i>Logout</a></li>
-                </ul>
-            </div>
-        </div>
-        <nav id="left-sidebar-nav" class="sidebar-nav">
-            <ul id="main-menu" class="metismenu">
-                <li class="header">Main</li>
-                <li><a href="#"><i class="icon-speedometer"></i><span>Dashboard</span></a></li>
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+
+            <ul class="metismenu" id="side-menu">
+
+                <li class="menu-title">Navigation</li>
+
                 <li>
-                    <a href="#Danhmuc" class="has-arrow"><i class="icon-list"></i><span>Danh mục</span></a>
-                    <ul>
-                        <li><a href="/Admin/Category/Index">Danh mục</a></li>
-                   
-                        <li><a href="/Admin/Product/Index">Sản phẩm</a></li>
+                    <a href="/Admin/Home/Index">
+                        <i class="dripicons-meter"></i>
+                        <span> Dashboard </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="icon-list"></i>
+                        <span> Sản Phẩm </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li>
+                            <a href="/Admin/Category/Index">Danh Mục</a>
+                        </li>
+                        <li>
+                            <a href="/Admin/Product/Index">Sản Phẩm</a>
+                        </li>
+
                     </ul>
                 </li>
                 <li>
-                    <a href="#Contact" class="has-arrow"><i class="icon-user"></i><span>Hệ thống</span></a>
-                    <ul>
-                        <li><a href="/Admin/UserRole/Index">Nhóm người dùng</a></li>
-                        <li><a href="~/Admin/User/Index">Người dùng</a></li>
+                    <a href="javascript: void(0);">
+                        <i class="icon-user"></i>
+                        <span> Tài khoản </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li>
+                            <a href="/Admin/UserGroup/Index">Loại Tài Khoản</a>
+                        </li>
+                        <li>
+                            <a href="/Admin/User/Index">Tài Khoản</a>
+                        </li>
+
                     </ul>
                 </li>
                 <li>
-                    <a href="#Contact" class="has-arrow"><i class="icon-bubble"></i><span>Tin tức</span></a>
-                    <ul>
-                        <li><a href="/Admin/ContentCategory/Index">Danh mục</a></li>
-                        <li><a href="/Admin/Content/Index">Tin tức</a></li>
-                        <li><a href="/Admin/Content/Create">Thêm mới</a></li>
+                    <a href="javascript: void(0);">
+                        <i class="icon-bubble"></i>
+                        <span> Tin Tức </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li>
+                            <a href="/Admin/ContentCategory/Index">Danh Mục</a>
+                        </li>
+                        <li>
+                            <a href="/Admin/Content/Index">Tin Tức</a>
+                        </li>
+
                     </ul>
                 </li>
                 <li>
-                    <a href="#User" class="has-arrow"><i class="icon-wrench"></i><span>Quản lý chung</span></a>
-                    <ul>
-                        <li><a href="/Admin/About/Index">About</a></li>
-                        <li><a href="/Admin/Footer/Index">Footer</a></li>
-                        <li><a href="/Admin/Slide/Index">Slide</a></li>
-                        <li><a href="/Admin/Menu/Index">Menu</a></li>
-                        <li><a href="/Admin/Review/Index">Phản hồi</a></li>
+                    <a href="javascript: void(0);">
+                        <i class="icon-wrench"></i>
+                        <span> Hệ Thống </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li>
+                            <a href="/Admin/About/Index">Giới Thiệu</a>
+                        </li>
+                        <li>
+                            <a href="/Admin/Footer/Index">Footer</a>
+                        </li>
+                        <li>
+                            <a href="/Admin/Footer/Index">Slide</a>
+                        </li>
+                        <li>
+                            <a href="/Admin/Footer/Index">Menu</a>
+                        </li>
+                        <li>
+                            <a href="/Admin/Footer/Index">Phản Hồi</a>
+                        </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="dripicons-mail"></i>
+                        <span> Đơn Hàng </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li>
+                            <a href="/Admin/Order/Index">Danh Sách Đơn Hàng</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+
+
+
+
 
 
             </ul>
-        </nav>
+
+        </div>
+        <!-- End Sidebar -->
+
+        <div class="clearfix"></div>
+
     </div>
+    <!-- Sidebar -left -->
+
 </div>

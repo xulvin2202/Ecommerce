@@ -501,31 +501,31 @@
                 <div class="container ">
                     <div class="row justify-content-between ">
                         <div class="col-3 logo-container">
-            <a href="/" ref="nofollow" class="header-logo">
-                <div class="header-logo-image-container">
-                    <img class="header-logo-image" src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/s-5jeysafj8q/images/stencil/250x100/logo_1544415020__65511.original.png" alt="SB-ClickBoom" title="SB-ClickBoom">
-                </div>
-            </a>
-        </div>
-                       
-                                <div class="header-megamenu col-9 ">
-
-
-                                    <nav class="navPages-horizontal navPages-container" id="menu">
-                                        <span class="mobileMenu-close fa fa-times"></span>
-                                        @{ Html.RenderAction("MainMenu", "Home");}
-
-                                    </nav>
-
-                                    <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
-                                        <span class="mobileMenu-toggleIcon">Toggle menu</span>
-                                    </a>
-                                    @{ Html.RenderAction("HeaderCart", "Home");}
-
+                            <a href="/" ref="nofollow" class="header-logo">
+                                <div class="header-logo-image-container">
+                                    <img class="header-logo-image" src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/s-5jeysafj8q/images/stencil/250x100/logo_1544415020__65511.original.png" alt="SB-ClickBoom" title="SB-ClickBoom">
                                 </div>
-                            </div>
+                            </a>
+                        </div>
+
+                        <div class="header-megamenu col-9 ">
+
+
+                            <nav class="navPages-horizontal navPages-container" id="menu">
+                                <span class="mobileMenu-close fa fa-times"></span>
+                                @{ Html.RenderAction("MainMenu", "Home");}
+
+                            </nav>
+
+                            <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
+                                <span class="mobileMenu-toggleIcon">Toggle menu</span>
+                            </a>
+                            @{ Html.RenderAction("HeaderCart", "Home");}
+
                         </div>
                     </div>
+                </div>
+            </div>
         </div>
         <div class="header-bottom">
             <div class="container">
@@ -534,7 +534,7 @@
                         <div id="menu--verticalCategories" class="navPages-container navPages-verticalCategories">
 
                             @{Html.RenderAction("ProductCategory", "Product");}
-                         
+
                         </div>
 
                     </div>
@@ -567,7 +567,7 @@
             </div>
         </div>
     </header>
-  
+
     <!-- snippet location Main Body -->
     @RenderSection("Slide", required: false)
 
@@ -871,7 +871,16 @@
     <script>window.__webpack_public_path__ = "https://cdn11.bigcommerce.com/s-5jeysafj8q/stencil/d7a3b3a0-fb9a-0136-bca6-1b3c63b2f4dc/e/7d147310-fb9b-0136-a892-03abfbabe237/dist/";</script>
     <script src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/s-5jeysafj8q/stencil/d7a3b3a0-fb9a-0136-bca6-1b3c63b2f4dc/e/7d147310-fb9b-0136-a892-03abfbabe237/dist/theme-bundle.main.js"></script>
 
-
+    <script>
+        function myFunction() {
+            var x = document.getElementById("Password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
     <script defer src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/s-5jeysafj8q/stencil/d7a3b3a0-fb9a-0136-bca6-1b3c63b2f4dc/e/7d147310-fb9b-0136-a892-03abfbabe237/modernizr-custom.js"></script>
     <script>
         // Exported in app.js

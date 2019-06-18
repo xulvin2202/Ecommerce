@@ -56,7 +56,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-4">
-                                    <div class="checkbox">
+                                    <div class="switchery-demo">
                                         @Html.EditorFor(model => model.Status)
                                         @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
                                     </div>
@@ -66,7 +66,7 @@
 
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Edit" class="btn btn-default" />
+                                    <input type="submit" value="Edit" class="btn btn-dark btn-rounded waves-effect waves-light width-md" />
                                 </div>
                             </div>
                         </div>

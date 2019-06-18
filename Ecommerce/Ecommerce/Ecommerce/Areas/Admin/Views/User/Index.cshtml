@@ -60,12 +60,13 @@
                         {
                             <tr>
                                 <td>
-                                    <img src="~/Image/@item.Image" data-toggle="tooltip" data-placement="top" title="" alt="Avatar" class="w35 h35 rounded" data-original-title="Avatar Name">
-                                </td>
+                                    @*<img src="~/Image/@item.Image" data-toggle="tooltip" data-placement="top" title="" alt="Avatar" class="w35 h35 rounded" data-original-title="Avatar Name">*@
+                              @item.ID  </td>
                                 <td>
                                     <h6 class="mb-0" autocomplete="off">@item.Name</h6>
                                     <span autocomplete="off">@item.Email</span>
                                 </td>
+                                
                                 <td>
                                     @item.UserName
                                 </td>
@@ -74,7 +75,7 @@
                                 <td autocomplete="off">@item.Address</td>
                                 <td><a href="#" class="btn btn-outline-success" data-id="@item.ID">@(item.Status ? "Kích hoạt" : "Khóa")</a></td>
                                 <td>
-                                    <a href="~/Admin/User/Edit/@item.ID" class="btn btn-sm btn-default" title="Edit"><i class="icon-pencil"></i></a>
+                                    <a href="~/Admin/User/Edit/@item.ID" class="col-sm-6 col-lg-4 col-xl-3" title="Edit"><i class="icon-pencil"></i></a>
                                     @*<button type="button" class="btn btn-sm btn-default js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o text-danger"></i></button>*@
 
                                     @Ajax.ActionLink("Xoá", "Delete",null, new { @id = item.ID }, new AjaxOptions
@@ -88,15 +89,12 @@
                         }
                     </tbody>
                 </table>
-                <div class="col-lg-4 col-sm-12">
+                <div class="pagination">
+                    <ul class="pagination-list">
 
-                    <div class="pagination">
-                        <ul class="pagination-list">
+                        @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page, @class = "pagination-link" }), PagedListRenderOptions.PageNumbersOnly)
 
-                            @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page, @class = "pagination-link" }), PagedListRenderOptions.PageNumbersOnly)
-
-                        </ul>
-                    </div>
+                    </ul>
                 </div>
 
             </div>

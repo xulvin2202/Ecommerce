@@ -1,5 +1,6 @@
 ﻿
 using BotDetect.Web.UI.Mvc;
+using Common;
 using Ecommerce.Common;
 using Ecommerce.Models;
 using Model.Dao;
@@ -19,6 +20,7 @@ namespace Ecommerce.Controllers
         {
             return View();
         }
+        
         [HttpGet]
         public ActionResult Register()
         {
@@ -72,6 +74,49 @@ namespace Ecommerce.Controllers
                 }
             }
             return View(model);
+        }
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(LoginModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var dao = new UserDao();
+                var result = dao.Login(model.UserName, Encryptor.MD5Hash(model.Password));
+                switch (result)
+                { 
+                    case 1:
+                    var user = dao.GetById(model.UserName);
+                    var userSession = new UserLogin();
+                    userSession.UserName = user.UserName;
+                    userSession.UserID = user.ID;
+                    Session.Add(CommonConstants.USER_SESSION, userSession);
+                    return Redirect("/");
+
+                    break;
+                case 0:
+                    ModelState.AddModelError("", "Tài khoản không tồn tại");
+                    break;
+                case -1:
+                    ModelState.AddModelError("", "Tài khoản đang bị khóa");
+                    break;
+                case -2:
+                    ModelState.AddModelError("", "Mật khẩu sai");
+                    break;
+                default:
+                    ModelState.AddModelError("", "Tài khoản không đúng");
+                    break;
+                }
+            }
+            return View(model);
+        }
+        public ActionResult Logout()
+        {
+            Session[CommonConstants.USER_SESSION] = null;
+            return Redirect("/");
         }
     }
 }
