@@ -18,10 +18,10 @@ namespace Model.Dao
         {
             return db.Slides.Where(x => x.Status == true).OrderBy(x => x.DisplayOrder).ToList();
         }
-        public List<ContentCategory> ListAllContent()
-        {
-            return db.ContentCategories.Where(x => x.Status == true).ToList();
-        }
+        //public List<ContentCategory> ListAllContent()
+        //{
+        //    return db.ContentCategories.Where(x => x.Status == true).ToList();
+        //}
         
 
         public Content GetByID(long id)

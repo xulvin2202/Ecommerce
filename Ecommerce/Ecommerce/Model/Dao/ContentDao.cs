@@ -17,17 +17,21 @@ namespace Model.Dao
         }
         
         
-        public IEnumerable<Content> ListAllContent()
-        {
-            IQueryable<Content> model = db.Contents;
+        //public IEnumerable<Content> ListAllContent()
+        //{
+        //    IQueryable<Content> model = db.Contents;
 
-            return model.OrderByDescending(x => x.CreateDate).ToList();
-        }
+        //    return model.OrderByDescending(x => x.CreateDate).ToList();
+        //}
         public long Insert(Content entity)
         {
             db.Contents.Add(entity);
             db.SaveChanges();
             return entity.ID;
+        }
+        public List<ContentCategory> ListAllContentCategory()
+        {
+            return db.ContentCategories.Where(x => x.Status == true).ToList();
         }
         public bool Update(Content entity)
         {
@@ -52,15 +56,24 @@ namespace Model.Dao
             }
 
         }
-        public IEnumerable<Content> ListAllContent(string searchString)
+        public IEnumerable<Content> ListAllContent(string searchStringContent, int page, int pageSize)
         {
             IQueryable<Content> model = db.Contents;
-            if (!string.IsNullOrEmpty(searchString))
+            if (!string.IsNullOrEmpty(searchStringContent))
             {
-                model = model.Where(x => x.Name.Contains(searchString) || x.MetaTitle.Contains(searchString) || x.Description.Contains(searchString) || x.Detail.Contains(searchString) );
+                model = model.Where(x => x.Name.Contains(searchStringContent) || x.MetaTitle.Contains(searchStringContent) || x.Detail.Contains(searchStringContent) || x.Description.Contains(searchStringContent));
             }
             return model.OrderByDescending(x => x.CreateDate).ToList();
         }
+        //public IEnumerable<Content> ListAllContent(string searchString)
+        //{
+        //    IQueryable<Content> model = db.Contents;
+        //    if (!string.IsNullOrEmpty(searchString))
+        //    {
+        //        model = model.Where(x => x.Name.Contains(searchString) || x.MetaTitle.Contains(searchString) || x.Description.Contains(searchString) || x.Detail.Contains(searchString) );
+        //    }
+        //    return model.OrderByDescending(x => x.CreateDate).ToList();
+        //}
         public bool Delete(int id)
         {
             try

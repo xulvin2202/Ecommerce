@@ -37,6 +37,7 @@ namespace Model.Dao
 
             return model.OrderByDescending(x => x.CreateDate).ToList();
         }
+        
         public bool Delete(int id)
         {
             try

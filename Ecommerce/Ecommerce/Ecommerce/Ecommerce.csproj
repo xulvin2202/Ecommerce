@@ -3553,6 +3553,7 @@
     <Content Include="Views\Cart\ErrorPayment.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Shared\_Layoutv2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -208,8 +208,8 @@
                 <li class="float-left">
                     <a href="index.html" class="logo">
                         @*<span class="logo-lg">
-                            <img src="~/Assets/Admin/Admin/coderthemes.com/greeva/layouts/vertical/assets/images/logo-light.png" alt="" height="22">
-                        </span>*@
+                                <img src="~/Assets/Admin/Admin/coderthemes.com/greeva/layouts/vertical/assets/images/logo-light.png" alt="" height="22">
+                            </span>*@
                         <span class="logo-sm">
                             <img src="~/Assets/Admin/Admin/coderthemes.com/greeva/layouts/vertical/assets/images/logo-sm.png" alt="" height="24">
                         </span>
@@ -253,12 +253,12 @@
                             <div class="page-title-box">
                                 <div class="page-title-right">
                                     @*<ol class="breadcrumb m-0">*@
-                                        @if (TempData["AlertMessage"] != null)
-                                        {
-                                            <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show @TempData["AlertType"] id=" AlertBox" hide">
-                                                @TempData["AlertMessage"]
-                                            </div>
-                                        }
+                                    @if (TempData["AlertMessage"] != null)
+                                    {
+                                        <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show @TempData["AlertType"] id=" AlertBox" hide">
+                                            @TempData["AlertMessage"]
+                                        </div>
+                                    }
                                     @*</ol>*@
                                 </div>
                                 <h4 class="page-title">@RenderSection("header", required: true)</h4>
@@ -438,6 +438,19 @@
         });
 
     </script>
+    <script>
+        $('#btnSelectImage').on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#txtImage').val(url);
+            };
+            finder.popup();
+        })
+
+        var editor = CKEDITOR.replace('txtContent', {
+            customConfig: '/Assets/Admin/ckeditor/config.js',
+        });</script>
     @RenderSection("jsFooter", required: false)
 </body>
 

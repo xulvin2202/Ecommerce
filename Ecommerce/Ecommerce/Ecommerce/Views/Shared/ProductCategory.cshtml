@@ -1,82 +1,84 @@
 ﻿@model List<Model.EF.Category>
 
 
-    <a href="#" class="navPages-action megamenuToogle-wrapper hidden-sm hidden-xs"
-       data-collapsible="verticalCategories"
-       data-collapsible-disabled-breakpoint="medium"
-       data-collapsible-disabled-state="close"
-       data-collapsible-enabled-state="close"
-       data-collapsible-limit="13"
-       data-collapsible-textmore=" Categories"
-       data-collapsible-textclose="Close Categories">
-        <svg class="icon-alignleft" width="18" height="18"><use xlink:href="#icon-alignleft"></use></svg>
-        <i class="icon-alignleft"></i> <span class="title-mega">All Categories </span>
-        <svg class="icon-caret-circle" width="16" height="16"><use xlink:href="#icon-caret-circle-down"></use></svg>
-    </a>
+<a href="#" class="navPages-action megamenuToogle-wrapper hidden-sm hidden-xs"
+   @*data-collapsible="verticalCategories"
+   data-collapsible-disabled-breakpoint="medium"
+   data-collapsible-disabled-state="open"
+   data-collapsible-enabled-state="open"
+   data-collapsible-limit="13"
+   data-collapsible-textmore="More Categories"
+   data-collapsible-textclose="Close Categories">*@
+    <svg class="icon-alignleft" width="18" height="18"><use xlink:href="#icon-alignleft"></use></svg>
+    <i class="fas fa-ellipsis-h" ></i>
+    <span class="title-mega">Danh mục</span>
+    <svg class="icon-caret-circle" width="16" height="16"><use xlink:href="#icon-caret-circle-down"></use></svg>
+    @*<i class="fas fa-chevron-circle-down" ></i>*@
+</a>
 
-    <div class="verticalCategories  " id="verticalCategories" aria-hidden="true" tabindex="-1">
-        <span class="mobileMenu-close fa fa-times"></span>
-        <ul class="navPages-list navPages-list--categories">
-            @foreach (var item in Model.Where(x => x.ParentID == null))
-            {
-                var submenu = Model.Where(x => x.ParentID == item.ID);
-                //var parentClass = submenu.Count() > 0 ? "class=navPages-action has-subMen'":"";
-                <li class="navPages-item ">
-                    <a class=navPages-action has-subMen href="/san-pham/@item.MetaTitle-@item.ID">
-                        <i class="@(string.IsNullOrEmpty(item.Icon)?"fa fa-female":item.Icon)"></i>
-                        @item.Name
-                        <span class=" has-subMenu" data-collapsible="navPages-vertical-23">
-                            <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-right" /></svg></i>
-                        </span>
+<div class="verticalCategories is-open" id="verticalCategories" aria-hidden="true" tabindex="-1">
+    <span class="mobileMenu-close fa fa-times"></span>
+    <ul class="navPages-list navPages-list--categories">
+        @foreach (var item in Model.Where(x => x.ParentID == null))
+        {
+            var submenu = Model.Where(x => x.ParentID == item.ID);
+            //var parentClass = submenu.Count() > 0 ? "class=navPages-action has-subMen'":"";
+            <li class="navPages-item ">
+                <a class=navPages-action has-subMen href="/san-pham/@item.MetaTitle-@item.ID">
+                    <i class="@(string.IsNullOrEmpty(item.Icon)?"fa fa-female":item.Icon)"></i>
+                    @item.Name
+                    <span class=" has-subMenu" data-collapsible="navPages-vertical-23">
+                        <i class="icon navPages-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-right" /></svg></i>
+                    </span>
 
-                    </a>
-                    <div class="navPage-subMenu subMenu--mega" id="navPages-vertical-23" aria-hidden="true" tabindex="-1">
-                        <div class="row">
-                            <div class="col-lg-8">
-                                @if (submenu.Count() > 0)
-                                {
-
-
-                                    <ul class="navPage-subMenu-list grid-2">
-                                        @foreach (var subsubmenu in submenu)
-                                        {
-
-                                            <li class="navPage-subMenu-item">
-                                                <ul class="navPage-childList" id="navPages-vertical-24">
-
-                                                    <li class="navPage-childList-item">
-                                                        <a href="/san-pham/@subsubmenu.MetaTitle-@subsubmenu.ID">@subsubmenu.Name</a>
-                                                    </li>
+                </a>
+                <div class="navPage-subMenu subMenu--mega" id="navPages-vertical-23" aria-hidden="true" tabindex="-1">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            @if (submenu.Count() > 0)
+                            {
 
 
-                                                </ul>
+                                <ul class="navPage-subMenu-list grid-2">
+                                    @foreach (var subsubmenu in submenu)
+                                    {
+
+                                        <li class="navPage-subMenu-item">
+                                            <ul class="navPage-childList" id="navPages-vertical-24">
+
+                                                <li class="navPage-childList-item"  >
+                                                    <a href="/san-pham/@subsubmenu.MetaTitle-@subsubmenu.ID">@subsubmenu.Name</a>
+                                                </li>
 
 
-                                            </li>
+                                            </ul>
 
 
-                                        }
-                                    </ul>
+                                        </li>
 
-                                }
-                            </div>
 
-                            <div class="col-lg-4">
-                                <div class="banners">
-                                    <div>
-                                        <a href="/san-pham/@item.MetaTitle-@item.ID"><img data-sizes="auto" class="img-fluid lazyload" src="@item.Image" alt="banner"></a>
-                                    </div>
+                                    }
+                                </ul>
+
+                            }
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="banners">
+                                <div>
+                                    <a href="/san-pham/@item.MetaTitle-@item.ID"><img data-sizes="auto" class="img-fluid lazyload" src="@item.Image" alt="banner"></a>
                                 </div>
                             </div>
-
                         </div>
-                    </div>
-                </li>
-            }
-        </ul>
-    </div>
 
-    <a href="#" class="mobileMenu-toggle mobileMenu--vertical" data-mobile-menu-toggle="menu--verticalCategories" aria-controls="menu--verticalCategories">
-        <span class="mobileMenu-toggleIcon"> Vertical Categories</span>
-    </a>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+
+<a href="#" class="mobileMenu-toggle mobileMenu--vertical" data-mobile-menu-toggle="menu--verticalCategories" aria-controls="menu--verticalCategories">
+    <span class="mobileMenu-toggleIcon"> Vertical Categories</span>
+</a>
 

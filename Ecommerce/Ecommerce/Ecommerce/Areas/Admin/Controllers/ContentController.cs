@@ -17,10 +17,12 @@ namespace Ecommerce.Areas.Admin.Controllers
         private EcommerceDbContext db = new EcommerceDbContext();
 
         // GET: Admin/Content
-        public ActionResult Index()
+        public ActionResult Index(string searchStringContent, int page = 1, int pageSize = 5)
         {
-            var dao = new UserDao();
-            var model = dao.ListAllContent();
+            var dao = new ContentDao();
+            //var model = dao.ListAllContent();
+            var model = dao.ListAllContent(searchStringContent, page, pageSize);
+            ViewBag.SearchStringContent = searchStringContent;
             return View(model);
         }
         
@@ -161,8 +163,8 @@ namespace Ecommerce.Areas.Admin.Controllers
         }
         public void SetViewBag(long? seletedID = null)
         {
-            var dao = new Model.Dao.EcommerceDao();
-            ViewBag.Content_Category_ID = new SelectList(dao.ListAllContent(), "ID", "Name", seletedID);
+            var dao = new Model.Dao.ContentDao();
+            ViewBag.Content_Category_ID = new SelectList(dao.ListAllContentCategory(), "ID", "Name", seletedID);
 
         }
     }

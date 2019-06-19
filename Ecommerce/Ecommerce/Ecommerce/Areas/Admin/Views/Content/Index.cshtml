@@ -4,7 +4,7 @@
     ViewBag.Title = "QL bài viết";
     Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
 }
-@section header{ Danh sách }
+@section header{ Danh sách bài viết }
 @section jsFooter{
     <script>
         $('#btnSelectImage').on('click', function (e) {
@@ -30,7 +30,7 @@
                     {
                         <form id="navbar-search" class="navbar-form search-form">
                             <div class="input-group mb-0">
-                                <input type="text" class="form-control" value="@ViewBag.SearchString" name="searchString" placeholder="Search..." autocomplete="off">
+                                <input type="text" class="form-control" value="@ViewBag.SearchStringContent" name="searchStringContent" placeholder="Search..." autocomplete="off">
                                 <div class="input-group-append">
                                     <button href="javascript:void(0);" class="btn btn-success" title="" type="submit">Search</button>
                                 </div>
@@ -66,7 +66,7 @@
                                     @item.Description
                                 </td>
 
-                                <td autocomplete="off">@Html.Raw(item.Detail)</td>
+                                @*<td autocomplete="off">@Html.Raw(item.Detail)</td>*@
                                 <td autocomplete="off">@item.CreateDate</td>
                                 <td>
                                     <a href="~/Admin/Content/Edit/@item.ID" class="btn btn-sm btn-default" title="Edit"><i class="icon-pencil"></i></a>
