@@ -12,11 +12,12 @@ namespace Ecommerce.Controllers
     {
         // GET: Product
 
-        public ActionResult Index()
+        public ActionResult Index(int page =1)
         {
             var dao = new ProductDao();
             var model = dao.ListAllProduct();
-            return View(model);
+        
+            return View(model.ToPagedList(page, 8));
         }
         [ChildActionOnly]
         public PartialViewResult ProductCategory()
@@ -30,8 +31,8 @@ namespace Ecommerce.Controllers
             ViewBag.Category = category;
 
             var model = new ProductDao().ListByCategoryId(cateid);
-
-
+            ViewBag.Subcategory = new ProductDao().ListSubCategory(cateid);
+            
             return View(model.ToPagedList(page, 8));
         }
         public ActionResult ListAllProduct()

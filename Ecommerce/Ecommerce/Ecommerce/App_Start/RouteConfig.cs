@@ -20,11 +20,21 @@ namespace Ecommerce
                 url: "san-pham/{metatitle}-{cateid}",
                 defaults: new { controller = "Product", action = "Category", id = UrlParameter.Optional },
                 namespaces: new[] { "Ecommerce.Controllers" }
+            );routes.MapRoute(
+                name: "Category Content",
+                url: "bai-viet/{metatitle}-{cateid}",
+                defaults: new { controller = "Content", action = "ContentCategory", id = UrlParameter.Optional },
+                namespaces: new[] { "Ecommerce.Controllers" }
             );
             routes.MapRoute(
                 name: "Product Detail",
                 url: "chi-tiet/{metatitle}-{id}",
                 defaults: new { controller = "Product", action = "Detail", id = UrlParameter.Optional },
+                namespaces: new[] { "Ecommerce.Controllers" }
+            );routes.MapRoute(
+                name: "Content Detail",
+                url: "chi-tiet-bai-viet/{metatitle}-{id}",
+                defaults: new { controller = "Content", action = "DetailContent", id = UrlParameter.Optional },
                 namespaces: new[] { "Ecommerce.Controllers" }
             );
             routes.MapRoute(
@@ -84,6 +94,11 @@ namespace Ecommerce
                 name: "Product",
                 url: "san-pham",
                 defaults: new { controller = "Product", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "Ecommerce.Controllers" }
+            );routes.MapRoute(
+                name: "Content",
+                url: "bai-viet",
+                defaults: new { controller = "Content", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "Ecommerce.Controllers" }
             );routes.MapRoute(
                 name: "Login",

@@ -1,16 +1,16 @@
-﻿@model IEnumerable<Model.EF.Product>
-
+﻿@model PagedList.IPagedList<Model.EF.Product>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "San pham";
-    Layout = "~/Views/Shared/_Layoutv2.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <div class="container">
     <div class="sb-breadcrumbs breadcrumb-bg ">
         <div class="entry-header" style="background-color:#1f2534">
             <h3 class="entry-title">
-
-              Sản Phẩm
+                Sản Phẩm
             </h3>
             <ul class="breadcrumb ">
                 <li class="breadcrumb-item ">
@@ -240,7 +240,7 @@
                         </div>*@
 
                     <div class="refine-search form-group clearfix">
-                        <h3 class="title-category"> Kết quả tìm kiếm theo từ khoá: @ViewBag.Keyword</h3>
+                        <h3 class="title-category"> @*Kết quả tìm kiếm theo từ khoá: @ViewBag.Keyword*@</h3>
 
                     </div>
 
@@ -391,7 +391,13 @@
                     </form>
                     <!--Phaan trang-->
 
+                    <div class="pagination">
+                        <ul class="pagination-list">
 
+                            @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page, @class = "pagination-link" }), PagedListRenderOptions.PageNumbersOnly)
+
+                        </ul>
+                    </div>
                 </div>
 
             </main>

@@ -79,11 +79,13 @@
                                     @*<button type="button" class="btn btn-sm btn-default js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o text-danger"></i></button>*@
 
                                     @Ajax.ActionLink("Xoá", "Delete",null, new { @id = item.ID }, new AjaxOptions
-                                  {
-                                      Confirm = "Bạn chắc chắn muốn xóa?",
-                                      OnComplete = "$('#row_" + @item.ID + "').remove()",
-                                      HttpMethod = "Delete"
-                                  })
+                                {
+                                    Confirm = "Bạn chắc chắn muốn xóa ?",
+                                    OnComplete = "$('#row_" + @item.ID + "').remove()",
+                                    HttpMethod = "Delete",
+                                }, new { @class = "btn btn-dark btn-rounded waves-effect waves-light width-md",
+                                    @id = "myActionLinkId"
+                                })
                                 </td>
                             </tr>
                         }

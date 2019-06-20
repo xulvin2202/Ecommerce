@@ -17,6 +17,9 @@ namespace Model.EF
         [StringLength(250)]
         public string Image { get; set; }
 
+        [StringLength(250)]
+        public string MetaTitle { get; set; }
+
         [StringLength(550)]
         public string Link { get; set; }
 
@@ -28,6 +31,6 @@ namespace Model.EF
 
         public long? Product_Category_ID { get; set; }
 
-        public long? MainCategory_ID { get; set; }
+        public long? Category_ID { get; set; }
     }
 }

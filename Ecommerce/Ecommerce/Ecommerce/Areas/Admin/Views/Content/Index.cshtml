@@ -65,8 +65,6 @@
                                 <td>
                                     @item.Description
                                 </td>
-
-                                @*<td autocomplete="off">@Html.Raw(item.Detail)</td>*@
                                 <td autocomplete="off">@item.CreateDate</td>
                                 <td>
                                     <a href="~/Admin/Content/Edit/@item.ID" class="btn btn-sm btn-default" title="Edit"><i class="icon-pencil"></i></a>
@@ -75,7 +73,7 @@
                                    Confirm = "Bạn chắc chắn muốn xóa ?",
                                    OnComplete = "$('#row_" + @item.ID + "').remove()",
                                    HttpMethod = "Delete",
-                               }, new { @class = "btn btn-sm btn-default js-sweetalert",
+                               }, new { @class = "btn btn-dark btn-rounded waves-effect waves-light width-md",
                                    @id = "myActionLinkId"
                                })
                                     <script>$("#myActionLinkId").prepend("<i class='fa fa-trash-o text-danger'></i> ");</script>

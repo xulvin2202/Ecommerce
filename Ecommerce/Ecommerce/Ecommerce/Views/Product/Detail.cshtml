@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Detail";
-    Layout = "~/Views/Shared/_Layoutv2.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
     var category = (Model.EF.Category)ViewBag.Category;
 
     var relatedproducts = (List<Model.EF.Product>)ViewBag.RelatedProducts;
@@ -11,7 +11,7 @@
     <div class="sb-breadcrumbs breadcrumb-bg ">
         <div class="entry-header">
             <h3 class="entry-title">
-                @Model.Name
+                
             </h3>
             <ul class="breadcrumb ">
                 <li class="breadcrumb-item ">
@@ -395,7 +395,7 @@
                                 <figure class="productView-image"
                                         data-image-gallery-main
                                         data-zoom-image="../../cdn11.bigcommerce.com/s-5jeysafj8q/images/stencil/1580x1580/products/93/397/10__85920.1542788457a885.jpg?c=2&amp;imbypass=on">
-                                    <a class="productView-image-main " href="../../cdn11.bigcommerce.com/s-5jeysafj8q/images/stencil/1580x1580/products/93/397/10__85920.1542788457a885.jpg?c=2&amp;imbypass=on">
+                                    <a class="productView-image-main " href="#">
                                         <img class="productView-image--default lazyload"
                                              data-sizes="auto"
                                              src="@Model.Image"

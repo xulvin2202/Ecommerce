@@ -1,5 +1,6 @@
 ﻿using Model.EF;
 using Model.ViewModel;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace Model.Dao
         {
             return db.Products.Where(x => x.Name.Contains(keyword)).Select(x => x.Name).ToList();
         }
-        public IEnumerable<Product> ListAllProduct()
+        public IEnumerable<Product> ListAllProduct( )
         {
             IQueryable<Product> model = db.Products;
 
@@ -54,6 +55,11 @@ namespace Model.Dao
         {
             return db.Products.Find(id);
         }
+        public List<Category> ListSubCategory ( long CategoryID)
+        {
+            return db.Categories.Where(x => x.ParentID != null && x.ParentID == CategoryID).OrderBy(x => x.DisplayOrder).ToList();
+        }
+        
         public List<Product> ListRelatedProducts(long productID)
         {
             var product = db.Products.Find(productID);
@@ -66,7 +72,7 @@ namespace Model.Dao
 
         public List<Brand> ListBrand(int brand)
         {
-            return db.Brands.OrderBy(x => x.CreateDate).Take(brand).ToList();
+            return db.Brands.OrderBy(x => x.CreateDate).ToList();
         }
         public List<Product> ListByCategoryId(long categoryID)
         {

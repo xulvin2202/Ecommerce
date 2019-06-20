@@ -26,5 +26,26 @@ namespace Model.Dao
             db.SaveChanges();
             return rv.ID;
         }
+        public IEnumerable<Feedback> ListAllFeedback( int page, int pageSize)
+        {
+            IQueryable<Feedback> model = db.Feedbacks;
+            
+            return model.OrderByDescending(x => x.CreateDate).ToList();
+        }
+        public bool Delete(int id)
+        {
+            try
+            {
+                var contact = db.Contacts.Find(id);
+                db.Contacts.Remove(contact);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
     }
 }

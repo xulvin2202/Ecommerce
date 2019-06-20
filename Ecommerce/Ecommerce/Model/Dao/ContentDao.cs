@@ -15,8 +15,11 @@ namespace Model.Dao
         {
             db = new EcommerceDbContext();
         }
-        
-        
+        public List<ContentCategory> ListAllContentCategory()
+        {
+            return db.ContentCategories.Where(x => x.Status == true).ToList();
+        }
+
         //public IEnumerable<Content> ListAllContent()
         //{
         //    IQueryable<Content> model = db.Contents;
@@ -29,9 +32,9 @@ namespace Model.Dao
             db.SaveChanges();
             return entity.ID;
         }
-        public List<ContentCategory> ListAllContentCategory()
+        public List<Content> ListContent(int id)
         {
-            return db.ContentCategories.Where(x => x.Status == true).ToList();
+            return db.Contents.OrderByDescending(x => x.CreateDate).Take(id).ToList();
         }
         public bool Update(Content entity)
         {
@@ -56,6 +59,11 @@ namespace Model.Dao
             }
 
         }
+        public List<Content> ListRelatedContents(long contentID)
+        {
+            var content = db.Contents.Find(contentID);
+            return db.Contents.Where(x => x.ID != contentID && x.Content_Category_ID == content.Content_Category_ID).ToList();
+        }
         public IEnumerable<Content> ListAllContent(string searchStringContent, int page, int pageSize)
         {
             IQueryable<Content> model = db.Contents;
@@ -74,6 +82,11 @@ namespace Model.Dao
         //    }
         //    return model.OrderByDescending(x => x.CreateDate).ToList();
         //}
+        public List<Content> ListContentByContentCategoryId(long categoryID)
+        {
+
+            return db.Contents.Where(x => x.Content_Category_ID == categoryID).ToList();
+        }
         public bool Delete(int id)
         {
             try
@@ -88,6 +101,16 @@ namespace Model.Dao
                 return false;
             }
 
+        }
+        public IEnumerable<Content> ListAllContent()
+        {
+            IQueryable<Content> model = db.Contents;
+
+            return model.OrderByDescending(x => x.CreateDate).ToList();
+        }
+        public Content ViewDetail(long id)
+        {
+            return db.Contents.Find(id);
         }
     }
 }

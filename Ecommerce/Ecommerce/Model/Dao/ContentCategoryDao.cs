@@ -53,6 +53,10 @@ namespace Model.Dao
             }
 
         }
+        public ContentCategory ViewDetail(long id)
+        {
+            return db.ContentCategories.Find(id);
+        }
 
     }
 }

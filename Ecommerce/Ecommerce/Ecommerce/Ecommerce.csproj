@@ -144,6 +144,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
@@ -158,6 +159,7 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -3505,6 +3507,7 @@
     <Content Include="Assets\Admin\Admin\hts-cache\doit.log" />
     <Content Include="Assets\Admin\Admin\hts-cache\new.zip" />
     <Content Include="Assets\Admin\Admin\hts-cache\winprofile.ini" />
+    <Content Include="Areas\Admin\Views\Contact\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\cartController.js" />
     <Content Include="Scripts\contactController.js" />
@@ -3554,6 +3557,9 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Shared\_Layoutv2.cshtml" />
+    <Content Include="Views\Content\DetailContent.cshtml" />
+    <Content Include="Views\Content\Index.cshtml" />
+    <Content Include="Views\Content\ContentCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
