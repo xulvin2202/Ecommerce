@@ -114,9 +114,19 @@ namespace Ecommerce.Controllers
             {
                 list = (List<CartItem>)cart;
             }
+            ViewBag.Total = Total();
             return View(list);
         }
-
+        private decimal? Total()
+        {
+            decimal? iTotal = 0;
+            List<CartItem> lstCart = Session["CartItem"] as List<CartItem>;
+            if (lstCart != null )
+            {
+                iTotal = lstCart.Sum(x => x.TotalPrice);
+            }
+            return iTotal;
+        }
         [HttpPost]
         public ActionResult Payment(string shipName, string mobile, string address, string email)
         {
@@ -142,8 +152,15 @@ namespace Ecommerce.Controllers
                     orderDetail.Price = item.Product.Price;
                     orderDetail.Quantity = item.Quantity;
                     detailDao.Insert(orderDetail);
-
-                    total += (item.Product.Price.GetValueOrDefault(0) * item.Quantity);
+                    if(item.Product.PromotionPrice != null)
+                    {
+                        total += (item.Product.PromotionPrice.GetValueOrDefault(0) * item.Quantity);
+                    }
+                    else
+                    {
+                        total += (item.Product.Price.GetValueOrDefault(0) * item.Quantity);
+                    }
+                    //total += (item.Product.Price.GetValueOrDefault(0) * item.Quantity);
                 }
                 string content = System.IO.File.ReadAllText(Server.MapPath("~/Assets/Client/template/neworder.html"));
 

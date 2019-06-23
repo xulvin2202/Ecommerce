@@ -13,22 +13,47 @@ namespace Model.Dao
         {
             db = new EcommerceDbContext();
         }
-        public List<Category> ListAllCategory()
+        public IEnumerable<Category> ListAllCategory()
         {
-            return db.Categories.Where(x => x.Status == true).OrderBy(x => x.DisplayOrder).ToList();
+            IQueryable<Category> model = db.Categories;
+
+            return model.Where(x=>x.ParentID == null).OrderByDescending(x => x.CreateDate).ToList();
+           
         }
-       
-        /// <summary>
-        /// get list product by category
-        /// </summary>
-        /// <param name="categoryID"></param>
-        /// <returns></returns>
-        
+        public IEnumerable<Category> ListAllSubCategory()
+        {
+            IQueryable<Category> model = db.Categories;
+
+            return model.Where(x=>x.ParentID != null ).OrderByDescending(x => x.CreateDate).ToList();
+           
+        }
+
+        public long Insert(ContentCategory entity)
+        {
+            db.ContentCategories.Add(entity);
+            db.SaveChanges();
+            return entity.ID;
+        }
+
         public Category ViewDetail(long id)
         {
             return db.Categories.Find(id);
         }
-        
-       
+        public bool Delete(int id)
+        {
+            try
+            {
+                var contentCategory = db.ContentCategories.Find(id);
+                db.ContentCategories.Remove(contentCategory);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
+
     }
 }

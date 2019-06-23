@@ -4,7 +4,7 @@
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var category = (Model.EF.Category)ViewBag.Category;
-
+ 
     var relatedproducts = (List<Model.EF.Product>)ViewBag.RelatedProducts;
 }
 <div class="container">
@@ -56,6 +56,7 @@
                     <span id="close-sidebar" class=" fa fa-times"></span>
 
                     BEGIN Side All Categories
+                   
                     <div class="module  sidebar--categories">
                         <h5 class="block-title"> All Categories</h5>
                         <div class="block-content clearfix">
@@ -318,7 +319,7 @@
 
                         </div>
                     </div>
-
+                    
 
 
                     <div class="module sb-banner sb-banner--cmsblock ">
@@ -686,7 +687,14 @@
 
                                         <dl class="productView-info-dl">
                                             <dt class="productView-info-name">Brand</dt>
-                                            <dd class="productView-info-value" data-product-brand><a href="../brands/ofs/index.html" itemprop="url"><span itemprop="name">abc</span></a></dd>
+                                            @if (Model.Status == true)
+                                            {
+                                                <dd class="productView-info-value" data-product-brand><a href="#" itemprop="url"><span itemprop="name">Còn hàng</span></a></dd>
+                                            }
+                                            else
+                                            {
+                                                <dd class="productView-info-value" data-product-brand><a href="#" itemprop="url"><span itemprop="name">Hết hàng</span></a></dd>
+                                            }
                                             <dt class="productView-info-name">SKU:</dt>
                                             <dd class="productView-info-value" data-product-sku>SLLPJ</dd>
 
@@ -818,13 +826,21 @@
                                             <p class="alertBox-column alertBox-message"></p>
                                         </div>
                                         <div class="form-action">
-                                            
-                                            <a href="/them-gio-hang?productId=@Model.ID&quantity=1" id="form-action-addToCart" data-wait-message="Adding to cart…" class="button button--primary button--addtocart" >Thêm vào giỏ hàng</a>
+                                            @if (Model.Status == true)
+                                            {
+                                                <a href="/them-gio-hang?productId=@Model.ID&quantity=1" id="form-action-addToCart" data-wait-message="Adding to cart…" class="button button--primary button--addtocart">Thêm vào giỏ hàng</a>
+
+                                            }
+                                            else
+                                            {
+                                                <a href="#" id="form-action-addToCart" data-wait-message="Adding to cart…" class="button button--primary button--addtocart">Hết hàng</a>
+
+                                            }
                                         </div>
 
                                         <!-- snippet location product_addtocart -->
                                     </form>
-                                    <form action="https://sb-clickboom.mybigcommerce.com/wishlist.php?action=add&amp;product_id=93" class="form form-wishlist form-action" data-wishlist-add method="post">
+                                    @*<form action="https://sb-clickboom.mybigcommerce.com/wishlist.php?action=add&amp;product_id=93" class="form form-wishlist form-action" data-wishlist-add method="post">
                                         <a aria-controls="wishlist-dropdown" aria-expanded="false" class="button dropdown-menu-button" data-dropdown="wishlist-dropdown">
                                             <span>Thêm vào danh sách yêu thích</span>
                                             <i aria-hidden="true" class="icon">
@@ -842,7 +858,7 @@
                                                 <a data-wishlist class="button" href="../logind735.html?action=addwishlist&amp;product_id=93">Create New Wish List</a>
                                             </li>
                                         </ul>
-                                    </form>
+                                    </form>*@
                                 </div>
 
                                 <!-- snippet location product_details -->
@@ -871,7 +887,7 @@
 
                             <div class="tabs-contents ">
                                 <div class="tab-content is-active" id="tab-description">
-                                    <p>@Model.Detail</p>
+                                    <p>@Html.Raw(Model.Detail)</p>
                                     <!-- snippet location product_description -->
                                 </div>
 

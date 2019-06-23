@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Ecommerce.Areas.Admin.Controllers
 {
-    public class ContactController : Controller
+    public class ContactController : BaseController
     {
         // GET: Admin/Contact
         public ActionResult Index( int page = 1, int pageSize = 5)

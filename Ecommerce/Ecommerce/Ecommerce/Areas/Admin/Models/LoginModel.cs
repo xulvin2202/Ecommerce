@@ -8,9 +8,9 @@ namespace Ecommerce.Areas.Admin.Models
 {
     public class LoginModel
     {
-        [Required(ErrorMessage = "Cần Nhập Username")]
+        [Required(ErrorMessage = "Nhập tài khoản và mật khẩu")]
         public string UserName { get; set; }
-        [Required(ErrorMessage = "Cần Nhập Password")]
+       
         public string Password { get; set; }
         public bool RememberMe { get; set; }
     }

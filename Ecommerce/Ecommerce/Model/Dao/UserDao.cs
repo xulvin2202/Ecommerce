@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PagedList;
+using Common;
 
 namespace Model.Dao
 {
@@ -15,6 +16,78 @@ namespace Model.Dao
         {
             db = new EcommerceDbContext();
         }
+        public int Login(string userName, string passWord, bool isLoginAdmin = false)
+        {
+            var result = db.Users.SingleOrDefault(x => x.UserName == userName);
+            if (result == null)
+            {
+                return 0;
+            }
+            else
+            {
+                if (isLoginAdmin == true)
+                {
+                    if (result.GroupID == Common.Constants.ADMIN_GROUP || result.GroupID == Common.Constants.MOD_GROUP)
+                    {
+                        if (result.Status == false)
+                        {
+                            return -1;
+                        }
+                        else
+                        {
+                            if (result.Password == passWord)
+                                return 1;
+                            else
+                                return -2;
+                        }
+                    }
+                    else
+                    {
+                        return -3;
+                    }
+                }
+                else
+                {
+                    if (result.Status == false)
+                    {
+                        return -1;
+                    }
+                    else
+                    {
+                        if (result.Password == passWord)
+                            return 1;
+                        else
+                            return -2;
+                    }
+                }
+            }
+        }
+        //public int Login(string userName, string passWord)
+        //{
+        //    var result = db.Users.SingleOrDefault(a => a.UserName == userName);
+
+
+        //    if (result == null)
+        //    {
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        if (result.Status == false)
+        //        {
+        //            return -1;
+        //        }
+        //        else
+        //        {
+        //            if (result.Password != null && result.Password.Equals(passWord, StringComparison.CurrentCultureIgnoreCase))
+
+        //                return 1;
+        //            else
+        //                return -2;
+
+        //        }
+        //    }
+        //}
         public long Insert(User entity)
         {
             db.Users.Add(entity);
@@ -69,33 +142,26 @@ namespace Model.Dao
         {
             return db.Users.Find(id);
         }
-        
-        public int Login(string userName,string passWord)
+        public List<string> GetListCredential(string userName)
         {
-            var result = db.Users.SingleOrDefault(a => a.UserName == userName);
-            
+            var user = db.Users.Single(x => x.UserName == userName);
+            var data = (from a in db.Credentials
+                        join b in db.UserGroups on a.UserGroupID equals b.ID
+                        join c in db.Roles on a.RoleID equals c.ID
+                        where b.ID == user.GroupID
+                        select new
+                        {
+                            RoleID = a.RoleID,
+                            UserGroupID = a.UserGroupID
+                        }).AsEnumerable().Select(x => new Credential()
+                        {
+                            RoleID = x.RoleID,
+                            UserGroupID = x.UserGroupID
+                        });
+            return data.Select(x => x.RoleID).ToList();
 
-            if(result == null)
-            {
-                return 0;
-            }
-            else
-            {
-                if(result.Status == false)
-                {
-                    return -1;
-                }
-                else
-                {
-                    if (result.Password != null && result.Password.Equals( passWord,StringComparison.CurrentCultureIgnoreCase) )
-
-                        return 1;
-                    else
-                        return -2;
-                
-                }
-            }
         }
+
         public bool Delete(int id)
         {
             try

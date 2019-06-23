@@ -19,8 +19,13 @@ namespace Ecommerce
                 name: "Category Product",
                 url: "san-pham/{metatitle}-{cateid}",
                 defaults: new { controller = "Product", action = "Category", id = UrlParameter.Optional },
+                namespaces: new[] { "Ecommerce.Controllers" });
+            routes.MapRoute(
+                name: "Category Brand",
+                url: "thuong-hieu/{metatitle}-{cateid}",
+                defaults: new { controller = "Product", action = "Brand", id = UrlParameter.Optional },
                 namespaces: new[] { "Ecommerce.Controllers" }
-            );routes.MapRoute(
+            ); routes.MapRoute(
                 name: "Category Content",
                 url: "bai-viet/{metatitle}-{cateid}",
                 defaults: new { controller = "Content", action = "ContentCategory", id = UrlParameter.Optional },
@@ -103,6 +108,11 @@ namespace Ecommerce
             );routes.MapRoute(
                 name: "Login",
                 url: "dang-nhap",
+                defaults: new { controller = "User", action = "Login", id = UrlParameter.Optional },
+                namespaces: new[] { "Ecommerce.Controllers" }
+            );routes.MapRoute(
+                name: "Logout",
+                url: "dang-xuat",
                 defaults: new { controller = "User", action = "Login", id = UrlParameter.Optional },
                 namespaces: new[] { "Ecommerce.Controllers" }
             );

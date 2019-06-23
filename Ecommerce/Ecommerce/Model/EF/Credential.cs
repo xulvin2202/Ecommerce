@@ -6,13 +6,17 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Tag")]
-    public partial class Tag
+    [Table("Credential")]
+    public partial class Credential
     {
+        [Key]
+        [Column(Order = 0)]
         [StringLength(50)]
-        public string ID { get; set; }
+        public string UserGroupID { get; set; }
 
+        [Key]
+        [Column(Order = 1)]
         [StringLength(50)]
-        public string Name { get; set; }
+        public string RoleID { get; set; }
     }
 }

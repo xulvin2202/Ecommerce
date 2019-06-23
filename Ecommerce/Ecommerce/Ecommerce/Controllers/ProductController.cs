@@ -12,11 +12,13 @@ namespace Ecommerce.Controllers
     {
         // GET: Product
 
-        public ActionResult Index(int page =1)
+        public ActionResult Index(int page = 1)
         {
             var dao = new ProductDao();
             var model = dao.ListAllProduct();
-        
+            ViewBag.ListBrand = new BrandDao().ListAllBrand();
+            ViewBag.Category = new CategoryDao().ListAllCategory();
+            
             return View(model.ToPagedList(page, 8));
         }
         [ChildActionOnly]
@@ -29,14 +31,26 @@ namespace Ecommerce.Controllers
         {
             var category = new CategoryDao().ViewDetail(cateid);
             ViewBag.Category = category;
-
             var model = new ProductDao().ListByCategoryId(cateid);
+            var brand = new ProductDao().ListBrandByCategoryId(cateid);
             ViewBag.Subcategory = new ProductDao().ListSubCategory(cateid);
-            
+            ViewBag.ListBrand = new ProductDao().ListBrandByCategoryId(cateid);
+            ViewBag.Cate = new CategoryDao().ListAllCategory();
+            return View(model.ToPagedList(page, 8));
+        }
+        public ActionResult Brand(long cateid, int page = 1/*, int pageSize = 2*/)
+        {
+            var category = new CategoryDao().ViewDetail(cateid);
+            ViewBag.Category = category;
+            ViewBag.Subcategory = new ProductDao().ListSubCategory(cateid);
+            ViewBag.ListBrand = new ProductDao().ListBrandByCategoryId(cateid);
+            var model = new ProductDao().ListByBrandId(cateid);
+            ViewBag.Cate= new CategoryDao().ListAllCategory();
             return View(model.ToPagedList(page, 8));
         }
         public ActionResult ListAllProduct()
         {
+
             return View();
         }
         public JsonResult ListName(string q)
@@ -66,14 +80,13 @@ namespace Ecommerce.Controllers
             ViewBag.Last = totalPage;
             ViewBag.Next = page + 1;
             ViewBag.Prev = page - 1;
-
             return View(model);
         }
-        public ActionResult Detail(long id)
-        {
+        [OutputCache(CacheProfile = "Cache1DayForProduct")]
+        public ActionResult Detail(long id)        {
             var product = new ProductDao().ViewDetail(id);
             ViewBag.Category = new CategoryDao().ViewDetail(product.Category_ID.Value);
-          
+
             ViewBag.RelatedProducts = new ProductDao().ListRelatedProducts(id);
             return View(product);
         }

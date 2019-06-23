@@ -9,7 +9,8 @@
     //var categoryProduct = (List<Model.EF.Category>)ViewBag.Category;
     var listallbrand = (List<Model.EF.Brand>)ViewBag.ListAllBrand;
     var subcategory = (List<Model.EF.Category>)ViewBag.Subcategory;
-
+    var brand = (List<Model.EF.Brand>)ViewBag.ListBrand;
+    var cate = (List<Model.EF.Category>)ViewBag.Cate;
 }
 }
 
@@ -55,17 +56,44 @@
             <aside class="col-xl-3 col-lg-3 page-sidebar sidebar-offcanvas" id="faceted-search-container">
                 <nav>
                     <span id="close-sidebar" class=" fa fa-times"></span>
+                    @if (category.ParentID == null)
+                    {
 
-                    <!-- BEGIN Side All Categories -->
+
+                        <!-- BEGIN Side All Categories -->
+                        <div class="module  sidebar--categories">
+                            <h5 class="block-title"> Danh Mục</h5>
+                            <div class="block-content clearfix">
+                                <ul class="navList">
+                                    @foreach (var item in subcategory)
+                                    {
+                                        //var link = "/san-pham/" + item.MetaTitle + "-" + item.ID;
+
+                                        <li class="navList-item">
+                                            <a class="navList-action has-subMenu is-current" href="/san-pham/@item.MetaTitle-@item.ID" style="color:black"> @item.Name </a>
+                                            <a class="navList-toggle" data-collapsible="navList-category-23"><i class="icon navList-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i></a>
+
+                                            <ul class="navList-subMenu-list" id="navList-category-23"></ul>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                    }
+                    
                     <div class="module  sidebar--categories">
-                        <h5 class="block-title"> All Categories</h5>
+                        <h5 class="block-title"> Thương Hiệu</h5>
                         <div class="block-content clearfix">
                             <ul class="navList">
-                                @foreach (var item in subcategory)
+                                @foreach (var item in brand)
                                 {
                                     //var link = "/san-pham/" + item.MetaTitle + "-" + item.ID;
+
                                     <li class="navList-item">
-                                        <a class="navList-action has-subMenu is-current" href="/san-pham/@item.MetaTitle-@item.ID" style="color:black"> @item.Name </a>
+                                        <a class="navList-action has-subMenu is-current" href="/thuong-hieu/@item.MetaTitle-@item.ID" style="color:black"> @item.Name </a>
                                         <a class="navList-toggle" data-collapsible="navList-category-23"><i class="icon navList-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i></a>
 
                                         <ul class="navList-subMenu-list" id="navList-category-23"></ul>
@@ -75,7 +103,6 @@
                         </div>
                     </div>
                     
-
                     <div class="module">
                         <h5 class="block-title">Shop By Price</h5>
                         <div class="block-content clearfix">
@@ -101,62 +128,7 @@
                     </div>
 
 
-                    <div class="module sb-banner sb-banner--cmsblock ">
-                        <div class="row">
-                            <div class="col-sm-12 col-12">
-
-                                <h5 class="block-title"> Custom CMS Block</h5>
-
-                                <div class="block-content clearfix ">
-
-
-
-                                    <div class="banners info-">
-                                        <div class="banner-figure">
-
-                                            <a href="#">
-                                                <img class="img-fluid" src="../../cdn11.bigcommerce.com/s-5jeysafj8q/content/home2/banners/3.jpg" alt="Custom Title" />
-                                            </a>
-                                        </div>
-
-                                        <div class="banner-figcaption">
-                                            <div class="banner-figcaption__body">
-                                                <h5 class="banner-figcaption__title">Custom Title</h5>
-
-                                                <p class="banner-figcaption__text"><p>Custom CMS block displayed at the left sidebar on the Catalog Page. Put your own content here: text, html, images, media... whatever you like.</p></p>
-
-                                                <a href="#" class="button button--primary  banner-figcaption__button"> Read More</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="module sb-banner sb-banner--sidebarBanner ">
-                        <div class="row">
-                            <div class="col-sm-12 col-12">
-
-
-                                <div class="block-content clearfix ">
-
-
-
-                                    <div class="banners info-">
-                                        <div class="banner-figure">
-
-                                            <a href="#">
-                                                <img class="img-fluid" src="../../cdn11.bigcommerce.com/s-5jeysafj8q/content/home1/banners/image-left.jpg" alt=" " />
-                                            </a>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
 
 
 
@@ -200,6 +172,7 @@
                             @foreach (var item in Model)
                             {
                                 var link = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
+                           
                                 <div class="product-layout product-grid product-grid-4 col-lg-3 col-md-4 col-12">
                                     <article class="product-item-container ">
                                         <div class="left-block ">

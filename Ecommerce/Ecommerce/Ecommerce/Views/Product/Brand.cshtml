@@ -1,17 +1,26 @@
 ﻿@model PagedList.IPagedList<Model.EF.Product>
 @using PagedList.Mvc;
+
+
 @{
-    ViewBag.Title = "San pham";
+    var category = (Model.EF.Category)ViewBag.Category;
+    ViewBag.Title = category.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var category = (List<Model.EF.Category>)ViewBag.Category;
+    //var categoryProduct = (List<Model.EF.Category>)ViewBag.Category;
+    var listallbrand = (List<Model.EF.Brand>)ViewBag.ListAllBrand;
+    var subcategory = (List<Model.EF.Category>)ViewBag.Subcategory;
     var brand = (List<Model.EF.Brand>)ViewBag.ListBrand;
+    var cate = (List<Model.EF.Category>)ViewBag.Cate;
+
+}
 }
 
 <div class="container">
     <div class="sb-breadcrumbs breadcrumb-bg ">
         <div class="entry-header" style="background-color:#1f2534">
             <h3 class="entry-title">
-                Sản Phẩm
+
+                @category.Name
             </h3>
             <ul class="breadcrumb ">
                 <li class="breadcrumb-item ">
@@ -22,8 +31,8 @@
                 </li>
 
                 <li class="breadcrumb-item is-active">
-                    <a href="/san-pham" class="breadcrumb-label">
-                        Sản phẩm
+                    <a href="/san-pham/@category.MetaTitle-@category.ID" class="breadcrumb-label">
+                        @category.Name
                     </a>
                 </li>
 
@@ -48,35 +57,34 @@
             <aside class="col-xl-3 col-lg-3 page-sidebar sidebar-offcanvas" id="faceted-search-container">
                 <nav>
                     <span id="close-sidebar" class=" fa fa-times"></span>
+                    @if (category.ParentID == null)
+                    {
 
-                    <!-- BEGIN Side All Categories -->
-                    <div class="module  sidebar--categories">
-                        <h5 class="block-title"> All Categories</h5>
-                        <div class="block-content clearfix">
-                            <ul class="navList">
-                                @*@foreach (var item in categoryProduct)
-                    {*@
-                                @foreach (var item in category)
-                                {
 
-                                    <li class="navList-item">
-                                        <a class="navList-action has-subMenu is-current" href="/san-pham/@item.MetaTitle-@item.ID" style="color:black">@item.Name </a>
-                                        <a class="navList-toggle" data-collapsible="navList-category-23"><i class="icon navList-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i></a>
+                        <!-- BEGIN Side All Categories -->
+                        <div class="module  sidebar--categories">
+                            <h5 class="block-title"> Danh Mục</h5>
+                            <div class="block-content clearfix">
+                                <ul class="navList">
+                                    @foreach (var item in cate)
+                                    {
+                                        //var link = "/san-pham/" + item.MetaTitle + "-" + item.ID;
 
-                                        <ul class="navList-subMenu-list" id="navList-category-23">
-                                            <li class="navList-subMenu-item">
-                                                <a class="navList-subMenu-action navList-action has-subMenu" href="../smartphone/electronic/index.html" alt="Electronic" title="Electronic">Electronic </a>
-                                                <a class="navList-subMenu-toggle navList-toggle" data-collapsible="navList-category-24"><i class="icon navList-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i></a>
+                                        <li class="navList-item">
+                                            <a class="navList-action has-subMenu is-current" href="/san-pham/@item.MetaTitle-@item.ID" style="color:black"> @item.Name </a>
+                                            <a class="navList-toggle" data-collapsible="navList-category-23"><i class="icon navList-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i></a>
 
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                }
-                                @*}*@
-                            </ul>
+                                            <ul class="navList-subMenu-list" id="navList-category-23"></ul>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
                         </div>
-                    </div>
+                    }
+                    else
+                    {
+                    }
+                    
                     <div class="module  sidebar--categories">
                         <h5 class="block-title"> Thương Hiệu</h5>
                         <div class="block-content clearfix">
@@ -121,10 +129,7 @@
                     </div>
 
 
-                    
-
-
-                    
+        
 
 
 
@@ -145,17 +150,31 @@
                         </div>*@
 
                     <div class="refine-search form-group clearfix">
-                        <h3 class="title-category"> @*Kết quả tìm kiếm theo từ khoá: @ViewBag.Keyword*@</h3>
+                        <h3 class="title-category">Sản Phẩm</h3>
 
                     </div>
 
 
+                    <form class=" row filters-panel" method="get" data-sort-by>
+                        <div class="col-sm-6 view-mode" data-reinitView="grid-3">
+                            <div class="sidebar-overlay"></div>
+                            <a href="javascript:void(0)" class="open-sidebar d-md-block d-lg-none"><i class="fa fa-bars"></i> Sidebar </a>
 
-                    <form action="#" method='POST' data-product-compare>
+
+                        </div>
+                        <div class="short-by-show col-sm-6 col-xs-12 ">
+
+
+                        </div>
+                    </form>
+
+                    <form action="https://sb-clickboom.mybigcommerce.com/compare" method='POST' data-product-compare>
+                        
                         <div class="products-list row">
                             @foreach (var item in Model)
                             {
                                 var link = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
+
                                 <div class="product-layout product-grid product-grid-4 col-lg-3 col-md-4 col-12">
                                     <article class="product-item-container ">
                                         <div class="left-block ">
@@ -200,20 +219,16 @@
 
 
                                             <div class="price-section price-section--withoutTax ">
+
                                                 @if (item.PromotionPrice != null)
                                                 {
                                                     <span data-product-price-without-tax class="price price--withoutTax">@String.Format("{0:#,0 VND}", @item.PromotionPrice)  </span>
                                                     <span data-product-non-sale-price-without-tax class="price price--rrp">@String.Format("{0:0,0}", item.Price)</span>
                                                 }
-                                                else
+                                                else if (item.PromotionPrice == null)
                                                 {
                                                     <span data-product-price-without-tax class="price price--withoutTax">@String.Format("{0:#,0 VND}", item.Price)</span>
                                                 }
-
-
-
-                                                <!--Was:-->
-
 
                                             </div>
 
@@ -295,14 +310,14 @@
 
                     </form>
                     <!--Phaan trang-->
-
                     <div class="pagination">
                         <ul class="pagination-list">
 
-                            @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page, @class = "pagination-link" }), PagedListRenderOptions.PageNumbersOnly)
+                            @Html.PagedListPager(Model, Page => Url.Action("Category", new { Page, @class = "pagination-link" }), PagedListRenderOptions.PageNumbersOnly)
 
                         </ul>
                     </div>
+
                 </div>
 
             </main>

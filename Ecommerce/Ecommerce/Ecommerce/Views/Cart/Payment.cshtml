@@ -1,5 +1,6 @@
 ﻿@model List<Ecommerce.Models.CartItem>
-@{
+@using Ecommerce.Models
+@{ 
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
     ViewBag.Title = "Index";
@@ -121,10 +122,10 @@
                                         else
                                         {
                                             <strong class="cart-item-value "> @((item.Product.Price.GetValueOrDefault(0) * item.Quantity).ToString("N0")) </strong>
+                                           
+                                           
                                         }
-                                        <a class="btn-delete" data-id="@item.Product.ID" href="#">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </a>
+                                        
                                     </td>
                                     
                                 </tr>
@@ -143,7 +144,7 @@
                                 <strong>Grand total:</strong>
                             </div>
                             <div class="cart-total-value cart-total-grandTotal">
-                                <span>$1,038.50</span>
+                                <span>@ViewBag.TotalPrice</span>
                             </div>
                         </li>
                     </ul>

@@ -144,6 +144,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
@@ -154,6 +155,7 @@
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\Encryptor.cs" />
+    <Compile Include="Common\HasCredentialAttribute.cs" />
     <Compile Include="Common\MailHelper.cs" />
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\AboutController.cs" />
@@ -3508,6 +3510,10 @@
     <Content Include="Assets\Admin\Admin\hts-cache\new.zip" />
     <Content Include="Assets\Admin\Admin\hts-cache\winprofile.ini" />
     <Content Include="Areas\Admin\Views\Contact\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\SubCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\401.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\cartController.js" />
     <Content Include="Scripts\contactController.js" />
@@ -3560,10 +3566,10 @@
     <Content Include="Views\Content\DetailContent.cshtml" />
     <Content Include="Views\Content\Index.cshtml" />
     <Content Include="Views\Content\ContentCategory.cshtml" />
+    <Content Include="Views\Product\Brand.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\Product\" />
     <Folder Include="Assets\Admin\ckfinder\bin\Debug\" />
     <Folder Include="Assets\Admin\ckfinder\bin\Release\" />
     <Folder Include="Assets\Admin\ckfinder\plugins\fileeditor\bin\Debug\" />

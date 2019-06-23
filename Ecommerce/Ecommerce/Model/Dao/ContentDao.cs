@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PagedList;
-
+using Common;
 namespace Model.Dao
 {
     public class ContentDao
@@ -102,6 +102,7 @@ namespace Model.Dao
             }
 
         }
+       
         public IEnumerable<Content> ListAllContent()
         {
             IQueryable<Content> model = db.Contents;

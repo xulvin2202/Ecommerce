@@ -1,4 +1,5 @@
-﻿using Model.Dao;
+﻿using Common;
+using Model.Dao;
 using Model.EF;
 using System;
 using System.Collections.Generic;
@@ -24,12 +25,7 @@ namespace Ecommerce.Areas.Admin.Controllers
         {
             return View();
         }
-        [HttpDelete]
-        public ActionResult Delete(int id)
-        {
-            new ContentCategoryDao().Delete(id);
-            return RedirectToAction("Index");
-        }
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
@@ -41,7 +37,7 @@ namespace Ecommerce.Areas.Admin.Controllers
                 {
                     var dao = new ContentCategoryDao();
                     contentCategory.Name = contentCategory.Name;
-                    contentCategory.MetaTitle = contentCategory.MetaTitle;
+                    contentCategory.MetaTitle = StringHelper.ToUnsignString(contentCategory.MetaTitle);
                     contentCategory.CreateDate = Convert.ToDateTime(DateTime.UtcNow.ToLocalTime());
                     contentCategory.Status = Convert.ToBoolean(true);
                     contentCategory.ParentID = contentCategory.ParentID;
@@ -71,7 +67,13 @@ namespace Ecommerce.Areas.Admin.Controllers
             }
             return View(contentCategory);
         }
-        
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+            new ContentCategoryDao().Delete(id);
+            return RedirectToAction("Index");
+        }
+
 
 
     }

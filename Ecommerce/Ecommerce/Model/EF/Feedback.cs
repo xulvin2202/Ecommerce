@@ -29,7 +29,5 @@ namespace Model.EF
         public DateTime? CreateDate { get; set; }
 
         public bool? Status { get; set; }
-
-     
     }
 }

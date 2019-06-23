@@ -1,13 +1,13 @@
-﻿@model Model.EF.Menu
+﻿@model List<Model.EF.Menu>
 
 
 @{
-    var session = (Common.UserLogin)Session[Common.CommonConstants.USER_SESSION];
+    var session = (UserLogin)Session[Ecommerce.Common.CommonConstants.USER_SESSION];
 }
 @if (session == null)
 {
     <ul class="navUser-section toplinks-wrapper">
-       
+
         <li class="navUser-item wishlist">
             <a class="navUser-action cart-button cart-button--wishlist" href="login830b.html">
                 <i class="fa fa-heart" aria-hidden="true"></i>
@@ -49,7 +49,7 @@ else
             @Html.ActionLink("Thoát", "Logout", "User", null, new { @class = "nav-link active show" })
         </li>
         <li class="navUser-item">
-            <a class="navUser-action has-dropdown" >
+            <a class="navUser-action has-dropdown">
                 <i class="fa fa-user"></i>
                 Xin chào:@session.UserName
 

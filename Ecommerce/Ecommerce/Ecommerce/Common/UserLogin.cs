@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Common
+namespace Ecommerce
 {
     [Serializable]
     public class UserLogin
     {
-        public long UserID { get; set; }
-        public string UserName { get; set; }
+        public long UserID { set; get; }
+        public string UserName { set; get; }
+        public string GroupID { set; get; }
     }
 }

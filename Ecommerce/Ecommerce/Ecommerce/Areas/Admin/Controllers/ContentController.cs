@@ -1,4 +1,5 @@
 ﻿
+using Common;
 using Model.Dao;
 using Model.EF;
 using System;
@@ -69,7 +70,7 @@ namespace Ecommerce.Areas.Admin.Controllers
                 //}
                 model.Name = model.Name;
                 model.CreateDate = Convert.ToDateTime(DateTime.UtcNow.ToLocalTime());
-                model.MetaTitle = /*Functions.ConvertToUnSign(*/model.Name;
+                model.MetaTitle = StringHelper.ToUnsignString(model.Name);
                 model.Description = model.Description;
                 model.Detail = model.Detail;
                 model.Content_Category_ID = model.Content_Category_ID;
@@ -80,7 +81,7 @@ namespace Ecommerce.Areas.Admin.Controllers
                     SetAlert("Sửa thành công", "success");
                     ViewBag.Success = "Cập nhật thành công";
                     model = new Content();
-                    return RedirectToAction("Index", "User");
+                    return RedirectToAction("Index", "Content");
                 }
                 else
                 {

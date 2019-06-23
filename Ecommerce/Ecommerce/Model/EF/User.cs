@@ -27,14 +27,17 @@ namespace Model.EF
         public string Address { get; set; }
 
         [StringLength(50)]
-        public string Email { get; set; }
+        public string GroupID { get; set; }
 
         [StringLength(50)]
-        public string Phone { get; set; }
+        public string Email { get; set; }
 
         public int? ProvinceID { get; set; }
 
         public int? DistrictID { get; set; }
+
+        [StringLength(50)]
+        public string Phone { get; set; }
 
         public DateTime? CreateDate { get; set; }
 

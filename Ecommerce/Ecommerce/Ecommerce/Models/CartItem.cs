@@ -9,6 +9,9 @@ namespace Ecommerce.Models
     public class CartItem
     {
         public Product Product { set; get; }
-        public int Quantity { set; get; }
+        public int Quantity { set; get; } 
+        
+        public decimal? TotalPrice { get { return Quantity * Product.Price; } }
+
     }
 }

@@ -25,11 +25,43 @@ namespace Model.Dao
         {
             return db.Products.Where(x => x.Name.Contains(keyword)).Select(x => x.Name).ToList();
         }
+        public bool Update(Product entity)
+        {
+            try
+            {
+                var product = db.Products.Find(entity.ID);
+                product.Name = entity.Name;
+                product.MetaTitle = entity.MetaTitle;
+                product.Description = entity.Description;
+                product.Image = entity.Image;
+                product.Detail = entity.Detail;
+                product.Price = entity.Price;
+                product.PromotionPrice = entity.PromotionPrice;
+                product.ModifiedBy = entity.ModifiedBy;
+                product.ModifiedDate = DateTime.Now;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //logging
+                return false;
+            }
+
+        }
         public IEnumerable<Product> ListAllProduct( )
         {
             IQueryable<Product> model = db.Products;
 
             return model.OrderByDescending(x => x.CreateDate).ToList();
+        }
+        public List<Category> ListAllCategory()
+        {
+            return db.Categories.Where(x => x.Status == true).ToList();
+        }
+        public List<Brand> ListAllBrand()
+        {
+            return db.Brands.Where(x => x.Status == true).ToList();
         }
         public IEnumerable<Product> ListAllPaging(string searchString/*, int page, int pageSize*/)
         {
@@ -55,11 +87,17 @@ namespace Model.Dao
         {
             return db.Products.Find(id);
         }
-        public List<Category> ListSubCategory ( long CategoryID)
+        public List<Category> ListSubCategory(long CategoryID)
         {
             return db.Categories.Where(x => x.ParentID != null && x.ParentID == CategoryID).OrderBy(x => x.DisplayOrder).ToList();
         }
-        
+        public long Insert(Product entity)
+        {
+            db.Products.Add(entity);
+            db.SaveChanges();
+            return entity.ID;
+        }
+
         public List<Product> ListRelatedProducts(long productID)
         {
             var product = db.Products.Find(productID);
@@ -70,14 +108,22 @@ namespace Model.Dao
             return db.Contents.OrderByDescending(x => x.CreateDate).Take(id).ToList();
         }
 
-        public List<Brand> ListBrand(int brand)
+        public List<Brand> ListBrandByCategoryId(long brandID)
         {
-            return db.Brands.OrderBy(x => x.CreateDate).ToList();
+            return db.Brands.Where(x => x.Category_ID == brandID).ToList();
+        }
+        public List<Brand> ListBrand(int id)
+        {
+            return db.Brands.OrderByDescending(x => x.CreateDate).Take(id).ToList();
         }
         public List<Product> ListByCategoryId(long categoryID)
         {
 
             return db.Products.Where(x => x.Category_ID == categoryID).ToList();
+        }
+        public List<Product> ListByBrandId(long brandID)
+        {
+            return db.Products.Where(x => x.Brand_ID == brandID).ToList();
         }
         public List<ProductViewModel> ListByCategoryId(long categoryID, ref int totalRecord, int pageIndex = 1, int pageSize = 2)
         {

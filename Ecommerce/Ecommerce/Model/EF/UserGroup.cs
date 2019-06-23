@@ -6,12 +6,13 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("About")]
-    public partial class About
+    [Table("UserGroup")]
+    public partial class UserGroup
     {
-        public long ID { get; set; }
+        [StringLength(50)]
+        public string ID { get; set; }
 
-        [Column(TypeName = "ntext")]
-        public string Detail { get; set; }
+        [StringLength(50)]
+        public string Name { get; set; }
     }
 }
