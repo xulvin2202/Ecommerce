@@ -17,15 +17,22 @@ namespace Model.Dao
         {
             IQueryable<Category> model = db.Categories;
 
-            return model.Where(x=>x.ParentID == null).OrderByDescending(x => x.CreateDate).ToList();
+            return model.OrderBy(x => x.CreateDate).ToList();
            
         }
-        public IEnumerable<Category> ListAllSubCategory()
+        public IEnumerable<Category> ListCategory()
         {
             IQueryable<Category> model = db.Categories;
 
-            return model.Where(x=>x.ParentID != null ).OrderByDescending(x => x.CreateDate).ToList();
-           
+            return model.Where(x => x.ParentID == null).OrderBy(x => x.CreateDate).ToList();
+
+        }
+        public IEnumerable<Category> ListSubCategory()
+        {
+            IQueryable<Category> model = db.Categories;
+
+            return model.Where(x => x.ParentID != null).OrderByDescending(x => x.CreateDate).ToList();
+
         }
 
         public long Insert(ContentCategory entity)

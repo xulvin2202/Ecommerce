@@ -13,13 +13,13 @@ namespace Ecommerce.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var dao = new CategoryDao();
-            var model = dao.ListAllCategory();
+            var model = dao.ListCategory();
             return View(model);
         }
         public ActionResult SubCategory()
         {
             var dao = new CategoryDao();
-            var model = dao.ListAllSubCategory();
+            var model = dao.ListSubCategory();
             return View(model);
         }
     }
