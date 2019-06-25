@@ -1,10 +1,22 @@
-﻿@model IEnumerable<Model.EF.Category>
+﻿@model List<Model.EF.Product>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
 }
-@section header{}
+@section header{Danh sách sản phẩm}
 @section jsFooter{}
+@helper Truncate(string input, int length)
+{
+    if (input.Length <= length)
+    {
+        @Html.Raw(input)
+    }
+    else
+    {
+        var thisString = input.Substring(0, length);
+        @Html.Raw(thisString)
+    }
+}
 <div class="row">
     <div class="col-12">
         <div class="card-box">
@@ -15,27 +27,30 @@
             <div class="tab-content mt-0">
                 <div class="tab-pane active show" id="Users">
                     <div class="table-responsive">
-                        <div class="body">
-                            @using (Html.BeginForm("Index", "Category", FormMethod.Get))
-                            {
-                                <form id="navbar-search" class="navbar-form search-form">
-                                    <div class="input-group mb-0">
-                                        <input type="text" class="form-control" value="@ViewBag.SearchString" name="searchString" placeholder="Search..." autocomplete="off">
-                                        <div class="input-group-append">
-                                            <button href="javascript:void(0);" class="btn btn-success" title="" type="submit">Search</button>
+                        @*<div class="body">
+                                @using (Html.BeginForm("Index", "Content", FormMethod.Get))
+                                {
+                                    <form id="navbar-search" class="navbar-form search-form">
+                                        <div class="input-group mb-0">
+                                            <input type="text" class="form-control" value="@ViewBag.SearchStringContent" name="searchStringContent" placeholder="Search..." autocomplete="off">
+                                            <div class="input-group-append">
+                                                <button href="javascript:void(0);" class="btn btn-success" title="" type="submit">Search</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
-                            }
-                        </div>
+                                    </form>
+                                }
+                            </div>*@
                         <table class="table table-hover table-custom spacing8">
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Tên Danh Mục</th>
-                                    <td>Danh mục phụ</td>
-                                    <th class="w60">Trạng Thái</th>
-                                    <th>Ngày Tạo</th>
+                                    <th class="w60">Tên</th>
+                                    <th class="w60">Title</th>
+                                    <th>Giá</th>
+                                    <th>Giá Sale</th>
+                                    <th>Mô tả</th>
+                                    <th>Chi tiết</th>
+                                    <th>Ngày tạo</th>
                                     <th class="w100">#</th>
                                 </tr>
                             </thead>
@@ -43,33 +58,53 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        <td>@item.ID</td>
                                         <td>
-                                            <h6 class="mb-0" autocomplete="off">@item.Name</h6>
-                                            <span autocomplete="off">@item.MetaTitle</span>
+                                            <img src="@item.Image" data-toggle="tooltip" data-placement="top" alt="Avatar" style="width:100px;height:100px" class="w35 h35 rounded" title="@item.Name">
                                         </td>
-                                        <td>@item.ParentID</td>
                                         <td>
-                                            @item.Status
+                                            <h4 class="mb-0">
+                                                @item.Name
+                                            </h4>
+                                            <label class="mb-0">
+                                                @item.MetaTitle
+                                            </label>
                                         </td>
-                                        <th>@item.CreateDate</th>
-
                                         <td>
-                                            <a href="~/Admin/ContentCategory/Edit/@item.ID" class="btn btn-sm btn-default" title="Edit"><i class="icon-pencil"></i></a>
-                                            @*<button type="button" class="btn btn-sm btn-default js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o text-danger"></i></button>*@
-                                            @Ajax.ActionLink("Xoá", "Delete",null, new { @id = item.ID }, new AjaxOptions
+                                            @String.Format("{0:#,0 Đồng}", @item.Price)
+                                        </td>
+                                        <td>
+                                            @String.Format("{0:#,0 Đồng}", @item.PromotionPrice)
+                                        </td>
+                                        <td>
+                                            @*@Html.Raw(item.Description)*@
+                                            @Truncate(item.Description, 100)
+                                        </td>
+                                        <td>
+                                            @Html.Raw(item.Detail)
+                                        </td>
+                                        <td>
+                                            @item.CreateDate
+                                        </td>
+                                        <td>
+                                            <a href="~/Admin/Product/Edit/@item.ID" class="btn btn-purple waves-effect waves-light" style="width:45px" title="Sửa"><i class="icon-pencil"></i></a>
+                                            <a href="~/Admin/Product/Detail/@item.ID" class="btn btn-purple waves-effect waves-light" style="width:45px" title="Chi tiết"><i class="far fa-sticky-note"></i></a>
+                                            @Ajax.ActionLink("Xóa", "Delete",null, new { @id = item.ID }, new AjaxOptions
                                        {
                                            Confirm = "Bạn chắc chắn muốn xóa ?",
                                            OnComplete = "$('#row_" + @item.ID + "').remove()",
                                            HttpMethod = "Delete",
-                                       }, new { @class = "btn btn-sm btn-default js-sweetalert",
-                                           @id = "myActionLinkId" })
+                                       }, new {
+                                           @class = "btn btn-purple waves-effect waves-light",
+                                           @id = "myActionLinkId"
+                                       })
                                             <script>$("#myActionLinkId").prepend("<i class='fa fa-trash-o text-danger'></i> ");</script>
                                         </td>
                                     </tr>
                                 }
                             </tbody>
                         </table>
+
+
                     </div>
                 </div>
                 <div class="tab-pane" id="addUser">
@@ -105,6 +140,7 @@
                                     <input type="text" class="form-control" placeholder="Mobile No">
                                 </div>
                             </div>
+
                             <div class="col-lg-3 col-md-4 col-sm-12">
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Employee ID *">

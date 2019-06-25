@@ -66,6 +66,7 @@
     <Compile Include="Dao\OrderDao.cs" />
     <Compile Include="Dao\OrderDetailDao.cs" />
     <Compile Include="Dao\ProductDao.cs" />
+    <Compile Include="Dao\QandADao.cs" />
     <Compile Include="Dao\SlideDao.cs" />
     <Compile Include="Dao\UserDao.cs" />
     <Compile Include="EF\About.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="EF\Poster.cs" />
     <Compile Include="EF\Product.cs" />
     <Compile Include="EF\ProductAttribute.cs" />
+    <Compile Include="EF\QandA.cs" />
     <Compile Include="EF\Role.cs" />
     <Compile Include="EF\Slide.cs" />
     <Compile Include="EF\Tag.cs" />

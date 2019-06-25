@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -13,10 +14,13 @@ namespace Ecommerce.Areas.Admin.Controllers
 {
     public class ProductController : BaseController
     {
+        EcommerceDbContext db = new EcommerceDbContext();
         // GET: Admin/Product
         public ActionResult Index()
         {
-            return View();
+            var dao = new ProductDao();
+            var model = dao.ListAllProduct();
+            return View(model);
         }
         [HttpGet]
         public ActionResult Create()
@@ -82,6 +86,82 @@ namespace Ecommerce.Areas.Admin.Controllers
                 throw ex;
             }
             SetViewBag();
+            return View(product);
+        }
+        public ActionResult Edit(long id)
+        {
+            var dao = new ProductDao();
+            var product = dao.GetByID(id);
+            SetViewBag(product.Category_ID);
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Edit([Bind(Include = "ID,Name,MetaTitle,Description,Detail,Image,CreateDate,CreateBy,ModifiedDate,ModifiedBy,MetaKeywords,MetaDescription,Category_ID,Status")]Product product, HttpPostedFileBase image)
+        {
+            if (ModelState.IsValid)
+            {
+                var dao = new ProductDao();
+
+                var a = new Product();
+                var path = "";
+                var filename = "";
+                if (image != null)
+                {
+                    filename = DateTime.Now.ToString("dd-MM-yy-hh-mm-ss-") + image.FileName;
+                    path = Path.Combine(Server.MapPath("~/Image"), filename);
+                    image.SaveAs(path);
+                    product.Image = filename;
+                }
+                //else
+                //{
+
+                //    content.Image = "~/Image/logo.png";
+                //}
+                product.Name = product.Name;
+                product.CreateDate = Convert.ToDateTime(DateTime.UtcNow.ToLocalTime());
+                product.MetaTitle = StringHelper.ToUnsignString(product.Name);
+                product.Description = product.Description;
+                product.Detail = product.Detail;
+                product.Price = product.Price;
+                product.Brand_ID = product.Brand_ID;
+                product.PromotionPrice = product.PromotionPrice;
+                product.Category_ID = product.Category_ID;
+                product.Status = product.Status;
+                var result = dao.Update(product);
+                if (result)
+                {
+                    SetAlert("Sửa thành công", "success");
+                    ViewBag.Success = "Cập nhật thành công";
+                    product = new Product();
+                    return RedirectToAction("Index", "Product");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Cập nhật ko thành công");
+                }
+
+            }
+            SetViewBag();
+            return View();
+        }
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+            new ProductDao().Delete(id);
+            return RedirectToAction("Index");
+        }
+        public ActionResult Detail(int? id)
+        {
+            var dao = new ProductDao();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
             return View(product);
         }
         public void SetViewBag(long? seletedID = null)

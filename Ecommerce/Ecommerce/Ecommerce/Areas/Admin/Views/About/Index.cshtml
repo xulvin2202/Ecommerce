@@ -1,0 +1,21 @@
+﻿@model List<Model.EF.About>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+@section header{}
+@section jsFooter{}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card-box">
+            @foreach (var item in Model)
+            {
+                <a href="~/Admin/About/Edit/@item.ID" class="col-sm-6 col-lg-4 col-xl-3" title="Edit"><i class="icon-pencil"></i></a>
+
+                @Html.Raw(item.Detail)
+            }
+        </div>
+    </div>
+</div>
+

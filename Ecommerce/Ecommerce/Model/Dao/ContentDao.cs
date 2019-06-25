@@ -19,13 +19,7 @@ namespace Model.Dao
         {
             return db.ContentCategories.Where(x => x.Status == true).ToList();
         }
-
-        //public IEnumerable<Content> ListAllContent()
-        //{
-        //    IQueryable<Content> model = db.Contents;
-
-        //    return model.OrderByDescending(x => x.CreateDate).ToList();
-        //}
+        
         public long Insert(Content entity)
         {
             db.Contents.Add(entity);
@@ -45,7 +39,6 @@ namespace Model.Dao
                 content.MetaTitle = entity.MetaTitle;
                 content.Description = entity.Description;
                 content.Image = entity.Image;
-                content.Detail = entity.Detail;
                 content.Detail = entity.Detail;
                 content.ModifiedBy = entity.ModifiedBy;
                 content.ModifiedDate = DateTime.Now;

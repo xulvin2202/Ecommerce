@@ -192,6 +192,9 @@ namespace Model.Dao
         {
             return db.Users.Count(x => x.Email == email) > 0;
         }
-        
+        public List<UserGroup> ListUser()
+        {
+            return db.UserGroups.ToList();
+        }
     }
 }

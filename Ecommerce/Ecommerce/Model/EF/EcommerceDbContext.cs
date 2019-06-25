@@ -39,7 +39,7 @@ namespace Model.EF
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserGroup> UserGroups { get; set; }
         public virtual DbSet<Footer> Footers { get; set; }
-
+        public virtual DbSet<QandA> QandAs { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>()

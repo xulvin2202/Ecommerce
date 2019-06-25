@@ -1,6 +1,8 @@
 ﻿@model List<Model.EF.Content>
 
 @{
+    /**/
+
     ViewBag.Title = "QL bài viết";
     Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
 }
@@ -17,235 +19,83 @@
         })
     </script>
 }
-<div class="card">
-    <ul class="nav nav-tabs">
-        <li class="nav-item"><a class="nav-link active show" data-toggle="tab" href="#Users">Danh sách</a></li>
-        <li class="nav-item">@Html.ActionLink("Tạo mới", "Create", null, new { @class = "nav-link" })</li>
-    </ul>
-    <div class="tab-content mt-0">
-        <div class="tab-pane active show" id="Users">
-            <div class="table-responsive">
-                <div class="body">
-                    @using (Html.BeginForm("Index", "Content", FormMethod.Get))
-                    {
-                        <form id="navbar-search" class="navbar-form search-form">
-                            <div class="input-group mb-0">
-                                <input type="text" class="form-control" value="@ViewBag.SearchStringContent" name="searchStringContent" placeholder="Search..." autocomplete="off">
-                                <div class="input-group-append">
-                                    <button href="javascript:void(0);" class="btn btn-success" title="" type="submit">Search</button>
-                                </div>
-                            </div>
-                        </form>
-                    }
-                </div>
-                <table class="table table-hover table-custom spacing8">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th class="w60">Tên</th>
-                            <th class="w60">Title</th>
 
-                            
-                            <th>Bài viết</th>
-                            <th>Ngày tạo</th>
-                            <th class="w100">#</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    <img src="@item.Image" data-toggle="tooltip" data-placement="top" title="" alt="Avatar" style="width:150px;height:100px" class="w35 h35 rounded" data-original-title="Avatar Name">
-                                </td>
-                                <td>
-                                    <h6 class="mb-0" autocomplete="off">@item.Name</h6>
-                                    <span autocomplete="off">@item.MetaTitle</span>
-                                </td>
-                                <td>
-                                    @item.Description
-                                </td>
-                                <td autocomplete="off">@item.CreateDate</td>
-                                <td>
-                                    <a href="~/Admin/Content/Edit/@item.ID" class = "btn btn-icon btn-warning waves-effect waves-light" title="Sửa"><i class="icon-pencil"></i></a>
-                                    <a href="~/Admin/Content/Detail/@item.ID" class = "btn btn-icon btn-primary waves-effect waves-light" title="Chi tiết"><i class="far fa-sticky-note"></i></a>
-                                    @Ajax.ActionLink("Xóa", "Delete",null, new { @id = item.ID }, new AjaxOptions
-                               {
-                                   Confirm = "Bạn chắc chắn muốn xóa ?",
-                                   OnComplete = "$('#row_" + @item.ID + "').remove()",
-                                   HttpMethod = "Delete",
-                               }, new { @class = "btn btn-icon btn-danger waves-effect waves-light",
-                                   
-                                   @id = "myActionLinkId"
-                               })
-                                    <script>$("#myActionLinkId").prepend("<i class='fa fa-trash-o text-danger'></i> ");</script>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+<div class="row">
+    <div class="col-12">
+
+        <div class="card-box">
+
+            <ul class="nav nav-tabs">
+                <li class="nav-item"><a class="nav-link active show" data-toggle="tab" href="#Users">Danh sách</a></li>
+                <li class="nav-item">@Html.ActionLink("Tạo mới", "Create", null, new { @class = "nav-link" })</li>
+            </ul>
+            <div class="responsive-table-plugin">
+                <div class="table-rep-plugin">
+                    <div class="table-responsive" data-pattern="priority-columns">
+                        @*<div class="body">
+                                @using (Html.BeginForm("Index", "Content", FormMethod.Get))
+                                {
+                                    <form id="navbar-search" class="navbar-form search-form">
+                                        <div class="input-group mb-0">
+                                            <input type="text" class="form-control" value="@ViewBag.SearchStringContent" name="searchStringContent" placeholder="Search..." autocomplete="off">
+                                            <div class="input-group-append">
+                                                <button href="javascript:void(0);" class="btn btn-success" title="" type="submit">Search</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                }
+                            </div>*@
+                        <table id="tech-companies-1" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Company</th>
+                                    <th data-priority="1">Ảnh</th>
+                                    <th data-priority="3">Tên</th>
+                                    <th data-priority="1">Mô tả</th>
+                                    <th data-priority="3">Ngày Đăng</th>
+                                    <th data-priority="3">#</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="@item.Image" data-toggle="tooltip" data-placement="top" title="" alt="Avatar" style="width:70px;height:50px" class="w35 h35 rounded" data-original-title="Avatar Name">
+                                        </td>
+                                        <td>
+
+                                            <h4 class="mb-0">@item.Name</h4>
+                                            <label class="mb-0" autocomplete="off">@item.MetaTitle</label>
+                                        </td>
+                                        <td>
+                                            @item.Description
+                                        </td>
+                                        <td autocomplete="off">@item.CreateDate</td>
+                                        <td>
+                                            <a href="~/Admin/Content/Edit/@item.ID" class="btn btn-purple waves-effect waves-light" style="width:45px" title="Sửa"><i class="icon-pencil"></i></a>
+                                            <a href="~/Admin/Content/Detail/@item.ID" class="btn btn-purple waves-effect waves-light" style="width:45px" title="Chi tiết"><i class="far fa-sticky-note"></i></a>
+                                            @Ajax.ActionLink("Xóa", "Delete",null, new { @id = item.ID }, new AjaxOptions
+                                       {
+                                           Confirm = "Bạn chắc chắn muốn xóa ?",
+                                           OnComplete = "$('#row_" + @item.ID + "').remove()",
+                                           HttpMethod = "Delete",
+                                       }, new {
+                                           @class = "btn btn-purple waves-effect waves-light",
+                                           @id = "myActionLinkId"
+                                       })
+                                            <script>$("#myActionLinkId").prepend("<i class='fa fa-trash-o text-danger'></i> ");</script>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
 
 
-            </div>
-        </div>
-        <div class="tab-pane" id="addUser">
-            <div class="body mt-2">
-                <div class="row clearfix">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="First Name *">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Last Name">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-12">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Email ID *">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-12">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-12">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Confirm Password">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-12">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Mobile No">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-sm-12">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Employee ID *">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-12">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Username *">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-12">
-                        <div class="form-group">
-                            <select class="form-control show-tick">
-                                <option>Select Role Type</option>
-                                <option>Super Admin</option>
-                                <option>Admin</option>
-                                <option>Employee</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <h6>Module Permission</h6>
-                        <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>Read</th>
-                                        <th>Write</th>
-                                        <th>Delete</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Super Admin</td>
-                                        <td>
-                                            <label class="fancy-checkbox">
-                                                <input class="checkbox-tick" type="checkbox" name="checkbox" checked="">
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <label class="fancy-checkbox">
-                                                <input class="checkbox-tick" type="checkbox" name="checkbox" checked="">
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <label class="fancy-checkbox">
-                                                <input class="checkbox-tick" type="checkbox" name="checkbox" checked="">
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Admin</td>
-                                        <td>
-                                            <label class="fancy-checkbox">
-                                                <input class="checkbox-tick" type="checkbox" name="checkbox" checked="">
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <label class="fancy-checkbox">
-                                                <input class="checkbox-tick" type="checkbox" name="checkbox" checked="">
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <label class="fancy-checkbox">
-                                                <input class="checkbox-tick" type="checkbox" name="checkbox">
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Employee</td>
-                                        <td>
-                                            <label class="fancy-checkbox">
-                                                <input class="checkbox-tick" type="checkbox" name="checkbox" checked="">
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <label class="fancy-checkbox">
-                                                <input class="checkbox-tick" type="checkbox" name="checkbox">
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <label class="fancy-checkbox">
-                                                <input class="checkbox-tick" type="checkbox" name="checkbox">
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>HR Admin</td>
-                                        <td>
-                                            <label class="fancy-checkbox">
-                                                <input class="checkbox-tick" type="checkbox" name="checkbox" checked="">
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <label class="fancy-checkbox">
-                                                <input class="checkbox-tick" type="checkbox" name="checkbox" checked="">
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <label class="fancy-checkbox">
-                                                <input class="checkbox-tick" type="checkbox" name="checkbox">
-                                                <span></span>
-                                            </label>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <button type="button" class="btn btn-primary">Add</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

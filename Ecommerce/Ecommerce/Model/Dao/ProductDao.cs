@@ -16,7 +16,20 @@ namespace Model.Dao
         {
             db = new EcommerceDbContext();
         }
-
+        public bool Delete(int id)
+        {
+            try
+            {
+                var content = db.Contents.Find(id);
+                db.Contents.Remove(content);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
         public List<Product> ListNewProduct(int top)
         {
             return db.Products.OrderByDescending(x => x.CreateDate).Take(top).ToList();
@@ -24,6 +37,10 @@ namespace Model.Dao
         public List<string> ListName(string keyword)
         {
             return db.Products.Where(x => x.Name.Contains(keyword)).Select(x => x.Name).ToList();
+        }
+        public Product GetByID(long id)
+        {
+            return db.Products.Find(id);
         }
         public bool Update(Product entity)
         {
@@ -49,7 +66,7 @@ namespace Model.Dao
             }
 
         }
-        public IEnumerable<Product> ListAllProduct( )
+        public IEnumerable<Product> ListAllProduct()
         {
             IQueryable<Product> model = db.Products;
 
@@ -65,20 +82,20 @@ namespace Model.Dao
         }
         public IEnumerable<Product> ListAllPaging(string searchString/*, int page, int pageSize*/)
         {
-            IQueryable<Product> model = db.Products.OrderByDescending(x=>x.CreateDate);
+            IQueryable<Product> model = db.Products.OrderByDescending(x => x.CreateDate);
             if (!string.IsNullOrEmpty(searchString))
             {
-                model = model.Where(x => x.Name.Contains(searchString) );
+                model = model.Where(x => x.Name.Contains(searchString));
             }
 
             return model.OrderByDescending(x => x.CreateDate);
         }
-       
+
         public List<Product> ListFeatureProduct(int top)
         {
             return db.Products.Where(x => x.TopHot != null && x.TopHot > DateTime.Now).OrderByDescending(x => x.CreateDate).Take(top).ToList();
         }
-        
+
         public List<Product> ListSaleProduct(int top)
         {
             return db.Products.OrderByDescending(x => x.PromotionPrice).Take(top).ToList();

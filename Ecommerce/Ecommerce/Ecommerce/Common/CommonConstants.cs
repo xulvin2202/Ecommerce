@@ -15,5 +15,6 @@ namespace Ecommerce.Common
 
         public static string CurrentCulture { set; get; }
 
+
     }
 }

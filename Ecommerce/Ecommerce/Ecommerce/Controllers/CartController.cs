@@ -1,4 +1,5 @@
-﻿using Ecommerce.Models;
+﻿using Common;
+using Ecommerce.Models;
 using Model.Dao;
 using Model.EF;
 using System;
@@ -13,10 +14,43 @@ namespace Ecommerce.Controllers
 {
     public class CartController : Controller
     {
+        EcommerceDbContext db = new EcommerceDbContext();
+
+        //public bool isLogined()
+        //{
+        //    if (Session[Constants.USER_ID] == null || Session[Constants.USER_PASSWORD] == null)
+        //    {
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        return true;
+        //    }
+        //}
+        //public bool isLoginSucess(string id, string password)
+        //{
+        //    //Check user's id and password
+        //    foreach (User a in db.Users)
+        //    {
+        //        if (a.UserName.Replace(" ", "") == id)
+        //        {
+        //            if (a.Password.Replace(" ", "") == password)
+        //            {
+        //                return true;
+        //            }
+        //        }
+        //    }
+        //    return false;
+        //}
         private const string CartSession = "CartSession";
         // GET: Cart
+        
         public ActionResult Index()
         {
+            //if (isLogined() == false)
+            //{
+            //    return RedirectToAction("Login", "User");
+            //}
             var cart = Session[CartSession];
             var list = new List<CartItem>();
             if (cart != null)
@@ -27,6 +61,10 @@ namespace Ecommerce.Controllers
         }
         public ActionResult AddItem(long productId, int quantity)
         {
+            //if (isLogined() == false)
+            //{
+            //    return RedirectToAction("Login", "User");
+            //}
             var product = new ProductDao().ViewDetail(productId);
             var cart = Session[CartSession];
             if (cart != null)

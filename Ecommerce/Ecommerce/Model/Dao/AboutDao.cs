@@ -16,20 +16,23 @@ namespace Model.Dao
             db = new EcommerceDbContext();
         }
 
-        public IEnumerable<About> ListAllAbout()
+        public long Insert(About entity)
         {
-            IQueryable<About> model = db.Abouts;
-
-            return model.ToList();
+            db.Abouts.Add(entity);
+            db.SaveChanges();
+            return entity.ID;
+        }
+        public List<About> LstAbout(long id)
+        {
+            return db.Abouts.ToList();
         }
         public bool Update(About entity)
         {
             try
             {
-                var about = db.Abouts.Find(entity.ID);
-            
-                about.Detail = entity.Detail;
-             
+                var content = db.Contents.Find(entity.ID);               
+                content.Detail = entity.Detail;              
+                content.ModifiedDate = DateTime.Now;
                 db.SaveChanges();
                 return true;
             }
@@ -44,6 +47,10 @@ namespace Model.Dao
         {
             return db.Abouts.Find(id);
         }
-        
+        public About ViewDetail(long id)
+        {
+            return db.Abouts.Find(id);
+        }
+
     }
 }

@@ -21,6 +21,8 @@ namespace Ecommerce.Controllers
             ViewBag.SaleProduct = product.ListSaleProduct(4);
             ViewBag.Brand = product.ListBrand(12);
             ViewBag.Content = product.ListContent(6);
+            var qa = new QandADao();
+            ViewBag.QA = qa.ListAllQandA();
            
             return View(model);
         }

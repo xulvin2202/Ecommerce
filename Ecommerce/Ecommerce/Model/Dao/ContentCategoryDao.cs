@@ -22,6 +22,10 @@ namespace Model.Dao
             db.SaveChanges();
             return entity.ID;
         }
+        public ContentCategory GetByID(long id)
+        {
+            return db.ContentCategories.Find(id);
+        }
         public IEnumerable<ContentCategory> ListAllContentCategory(string searchString)
         {
             IQueryable<ContentCategory> model = db.ContentCategories;
@@ -37,7 +41,25 @@ namespace Model.Dao
 
             return model.OrderByDescending(x => x.CreateDate).ToList();
         }
-        
+        public bool Update(ContentCategory contentCategory)
+        {
+            try
+            {
+                var content = db.ContentCategories.Find(contentCategory.ID);
+                content.Name = contentCategory.Name;
+                content.MetaTitle = contentCategory.MetaTitle;
+                content.ModifiedDate = DateTime.Now;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //logging
+                return false;
+            }
+
+        }
+       
         public bool Delete(int id)
         {
             try

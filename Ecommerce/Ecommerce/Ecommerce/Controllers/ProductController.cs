@@ -45,7 +45,7 @@ namespace Ecommerce.Controllers
             ViewBag.Subcategory = new ProductDao().ListSubCategory(cateid);
             ViewBag.ListBrand = new ProductDao().ListBrandByCategoryId(cateid);
             var model = new ProductDao().ListByBrandId(cateid);
-            ViewBag.Cate= new CategoryDao().ListAllCategory();
+            ViewBag.Cate= new CategoryDao().ListCategory();
             return View(model.ToPagedList(page, 8));
         }
         public ActionResult ListAllProduct()

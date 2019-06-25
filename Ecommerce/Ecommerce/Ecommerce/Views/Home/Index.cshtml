@@ -12,6 +12,7 @@
     var ListSaleProduct = (List<Model.EF.Product>)ViewBag.SaleProduct;
     var ListBrand = (List<Model.EF.Brand>)ViewBag.Brand;
     var ListContent = (List<Model.EF.Content>)ViewBag.Content;
+    var ListQA = (List<Model.EF.QandA>)ViewBag.QA;
 }
 
 @section Slide{
@@ -60,7 +61,7 @@
                                 <div class="banners info-1">
                                     <div class="banner-figure">
 
-                                        <a href="smartphone/index.html">
+                                        <a href="/">
                                             <img class="img-fluid" src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/s-5jeysafj8q/content/home1/banners/custom_banner1.png" alt=" " />
                                         </a>
                                     </div>
@@ -77,7 +78,7 @@
                                 <div class="banners info-2">
                                     <div class="banner-figure">
 
-                                        <a href="smartphone/index.html">
+                                        <a href="/">
                                             <img class="img-fluid" src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/s-5jeysafj8q/content/home1/banners/custom_banner2.png" alt=" " />
                                         </a>
                                     </div>
@@ -183,8 +184,8 @@
                                                 <div class="item">
                                                     <div class="left-block">
 
-                                                        @if (item.PromotionPrice != null && item.CreateDate > DateTime.Now)
-                                                        {<div class="sale-flag-discount">
+                                                        @if (item.PromotionPrice != null)
+                                                        {<div class="sale-flag-discount" style="resize:20%">
                                                                 <span class="sale-text">Sale</span>
                                                             </div>
                                                         }
@@ -266,50 +267,24 @@
                                                     </div>
                                                 </div>
                                             </article>
-
-
-
-
                                         }
                                     </div>
-
-
-
-
-
-
                                 </section>
                             </div>
-
-
-
                         </div>
                     </div>
-                </div>
-
-
-
-                <div class="module sb-banner sb-banner--custom_banners_sidebar ">
+                </div> <div class="module sb-banner sb-banner--custom_banners_sidebar ">
                     <div class="row">
                         <div class="col-sm-12 col-12">
-
-
                             <div class="block-content clearfix d-flex flex-row">
-
-
-
                                 <div class="banners info-">
                                     <div class="banner-figure">
-
-                                        <a href="smartphone/index.html">
+                                        <a href="/">
                                             <img class="img-fluid" src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/s-5jeysafj8q/content/home1/banners/custom_banner_sidebar.png" alt=" " />
                                         </a>
                                     </div>
-
                                     <div class="banner-figcaption">
                                         <div class="banner-figcaption__body">
-
-
                                         </div>
                                     </div>
                                 </div>
@@ -317,198 +292,165 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
                 <div class="module sb-faq">
-                    <h5 class="block-title"> FAQs</h5>
+                    <h5 class="block-title"> Góc thắc mắc !</h5>
                     <div class="block-content clearfix">
                         <ul class="blank  yt-accordion sb-accordion">
-                            <li class="yt-accordion-group">
-                                <div class="accordion-heading"><i class="fa fa-plus"></i> Do you make special orders ?</div>
-                                <div class="yt-accordion-inner">
-                                    Mauris interdum fringilla augue vitae tincidunt. Curabitur vitae tortor id eros euismod ultrices. Mauris interdum fringilla.
-                                </div>
-                            </li>
-
-                            <li class="yt-accordion-group">
-                                <div class="accordion-heading"><i class="fa fa-plus"></i> Do you restock items ?</div>
-                                <div class="yt-accordion-inner">
-                                    Mauris interdum fringilla augue vitae tincidunt. Curabitur vitae tortor id eros euismod ultrices. Mauris interdum fringilla.
-                                </div>
-                            </li>
-
-                            <li class="yt-accordion-group">
-                                <div class="accordion-heading"><i class="fa fa-plus"></i> Do you have a different size ?</div>
-                                <div class="yt-accordion-inner">
-                                    Mauris interdum fringilla augue vitae tincidunt. Curabitur vitae tortor id eros euismod ultrices. Mauris interdum fringilla.
-                                </div>
-                            </li>
-
-                            <li class="yt-accordion-group">
-                                <div class="accordion-heading"><i class="fa fa-plus"></i> Where are you located ?</div>
-                                <div class="yt-accordion-inner">
-                                    Mauris interdum fringilla augue vitae tincidunt. Curabitur vitae tortor id eros euismod ultrices. Mauris interdum fringilla.
-                                </div>
-                            </li>
-
-                            <li class="yt-accordion-group">
-                                <div class="accordion-heading"><i class="fa fa-plus"></i> What is Lorem Ipsum ?</div>
-                                <div class="yt-accordion-inner">
-                                    Mauris interdum fringilla augue vitae tincidunt. Curabitur vitae tortor id eros euismod ultrices. Mauris interdum fringilla.
-                                </div>
-                            </li>
-
+                            @foreach (var item in ListQA)
+                            {
+                                <li class="yt-accordion-group">
+                                    <div class="accordion-heading"><i class="fa fa-plus"></i> @Html.Raw(item.Question)</div>
+                                    <div class="yt-accordion-inner">
+                                        @Html.Raw(item.Answer)
+                                    </div>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </div>
+                @*<div class="module sb-testimonial ">
+                        <div class="block-content clearfix">
+                            <h5 class="footer-info-heading">
+                                TESTIMONIAL
+                                <span class="expander"><i class="fa fa-chevron-circle-down"></i></span>
+                            </h5>
+                            <div class="sb-testimonial--carousel "
+                                 data-slick='{
+                        "dots": false,
+                        infinite: true,
+                        "arrows": false,
+                        "infinite": false,
+                        "mobileFirst": true,
+                        "slidesToShow": 1,
+                        "slidesToScroll": 1,
+                        "autoplay": false,
+                        "autoplaySpeed": 5000
+                    }'>
 
-
-
-                <div class="module sb-testimonial ">
-                    <div class="block-content clearfix">
-                        <h5 class="footer-info-heading">
-                            TESTIMONIAL
-                            <span class="expander"><i class="fa fa-chevron-circle-down"></i></span>
-                        </h5>
-                        <div class="sb-testimonial--carousel "
-                             data-slick='{
-                    "dots": false,
-                    infinite: true,
-                    "arrows": false,
-                    "infinite": false,
-                    "mobileFirst": true,
-                    "slidesToShow": 1,
-                    "slidesToScroll": 1,
-                    "autoplay": false,
-                    "autoplaySpeed": 5000
-                }'>
-
-                            <div class="sb-testimonial--item">
-                                <div class="items">
-                                    <div class="testimonial-text">
-                                        <div class="testimonial-text--inner">
-                                            Lorem ipsum dolor sit amet, conmetur asdipiscing elit,sed doeiusmod temporaceimdid tempora ut labore et dolore.
+                                <div class="sb-testimonial--item">
+                                    <div class="items">
+                                        <div class="testimonial-text">
+                                            <div class="testimonial-text--inner">
+                                                Lorem ipsum dolor sit amet, conmetur asdipiscing elit,sed doeiusmod temporaceimdid tempora ut labore et dolore.
+                                            </div>
+                                        </div>
+                                        <div class="client-say-info">
+                                            <div class="testimonial-img-info">
+                                                <img data-sizes="auto" class="img-fluid lazyload " src="https://cdn11.bigcommerce.com/s-5jeysafj8q/stencil/d7a3b3a0-fb9a-0136-bca6-1b3c63b2f4dc/e/7d147310-fb9b-0136-a892-03abfbabe237/img/loading.svg" data-src="https://cdn11.bigcommerce.com/s-5jeysafj8q/content/home1/testimonial/author1.png" alt="Sharon Stone" />
+                                            </div>
+                                            <div class="testimonial-info">
+                                                <h2 class="name">Sharon Stone</h2> <div class="position">Designer</div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="client-say-info">
-                                        <div class="testimonial-img-info">
-                                            <img data-sizes="auto" class="img-fluid lazyload " src="https://cdn11.bigcommerce.com/s-5jeysafj8q/stencil/d7a3b3a0-fb9a-0136-bca6-1b3c63b2f4dc/e/7d147310-fb9b-0136-a892-03abfbabe237/img/loading.svg" data-src="https://cdn11.bigcommerce.com/s-5jeysafj8q/content/home1/testimonial/author1.png" alt="Sharon Stone" />
+                                </div>
+
+                                <div class="sb-testimonial--item">
+                                    <div class="items">
+                                        <div class="testimonial-text">
+                                            <div class="testimonial-text--inner">
+                                                Lorem ipsum dolor sit amet, conmetur asdipiscing elit,sed doeiusmod temporaceimdid tempora ut labore et dolore.
+                                            </div>
                                         </div>
-                                        <div class="testimonial-info">
-                                            <h2 class="name">Sharon Stone</h2> <div class="position">Designer</div>
+                                        <div class="client-say-info">
+                                            <div class="testimonial-img-info">
+                                                <img data-sizes="auto" class="img-fluid lazyload " src="https://cdn11.bigcommerce.com/s-5jeysafj8q/stencil/d7a3b3a0-fb9a-0136-bca6-1b3c63b2f4dc/e/7d147310-fb9b-0136-a892-03abfbabe237/img/loading.svg" data-src="https://cdn11.bigcommerce.com/s-5jeysafj8q/content/home1/testimonial/author2.png" alt="Johny Walker" />
+                                            </div>
+                                            <div class="testimonial-info">
+                                                <h2 class="name">Johny Walker</h2> <div class="position">Author Position</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="sb-testimonial--item">
+                                    <div class="items">
+                                        <div class="testimonial-text">
+                                            <div class="testimonial-text--inner">
+                                                Lorem ipsum dolor sit amet, conmetur asdipiscing elit,sed doeiusmod temporaceimdid tempora ut labore et dolore.
+                                            </div>
+                                        </div>
+                                        <div class="client-say-info">
+                                            <div class="testimonial-img-info">
+                                                <img data-sizes="auto" class="img-fluid lazyload " src="https://cdn11.bigcommerce.com/s-5jeysafj8q/stencil/d7a3b3a0-fb9a-0136-bca6-1b3c63b2f4dc/e/7d147310-fb9b-0136-a892-03abfbabe237/img/loading.svg" data-src="https://cdn11.bigcommerce.com/s-5jeysafj8q/content/home1/testimonial/author3.png" alt="John Doe" />
+                                            </div>
+                                            <div class="testimonial-info">
+                                                <h2 class="name">John Doe</h2> <div class="position">CEO</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="sb-testimonial--item">
-                                <div class="items">
-                                    <div class="testimonial-text">
-                                        <div class="testimonial-text--inner">
-                                            Lorem ipsum dolor sit amet, conmetur asdipiscing elit,sed doeiusmod temporaceimdid tempora ut labore et dolore.
-                                        </div>
-                                    </div>
-                                    <div class="client-say-info">
-                                        <div class="testimonial-img-info">
-                                            <img data-sizes="auto" class="img-fluid lazyload " src="https://cdn11.bigcommerce.com/s-5jeysafj8q/stencil/d7a3b3a0-fb9a-0136-bca6-1b3c63b2f4dc/e/7d147310-fb9b-0136-a892-03abfbabe237/img/loading.svg" data-src="https://cdn11.bigcommerce.com/s-5jeysafj8q/content/home1/testimonial/author2.png" alt="Johny Walker" />
-                                        </div>
-                                        <div class="testimonial-info">
-                                            <h2 class="name">Johny Walker</h2> <div class="position">Author Position</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="sb-testimonial--item">
-                                <div class="items">
-                                    <div class="testimonial-text">
-                                        <div class="testimonial-text--inner">
-                                            Lorem ipsum dolor sit amet, conmetur asdipiscing elit,sed doeiusmod temporaceimdid tempora ut labore et dolore.
-                                        </div>
-                                    </div>
-                                    <div class="client-say-info">
-                                        <div class="testimonial-img-info">
-                                            <img data-sizes="auto" class="img-fluid lazyload " src="https://cdn11.bigcommerce.com/s-5jeysafj8q/stencil/d7a3b3a0-fb9a-0136-bca6-1b3c63b2f4dc/e/7d147310-fb9b-0136-a892-03abfbabe237/img/loading.svg" data-src="https://cdn11.bigcommerce.com/s-5jeysafj8q/content/home1/testimonial/author3.png" alt="John Doe" />
-                                        </div>
-                                        <div class="testimonial-info">
-                                            <h2 class="name">John Doe</h2> <div class="position">CEO</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-
-
                     </div>
-                </div>
 
 
 
-                <article class="collapsed-block sb-tags" data-section-type="footer-webPages">
-                    <div class="widget-inner">
-                        <h5 class="footer-info-heading">
-                            Tags
-                            <span class="expander"><i class="fa fa-chevron-circle-down"></i></span>
-                        </h5>
+                    <article class="collapsed-block sb-tags" data-section-type="footer-webPages">
+                        <div class="widget-inner">
+                            <h5 class="footer-info-heading">
+                                Tags
+                                <span class="expander"><i class="fa fa-chevron-circle-down"></i></span>
+                            </h5>
 
-                        <ul class="blank footer-info-list list-inline">
+                            <ul class="blank footer-info-list list-inline">
 
-                            <li class="list-inline-item">
+                                <li class="list-inline-item">
 
-                                <a href="#">fashion</a>
-                            </li>
+                                    <a href="#">fashion</a>
+                                </li>
 
-                            <li class="list-inline-item">
+                                <li class="list-inline-item">
 
-                                <a href="#">women</a>
-                            </li>
+                                    <a href="#">women</a>
+                                </li>
 
-                            <li class="list-inline-item">
+                                <li class="list-inline-item">
 
-                                <a href="#">men</a>
-                            </li>
+                                    <a href="#">men</a>
+                                </li>
 
-                            <li class="list-inline-item">
+                                <li class="list-inline-item">
 
-                                <a href="#">t-shirt</a>
-                            </li>
+                                    <a href="#">t-shirt</a>
+                                </li>
 
-                            <li class="list-inline-item">
+                                <li class="list-inline-item">
 
-                                <a href="#">jeans</a>
-                            </li>
+                                    <a href="#">jeans</a>
+                                </li>
 
-                            <li class="list-inline-item">
+                                <li class="list-inline-item">
 
-                                <a href=" ">accessories</a>
-                            </li>
+                                    <a href=" ">accessories</a>
+                                </li>
 
-                            <li class="list-inline-item">
+                                <li class="list-inline-item">
 
-                                <a href="#">jumpsuit</a>
-                            </li>
+                                    <a href="#">jumpsuit</a>
+                                </li>
 
-                            <li class="list-inline-item">
+                                <li class="list-inline-item">
 
-                                <a href="#">hat</a>
-                            </li>
+                                    <a href="#">hat</a>
+                                </li>
 
-                            <li class="list-inline-item">
+                                <li class="list-inline-item">
 
-                                <a href="#">jewelry</a>
-                            </li>
+                                    <a href="#">jewelry</a>
+                                </li>
 
-                            <li class="list-inline-item">
+                                <li class="list-inline-item">
 
-                                <a href="#">watch</a>
-                            </li>
+                                    <a href="#">watch</a>
+                                </li>
 
 
-                        </ul>
-                    </div>
-                </article>
+                            </ul>
+                        </div>
+                    </article>*@
 
 
 
@@ -554,7 +496,7 @@
 			"settings": {
 				"slidesToScroll": 1,
 				"slidesToShow": 3
-			}   
+			}
 		},
 		{
 			"breakpoint": 767,
@@ -737,7 +679,7 @@
                                 <div class="banners info-">
                                     <div class="banner-figure">
 
-                                        <a href="smartphone/index.html">
+                                        <a href="/">
                                             <img class="img-fluid" src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/s-5jeysafj8q/content/home1/banners/custom_banner3.png" alt=" " />
                                         </a>
                                     </div>
@@ -961,7 +903,7 @@
                                 <div class="banners info-1">
                                     <div class="banner-figure">
 
-                                        <a href="smartphone/index.html">
+                                        <a href="/">
                                             <img class="img-fluid" src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/s-5jeysafj8q/content/home1/banners/custom_banner4.png" alt=" " />
                                         </a>
                                     </div>
@@ -978,7 +920,7 @@
                                 <div class="banners info-2">
                                     <div class="banner-figure">
 
-                                        <a href="smartphone/index.html">
+                                        <a href="/">
                                             <img class="img-fluid" src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/s-5jeysafj8q/content/home1/banners/custom_banner5.png" alt=" " />
                                         </a>
                                     </div>
@@ -1813,7 +1755,7 @@
                             {
                                 <div class="sb-brand--item">
 
-                                    <a href="@item.Link" title="@item.Name"><img class="img-fluid lazyload" src="@item.Image" alt="brand1" width="158" height="79" /></a>
+                                    <a href="@item.Link" title="@item.Name"><img class="img-fluid lazyload" src="@item.Image" title="@item.Name" width="158" height="79" /></a>
                                 </div>
                             }
 

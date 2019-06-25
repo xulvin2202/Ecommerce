@@ -1,4 +1,4 @@
-﻿@model Model.EF.Content
+﻿@model Model.EF.Brand
 
 @{
     ViewBag.Title = "Create";
@@ -6,7 +6,7 @@
 }
 
 
-@section header{Thêm mới tin tức}
+@section header{Thêm mới}
 @section jsFooter{
 
 
@@ -29,7 +29,7 @@
 
         <div class="card-box">
 
-            @using (Html.BeginForm("Create", "Content", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("Create", "Brand", FormMethod.Post, new { @enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
 
@@ -82,68 +82,59 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label" for="simpleinput">Tên</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="Name" name="Name" placeholder="Tiêu đề bài viết" autofocus autocomplete="off">
+                                        <input type="text" class="form-control" id="Name" name="Name" placeholder="Tên..." autofocus autocomplete="off">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label" for="example-email">MetaTitle</label>
                                     <div class="col-sm-10">
-                                        <input type="text" id="MetaTitle" name="MetaTitle" class="form-control" placeholder="Title" autocomplete="off">
+                                        <input type="text" id="MetaTitle" name="MetaTitle" class="form-control" placeholder="Title..." autocomplete="off">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label" for="example-password">Mô tả</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="Description" name="Description" placeholder="Mô tả" autocomplete="off">
-                                    </div>
-                                </div>
+                                
                                 <div class="form-group row">
                                     @Html.LabelFor(model => model.Image, "Ảnh", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
                                     <div class="col-sm-10">
-                                        @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control", @id = "txtImage", @autocomple = "off" }, id = "txtImage" })
+                                        @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control", @id = "txtImage",@placeholder="Ảnh", @autocomple = "off" }, id = "txtImage" })
 
                                         <a id="btnSelectImage" href="#">Chọn ảnh</a>
                                     </div>
                                 </div>
+                                
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label" for="example-textarea">Chi Tiết</label>
+                                    <label class="col-sm-2 col-form-label">Link</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" id="txtContent" name="Detail" @*rows="5"*@></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Đăng bởi</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" type="text" id="CreateBy" name="CreateBy" autocomplete="off">
+                                        <input class="form-control" type="text" id="Link" name="Link" placeholder="link..." autocomplete="off">
                                     </div>
                                 </div>
                                 @*<div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">TopHot</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" type="text" id="TopHot" name="TopHot">
+                                        <label class="col-sm-2 col-form-label">TopHot</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" type="text" id="TopHot" name="TopHot">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">ViewCount</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" type="text" name="TopHot" id="TopHot" autocomplete="off">
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">ViewCount</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" type="text" name="TopHot" id="TopHot" autocomplete="off">
+                                        </div>
                                     </div>
-                                </div>
 
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Tags</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" type="text" name="Tags" id="Tags" autocomplete="off">
+                                        </div>
+                                    </div>*@
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Tags</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" type="text" name="Tags" id="Tags" autocomplete="off">
-                                    </div>
-                                </div>*@
-                                <div class="form-group row">
-                                    @Html.LabelFor(model => model.Content_Category_ID, "Danh mục", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+                                    @Html.LabelFor(model => model.Category_ID, "Danh mục", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
                                     <div class="col-md-10">
-                                        @Html.DropDownListFor(model => model.Content_Category_ID, null, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Content_Category_ID, "", new { @class = "text-danger" })
+                                        @Html.DropDownListFor(model => model.Category_ID, null, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Category_ID, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
+
                             </form>
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">

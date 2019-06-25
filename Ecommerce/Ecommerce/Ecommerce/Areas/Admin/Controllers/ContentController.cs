@@ -21,12 +21,10 @@ namespace Ecommerce.Areas.Admin.Controllers
         public ActionResult Index(string searchStringContent, int page = 1, int pageSize = 5)
         {
             var dao = new ContentDao();
-            //var model = dao.ListAllContent();
             var model = dao.ListAllContent(searchStringContent, page, pageSize);
             ViewBag.SearchStringContent = searchStringContent;
             return View(model);
-        }
-        
+        }        
         [HttpGet]
         public ActionResult Create()
         {
@@ -118,7 +116,7 @@ namespace Ecommerce.Areas.Admin.Controllers
                     //}
                     content.Name = content.Name;
                     content.CreateDate = Convert.ToDateTime(DateTime.UtcNow.ToLocalTime());
-                    content.MetaTitle = /*Functions.ConvertToUnSign(*/content.Name;
+                    content.MetaTitle = StringHelper.ToUnsignString(content.Name);
                     content.Description = content.Description;
                     content.Detail = content.Detail;
                     content.Content_Category_ID = content.Content_Category_ID;

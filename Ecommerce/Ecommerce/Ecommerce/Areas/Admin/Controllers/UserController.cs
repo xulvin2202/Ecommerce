@@ -89,6 +89,7 @@ namespace Ecommerce.Areas.Admin.Controllers
                 }
                 
             }
+          
             return View(user);
 
         }
@@ -157,6 +158,12 @@ namespace Ecommerce.Areas.Admin.Controllers
                 status = result
             });
         }
-        
+        //public void SetViewBag(long? seletedID = null)
+        //{
+        //    var dao = new Model.Dao.UserDao();
+        //    ViewBag.GroupID = new SelectList(dao.ListUser(), "ID", "Name", seletedID);
+
+        //}
+
     }
 }

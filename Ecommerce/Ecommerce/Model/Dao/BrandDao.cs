@@ -1,5 +1,6 @@
 ﻿using Model.EF;
 using Model.ViewModel;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,54 @@ namespace Model.Dao
         public List<Brand> ListBrand()
         {
             return db.Brands.OrderByDescending(x => x.CreateDate).ToList();
+        }
+        public IEnumerable<Brand> ListAllBrand()
+        {
+            IQueryable<Brand> model = db.Brands;
+
+            return model.OrderByDescending(x => x.CreateDate).ToList();
+        }
+        public IEnumerable<Brand> ListBrand(int page, int pageSize)
+        {
+            IQueryable<Brand> model = db.Brands;
+
+            return model.OrderByDescending(x => x.CreateDate).ToPagedList(page, pageSize);
+        }
+
+        public bool Update(Brand entity)
+        {
+            try
+            {
+                var brand = db.Brands.Find(entity.ID);
+                brand.Name = entity.Name;
+                brand.MetaTitle = entity.MetaTitle;
+                brand.Link = entity.Link;
+                brand.Image = entity.Image;
+                brand.CreateDate = DateTime.Now;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //logging
+                return false;
+            }
+
+        }
+        public bool Delete(int id)
+        {
+            try
+            {
+                var brand = db.Brands.Find(id);
+                db.Brands.Remove(brand);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
         }
         public List<ProductViewModel> ListByCategoryId(long brandID)
         {
@@ -52,9 +101,20 @@ namespace Model.Dao
             model.OrderByDescending(x => x.CreateDate);
             return model.ToList();
         }
-        public List<Brand> ListAllBrand()
+        //public List<Brand> ListAllBrand()
+        //{
+        //    return db.Brands.Where(x => x.Status == true).OrderByDescending(x => x.CreateDate).ToList();
+        //}
+        public long Insert(Brand brand)
         {
-            return db.Brands.Where(x => x.Status == true).OrderByDescending(x=>x.CreateDate).ToList();
+            db.Brands.Add(brand);
+            db.SaveChanges();
+            return brand.ID;
         }
+        public List<Category> ListAllCategory()
+        {
+            return db.Categories.Where(x => x.Status == true).ToList();
+        }
+
     }
 }
