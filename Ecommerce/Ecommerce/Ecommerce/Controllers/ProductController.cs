@@ -17,7 +17,7 @@ namespace Ecommerce.Controllers
             var dao = new ProductDao();
             var model = dao.ListAllProduct();
             ViewBag.ListBrand = new BrandDao().ListAllBrand();
-            ViewBag.Category = new CategoryDao().ListAllCategory();
+            ViewBag.Category = new CategoryDao().ListCategory();
             
             return View(model.ToPagedList(page, 8));
         }
@@ -86,7 +86,8 @@ namespace Ecommerce.Controllers
         public ActionResult Detail(long id)        {
             var product = new ProductDao().ViewDetail(id);
             ViewBag.Category = new CategoryDao().ViewDetail(product.Category_ID.Value);
-
+            ViewBag.ListBrand = new BrandDao().ListAllBrand();
+            ViewBag.ListCategory = new CategoryDao().ListCategory();
             ViewBag.RelatedProducts = new ProductDao().ListRelatedProducts(id);
             return View(product);
         }

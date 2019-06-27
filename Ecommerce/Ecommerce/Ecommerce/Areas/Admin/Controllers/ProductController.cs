@@ -96,15 +96,16 @@ namespace Ecommerce.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "ID,Name,MetaTitle,Description,Detail,Image,CreateDate,CreateBy,ModifiedDate,ModifiedBy,MetaKeywords,MetaDescription,Category_ID,Status")]Product product, HttpPostedFileBase image)
+        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
+        public ActionResult Edit([Bind(Include = "ID,Name,MetaTitle,Description,Detail,Image,CreateDate,Brand_ID,Price,PromotionPrice,Category_ID,Status")]Product product, HttpPostedFileBase image)
         {
+
             if (ModelState.IsValid)
             {
                 var dao = new ProductDao();
-
-                var a = new Product();
-                var path = "";
                 var filename = "";
+                var path = "";
                 if (image != null)
                 {
                     filename = DateTime.Now.ToString("dd-MM-yy-hh-mm-ss-") + image.FileName;
@@ -122,16 +123,16 @@ namespace Ecommerce.Areas.Admin.Controllers
                 product.MetaTitle = StringHelper.ToUnsignString(product.Name);
                 product.Description = product.Description;
                 product.Detail = product.Detail;
-                product.Price = product.Price;
-                product.Brand_ID = product.Brand_ID;
-                product.PromotionPrice = product.PromotionPrice;
                 product.Category_ID = product.Category_ID;
+                product.Brand_ID = product.Brand_ID;
+                product.Price = product.Price;
+                product.PromotionPrice = product.PromotionPrice;
                 product.Status = product.Status;
                 var result = dao.Update(product);
                 if (result)
                 {
-                    SetAlert("Sửa thành công", "success");
-                    ViewBag.Success = "Cập nhật thành công";
+                    SetAlert("Cập nhật thành công", "success");
+                    ViewBag.Success = "Thêm thành công";
                     product = new Product();
                     return RedirectToAction("Index", "Product");
                 }
@@ -139,10 +140,10 @@ namespace Ecommerce.Areas.Admin.Controllers
                 {
                     ModelState.AddModelError("", "Cập nhật ko thành công");
                 }
-
             }
+
             SetViewBag();
-            return View();
+            return View(product);
         }
         [HttpDelete]
         public ActionResult Delete(int id)

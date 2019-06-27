@@ -1,12 +1,11 @@
-﻿
-<!-- snippet location SlideShow -->
+﻿<!-- snippet location SlideShow -->
 
 <!DOCTYPE html>
 <html lang="en">
 
 <!-- Mirrored from sb-clickboom.mybigcommerce.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 04 Jun 2019 01:36:24 GMT -->
 <!-- Added by HTTrack -->
-<meta http-equiv="content-type" content="text/html;charset=UTF-8"  /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
     @*<title>SB-ClickBoom</title>*@
 
@@ -33,7 +32,7 @@
     </script>
     <script type="text/javascript">
     (function () {
-        var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0]; g.type = 'text/javascript'; g.defer = true; g.src = '~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/shared/js/beacon_api-d53f0a39a11dacaa85063ca4f4aba159a609185d.js'; s.parentNode.insertBefore(g, s); })();
+        var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0]; g.type = 'text/javascript'; g.defer = true; g.src = '~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/shared/js/beacon_api.js'; s.parentNode.insertBefore(g, s); })();
     </script>
     <script type="text/javascript">
         var BCData = { "csrf_token": "52490f3f7fbd35c5de01153e7610a6286d5a34dd57e90f9dc131c27a016fdaaa" };
@@ -639,7 +638,61 @@
 
 
 
-                        @{ Html.RenderAction("FooterBottom", "Home");}
+                        <div class="block-content clearfix d-flex flex-row">
+
+                            @*@{Html.RenderAction("FooterBottom", "Home"); }*@
+
+                            <div class="banners info-1">
+                                <div class="banner-figure">
+
+                                    <i class="fa fa-truck"></i>
+                                </div>
+
+                                <div class="banner-figcaption">
+                                    <div class="banner-figcaption__body">
+                                        <h5 class="banner-figcaption__title">Giao hàng nhanh</h5>
+
+                                        <p class="banner-figcaption__text">Giao hàng miễn phí trong nội thành</p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="banners info-2">
+                                <div class="banner-figure">
+
+                                    <i class="fa fa-refresh"></i>
+                                </div>
+
+                                <div class="banner-figcaption">
+                                    <div class="banner-figcaption__body">
+                                        <h5 class="banner-figcaption__title">Đổi trả</h5>
+
+                                        <p class="banner-figcaption__text">Trong vòng 30 ngày khi mua sản phẩm</p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="banners info-3">
+                                <div class="banner-figure">
+
+                                    <i class="fa fa-cogs"></i>
+                                </div>
+
+                                <div class="banner-figcaption">
+                                    <div class="banner-figcaption__body">
+                                        <h5 class="banner-figcaption__title">Online Support</h5>
+
+                                        <p class="banner-figcaption__text">Luôn luôn hỗ trợ 24/24</p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
 
                     </div>
                 </div>
@@ -867,7 +920,7 @@
 
         </svg>
     </div>
-
+    <script src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/s-5jeysafj8q/stencil/d7a3b3a0-fb9a-0136-bca6-1b3c63b2f4dc/e/7d147310-fb9b-0136-a892-03abfbabe237/dist/theme-bundle.chunk6.js"></script>
     <script>window.__webpack_public_path__ = "https://cdn11.bigcommerce.com/s-5jeysafj8q/stencil/d7a3b3a0-fb9a-0136-bca6-1b3c63b2f4dc/e/7d147310-fb9b-0136-a892-03abfbabe237/dist/";</script>
     <script src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/s-5jeysafj8q/stencil/d7a3b3a0-fb9a-0136-bca6-1b3c63b2f4dc/e/7d147310-fb9b-0136-a892-03abfbabe237/dist/theme-bundle.main.js"></script>
 
@@ -902,7 +955,7 @@
     <script type="text/javascript" src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/r-6fbcb23fc6f57fe4b63f62d66e95155a1ce6b177/javascript/visitor_stencil.js"></script>
     <!-- snippet location footer -->
     <script src="~/Assets/Client/TemplateUI/ClickBoom/cdn11.bigcommerce.com/r-6fbcb23fc6f57fe4b63f62d66e95155a1ce6b177/javascript/jquery-3.1.1.min.js" crossorigin="anonymous">></script>
-    @RenderSection("jsFooter", required: false)
+   @RenderSection("jsFooter", required:false)
 </body>
 
 <!-- Mirrored from sb-clickboom.mybigcommerce.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 04 Jun 2019 01:37:47 GMT -->

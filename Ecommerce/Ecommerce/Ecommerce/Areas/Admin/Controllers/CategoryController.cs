@@ -28,7 +28,7 @@ namespace Ecommerce.Areas.Admin.Controllers
             return View();
         }        
         [HttpPost]
-        public ActionResult Create([Bind(Include ="ID,Name,MetaTitle,CreateDate,Image,Icon,Status")]Category category,HttpPostedFileBase image)
+        public ActionResult Create([Bind(Include ="ID,Name,MetaTitle,CreateDate,Image,Icon,ParentID,Status")]Category category,HttpPostedFileBase image)
         {
             try
             {
@@ -54,6 +54,7 @@ namespace Ecommerce.Areas.Admin.Controllers
                     category.MetaTitle = StringHelper.ToUnsignString(category.Name);
                     category.CreateDate = Convert.ToDateTime(DateTime.UtcNow.ToLocalTime());
                     category.Status = Convert.ToBoolean(true);
+                    category.ParentID = category.ParentID;
                     var id = dao.Insert(category);
                     if (id > 0)
                     {
@@ -86,7 +87,7 @@ namespace Ecommerce.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Edit(Category category,HttpPostedFileBase image)
+        public ActionResult Edit([Bind(Include = "ID,Name,MetaTitle,CreateDate,Image,Icon,ParentID,Status")]Category category,HttpPostedFileBase image)
         {
             try
             {
@@ -106,6 +107,7 @@ namespace Ecommerce.Areas.Admin.Controllers
                     category.Icon = category.Icon;
                     category.MetaTitle = StringHelper.ToUnsignString(category.Name);
                     category.CreateDate = Convert.ToDateTime(DateTime.UtcNow.ToLocalTime());
+                    category.ParentID = category.ParentID;
                     category.Status = Convert.ToBoolean(true);
                     var result = dao.Update(category);
                     if (result)
@@ -113,7 +115,7 @@ namespace Ecommerce.Areas.Admin.Controllers
                         SetAlert("Sửa thành công", "success");
                         ViewBag.Success = "Cập nhật thành công";
                         category = new Category();
-                        return RedirectToAction("Index", "Content");
+                        return RedirectToAction("Index", "Category");
                     }
                     else
                     {
@@ -137,5 +139,6 @@ namespace Ecommerce.Areas.Admin.Controllers
             new CategoryDao().Delete(id);
             return RedirectToAction("Index");
         }
+       
     }
 }

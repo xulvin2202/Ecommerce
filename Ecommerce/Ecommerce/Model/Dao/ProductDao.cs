@@ -54,8 +54,8 @@ namespace Model.Dao
                 product.Detail = entity.Detail;
                 product.Price = entity.Price;
                 product.PromotionPrice = entity.PromotionPrice;
-                product.ModifiedBy = entity.ModifiedBy;
-                product.ModifiedDate = DateTime.Now;
+                product.CreateDate = entity.CreateDate;
+                product.Status = product.Status;
                 db.SaveChanges();
                 return true;
             }
@@ -74,8 +74,9 @@ namespace Model.Dao
         }
         public List<Category> ListAllCategory()
         {
-            return db.Categories.Where(x => x.Status == true).ToList();
+            return db.Categories.Where(x => x.Status == true && x.ParentID != null).ToList();
         }
+      
         public List<Brand> ListAllBrand()
         {
             return db.Brands.Where(x => x.Status == true).ToList();
@@ -120,10 +121,10 @@ namespace Model.Dao
             var product = db.Products.Find(productID);
             return db.Products.Where(x => x.ID != productID && x.Category_ID == product.Category_ID).ToList();
         }
-        public List<Content> ListContent(int id)
-        {
-            return db.Contents.OrderByDescending(x => x.CreateDate).Take(id).ToList();
-        }
+        //public List<Content> ListContent(int id)
+        //{
+        //    return db.Contents.OrderByDescending(x => x.CreateDate).Take(id).ToList();
+        //}
 
         public List<Brand> ListBrandByCategoryId(long brandID)
         {

@@ -11,7 +11,7 @@
     var ListFeatureProduct = (List<Model.EF.Product>)ViewBag.FeatureProduct;
     var ListSaleProduct = (List<Model.EF.Product>)ViewBag.SaleProduct;
     var ListBrand = (List<Model.EF.Brand>)ViewBag.Brand;
-    var ListContent = (List<Model.EF.Content>)ViewBag.Content;
+    //var ListContent = (List<Model.EF.Content>)ViewBag.Content;
     var ListQA = (List<Model.EF.QandA>)ViewBag.QA;
 }
 
@@ -243,12 +243,12 @@
                                                         <div class="price-section price-section--withoutTax ">
                                                             @if (item.PromotionPrice != null)
                                                             {
-                                                                <span data-product-price-without-tax class="price price--withoutTax">@String.Format("{0:#,0 VND}", @item.PromotionPrice)  </span>
+                                                                <span data-product-price-without-tax class="price price--withoutTax">@String.Format("{0:#,0 đ}", @item.PromotionPrice)  </span>
                                                                 <span data-product-non-sale-price-without-tax class="price price--rrp">@String.Format("{0:0,0}", item.Price)</span>
                                                             }
                                                             else
                                                             {
-                                                                <span data-product-price-without-tax class="price price--withoutTax">@String.Format("{0:#,0 VND}", item.Price)</span>
+                                                                <span data-product-price-without-tax class="price price--withoutTax">@String.Format("{0:#,0 đ}", item.Price)</span>
                                                             }
 
 
@@ -577,12 +577,12 @@
                                                     <div class="price-section price-section--withoutTax ">
                                                         @if (item.PromotionPrice != null)
                                                         {
-                                                            <span data-product-price-without-tax class="price price--withoutTax">@String.Format("{0:#,0 VND}", @item.PromotionPrice)  </span>
+                                                            <span data-product-price-without-tax class="price price--withoutTax">@String.Format("{0:#,0 đ}", @item.PromotionPrice)  </span>
                                                             <span data-product-non-sale-price-without-tax class="price price--rrp">@String.Format("{0:0,0}", item.Price)</span>
                                                         }
                                                         else if (item.PromotionPrice == null)
                                                         {
-                                                            <span data-product-price-without-tax class="price price--withoutTax">@String.Format("{0:#,0 VND}", item.Price)</span>
+                                                            <span data-product-price-without-tax class="price price--withoutTax">@String.Format("{0:#,0 đ}", item.Price)</span>
                                                         }
 
 
@@ -808,12 +808,12 @@
                                                     <div class="price-section price-section--withoutTax ">
                                                         @if (item.PromotionPrice != null)
                                                         {
-                                                            <span data-product-price-without-tax class="price price--withoutTax">@String.Format("{0:#,0 VND}", @item.PromotionPrice)  </span>
+                                                            <span data-product-price-without-tax class="price price--withoutTax">@String.Format("{0:#,0 đ}", @item.PromotionPrice)  </span>
                                                             <span data-product-non-sale-price-without-tax class="price price--rrp">@String.Format("{0:0,0}", item.Price)</span>
                                                         }
                                                         else
                                                         {
-                                                            <span data-product-price-without-tax class="price price--withoutTax">@String.Format("{0:#,0 VND}", item.Price)</span>
+                                                            <span data-product-price-without-tax class="price price--withoutTax">@String.Format("{0:#,0 đ}", item.Price)</span>
                                                         }
 
 
@@ -1755,7 +1755,7 @@
                             {
                                 <div class="sb-brand--item">
 
-                                    <a href="@item.Link" title="@item.Name"><img class="img-fluid lazyload" src="@item.Image" title="@item.Name" width="158" height="79" /></a>
+                                    <a href="@item.Link" title="@item.Name"><img class="img-fluid lazyload" src="@item.Image" title="@item.Name"  /></a>
                                 </div>
                             }
 
@@ -1766,7 +1766,7 @@
 
 
 
-                <div class="module sb-latestblog">
+                @*<div class="module sb-latestblog">
                     <h5 class="block-title">
                         <i class="fa fa-"></i>
                         <span style="background-color:#1f2534; margin-bottom:0; border-top-left-radius:3px;border-bottom-right-radius:3px;padding:11px 20px;color:white">
@@ -1867,7 +1867,7 @@
                         </div>
                     </div>
 
-                </div>
+                </div>*@
 
             </div>
         </div>

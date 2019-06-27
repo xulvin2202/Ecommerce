@@ -20,7 +20,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label" for="simpleinput">Tên</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="Name" name="Name" placeholder="Tiêu đề bài viết" autofocus autocomplete="off">
+                                        <input type="text" class="form-control" id="Name" name="Name" placeholder="Tiêu sản phẩm" autofocus autocomplete="off">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -81,6 +81,7 @@
                                         @Html.ValidationMessageFor(model => model.Brand_ID, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
+                               
                             </form>
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
@@ -94,7 +95,7 @@
                                 </div>
                             </div>
                         </div>
-                        }
+                        
                         <div>
                             @Html.ActionLink("Quay lại", "Index")
                         </div>

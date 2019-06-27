@@ -1,147 +1,88 @@
 ﻿@model Model.EF.Content
 
 @{
-    ViewBag.Title = "Detail";
+    ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
 }
 
-<h2>Detail</h2>
 @section header{Chi tiết bài viết}
-<div>
+@section jsFooter{}
 
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+<div class="row">
+    <div class="col-12">
+        <div class="card-box">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card-box">
+                        <dl class="dl-horizontal">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="simpleinput"> Tên</label>
+                                <div class="col-sm-10">
+                                    @Model.Name
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="simpleinput"> Title</label>
+                                <div class="col-sm-10">
+                                    @Model.MetaTitle
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="simpleinput"> Mô tả</label>
+                                <div class="col-sm-10">
+                                    @Model.Description
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="simpleinput"> Ảnh</label>
+                                <div class="col-sm-10">
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                                    <img src="@Model.Image" style="width:50%;height:50%" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="simpleinput"> Chi tiết</label>
+                                <div class="col-sm-10">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MetaTitle)
-        </dt>
+                                    @Html.Raw(Model.Detail)
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="simpleinput">Ngày đăng </label>
+                                <div class="col-sm-10">
 
-        <dd>
-            @Html.DisplayFor(model => model.MetaTitle)
-        </dd>
+                                    @Model.CreateDate
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="simpleinput">Bởi </label>
+                                <div class="col-sm-10">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+                                    @Model.CreateBy
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="simpleinput">Trạng thái </label>
+                                <div class="col-sm-10">
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+                                    @Model.Status
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label" for="simpleinput">Danh mục </label>
+                                <div class="col-sm-10">
+                                    @Model.Content_Category_ID
+                                </div>
+                            </div>
+                        </dl>
+                        <p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-
-        <dd>
-            <img src="~/Image/@Html.Raw(Model.Image)" />
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Detail)
-        </dt>
-
-        <dd>
-            @Html.Raw(Model.Detail)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreateDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreateDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreateBy)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreateBy)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ModifiedDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ModifiedDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ModifiedBy)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ModifiedBy)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MetaKeywords)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MetaKeywords)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MetaDescriptions)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MetaDescriptions)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TopHot)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TopHot)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ViewCount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ViewCount)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tags)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tags)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Content_Category_ID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Content_Category_ID)
-        </dd>
-
-    </dl>
+                            @Html.ActionLink("Quay lại", "Index")
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

@@ -23,6 +23,10 @@ namespace Model.Dao
             IQueryable<Category> model = db.Categories;
             return model.Where(x => x.ParentID == null).OrderBy(x => x.CreateDate).ToList();
         }
+        public List<Category> ListAlllCategory()
+        {
+            return db.Categories.Where(x => x.Status == true && x.ParentID == x.ID).ToList();
+        }
         public long Insert(Category category)
         {
             db.Categories.Add(category);

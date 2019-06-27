@@ -40,8 +40,8 @@ namespace Model.Dao
                 content.Description = entity.Description;
                 content.Image = entity.Image;
                 content.Detail = entity.Detail;
-                content.ModifiedBy = entity.ModifiedBy;
-                content.ModifiedDate = DateTime.Now;
+                content.CreateDate = entity.CreateDate;
+                content.Status = entity.Status;
                 db.SaveChanges();
                 return true;
             }

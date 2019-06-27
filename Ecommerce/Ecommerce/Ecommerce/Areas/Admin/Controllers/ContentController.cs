@@ -44,52 +44,7 @@ namespace Ecommerce.Areas.Admin.Controllers
             SetViewBag(content.Content_Category_ID);
             return View();
         }
-        [HttpPost]
-        public ActionResult Edit([Bind(Include = "ID,Name,MetaTitle,Description,Detail,Image,CreateDate,CreateBy,ModifiedDate,ModifiedBy,MetaKeywords,MetaDescription,Content_Category_ID,Status")]Content model, HttpPostedFileBase image)
-        {
-            if (ModelState.IsValid)
-            {
-                var dao = new ContentDao();
-                
-                var a = new Content();
-                var path = "";
-                var filename = "";
-                if (image != null)
-                {
-                    filename = DateTime.Now.ToString("dd-MM-yy-hh-mm-ss-") + image.FileName;
-                    path = Path.Combine(Server.MapPath("~/Image"), filename);
-                    image.SaveAs(path);
-                    model.Image = filename;
-                }
-                //else
-                //{
-
-                //    content.Image = "~/Image/logo.png";
-                //}
-                model.Name = model.Name;
-                model.CreateDate = Convert.ToDateTime(DateTime.UtcNow.ToLocalTime());
-                model.MetaTitle = StringHelper.ToUnsignString(model.Name);
-                model.Description = model.Description;
-                model.Detail = model.Detail;
-                model.Content_Category_ID = model.Content_Category_ID;
-                model.Status = Convert.ToBoolean(true);
-                var result = dao.Update(model);
-                if (result)
-                {
-                    SetAlert("Sửa thành công", "success");
-                    ViewBag.Success = "Cập nhật thành công";
-                    model = new Content();
-                    return RedirectToAction("Index", "Content");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Cập nhật ko thành công");
-                }
-
-            }
-            SetViewBag(model.Content_Category_ID);
-            return View();
-        }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
@@ -146,9 +101,56 @@ namespace Ecommerce.Areas.Admin.Controllers
             SetViewBag();
             return View(content);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
+        public ActionResult Edit([Bind(Include = "ID,Name,MetaTitle,Description,Detail,Image,CreateDate,CreateBy,ModifiedDate,ModifiedBy,MetaKeywords,MetaDescription,Content_Category_ID,Status")]Content content, HttpPostedFileBase image)
+        {
+            
+                if (ModelState.IsValid)
+                {
+                    var dao = new ContentDao();
+                    var filename = "";
+                    var path = "";
+                    if (image != null)
+                    {
+                        filename = DateTime.Now.ToString("dd-MM-yy-hh-mm-ss-") + image.FileName;
+                        path = Path.Combine(Server.MapPath("~/Image"), filename);
+                        image.SaveAs(path);
+                        content.Image = filename;
+                    }
+                    //else
+                    //{
+
+                    //    content.Image = "~/Image/logo.png";
+                    //}
+                    content.Name = content.Name;
+                    content.CreateDate = Convert.ToDateTime(DateTime.UtcNow.ToLocalTime());
+                    content.MetaTitle = StringHelper.ToUnsignString(content.Name);
+                    content.Description = content.Description;
+                    content.Detail = content.Detail;
+                    content.Content_Category_ID = content.Content_Category_ID;
+                    content.Status = Convert.ToBoolean(true);
+                    var result = dao.Update(content);
+                    if (result)
+                    {
+                        SetAlert("Cập nhật thành công", "success");
+                        ViewBag.Success = "Thêm thành công";
+                        content = new Content();
+                        return RedirectToAction("Index", "Content");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Cập nhật ko thành công");
+                    }
+                }
+           
+            SetViewBag();
+            return View(content);
+        }
         public ActionResult Detail(int? id)
         {
-            var dao = new ContentDao();
+            var dao = new ProductDao();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

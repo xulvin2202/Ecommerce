@@ -49,7 +49,7 @@
 
 
         <div class="container">
-
+            <h1 class="page-heading">Đăng ký thành viên</h1>
             <div class="form-group">
                 @*@Html.ValidationSummary(false, "", new { @class = "text-danger" })*@
                 @if (ViewBag.Success != null)
@@ -57,76 +57,84 @@
                     <div class="alert alert-success">@ViewBag.Success</div>
                 }
             </div>
+            <div class="account account--fixed">
+                <div class="account-body">
+                  
+                        <div class="form-group">
+                            <div class="form-row form-row--half">
+                                <div class="form-field" id="FormField_1" data-validation="{&quot;type&quot;:&quot;singleline&quot;,&quot;label&quot;:&quot;Email Address&quot;,&quot;required&quot;:true,&quot;maxlength&quot;:0}" data-type="EmailAddress">
+                                    <label class="form-label" for="FormField_1_input">
+                                        Email Address
+                                        <small>Required</small>
+                                    </label>
+                                    <input type="text" id="UserName" data-label="Email Address" name="UserName" class="form-input" placeholder="UserName" autocomplete="off" autofocus aria-required="true" data-field-type="EmailAddress">
+                                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                </div>
 
-            @*<div class="form-field" id="FormField_1" data-validation="{&quot;type&quot;:&quot;singleline&quot;,&quot;label&quot;:&quot;Email Address&quot;,&quot;required&quot;:true,&quot;maxlength&quot;:0}" data-type="EmailAddress">
-            <label class="form-label" for="FormField_1_input">
-                UserName
-                <small>Required</small>
-            </label>
-            <input type="text" id="UserName" data-label="UserName" name="UserName" class="form-input" aria-required="true" autocomplete="off" data-field-type="UserName">
-        </div>*@
-            <div class="form-group">
-                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-4">
-                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
-                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-                </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-4">
-                    @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                                <div class="form-field" id="FormField_2" data-validation="{&quot;type&quot;:&quot;password&quot;,&quot;label&quot;:&quot;Password&quot;,&quot;required&quot;:true,&quot;maxlength&quot;:0}" data-type="Password">
+                                    <label class="form-label" for="FormField_2_input">
+                                        Password
+                                        <small>Required</small>
+                                    </label>
+                                    <input type="password" class="form-input" id="Password" data-label="Password" name="Password" value="" autocomplete="off" aria-required="true" data-field-type="Password">
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-4">
-                    @Html.PasswordFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                                <div class="form-field" id="FormField_2" data-validation="{&quot;type&quot;:&quot;password&quot;,&quot;label&quot;:&quot;Password&quot;,&quot;required&quot;:true,&quot;maxlength&quot;:0}" data-type="Password">
+                                    <label class="form-label" for="FormField_2_input">
+                                        Nhập lại mật khẩu
+                                        <small>Required</small>
+                                    </label>
+                                    <input type="password" class="form-input" id="ConfirmPassword" data-label="Password" name="ConfirmPassword" value="" autocomplete="off" aria-required="true" data-field-type="Password">
+                                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-4">
-                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
-                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                                <div class="form-field" id="FormField_2" data-validation="{&quot;type&quot;:&quot;password&quot;,&quot;label&quot;:&quot;Password&quot;,&quot;required&quot;:true,&quot;maxlength&quot;:0}" data-type="Password">
+                                    <label class="form-label" for="FormField_2_input">
+                                        Name
+                                        <small>Required</small>
+                                    </label>
+                                    <input type="text" class="form-input" id="Name" data-label="Password" name="Name" value="" autocomplete="off" aria-required="true" data-field-type="Password">
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-field" id="FormField_2" data-validation="{&quot;type&quot;:&quot;password&quot;,&quot;label&quot;:&quot;Password&quot;,&quot;required&quot;:true,&quot;maxlength&quot;:0}" data-type="Password">
+                                    <label class="form-label" for="FormField_2_input">
+                                        Address
+                                        <small>Required</small>
+                                    </label>
+                                    <input type="text" class="form-input" id="Address" data-label="Password" name="Address" value="" autocomplete="off" aria-required="true" data-field-type="Password">
+                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-field" id="FormField_2" data-validation="{&quot;type&quot;:&quot;password&quot;,&quot;label&quot;:&quot;Password&quot;,&quot;required&quot;:true,&quot;maxlength&quot;:0}" data-type="Password">
+                                    <label class="form-label" for="FormField_2_input">
+                                        Email
+                                        <small>Required</small>
+                                    </label>
+                                    <input type="email" class="form-input" id="Email" data-label="Password" name="Email" value="" autocomplete="off" aria-required="true" data-field-type="Password">
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-field" id="FormField_2" data-validation="{&quot;type&quot;:&quot;password&quot;,&quot;label&quot;:&quot;Password&quot;,&quot;required&quot;:true,&quot;maxlength&quot;:0}" data-type="Password">
+                                    <label class="form-label" for="FormField_2_input">
+                                        Email
+                                        <small>Required</small>
+                                    </label>
+                                    <input type="text" class="form-input" id="Phone" data-label="Password" name="Phone" value="" autocomplete="off" aria-required="true" data-field-type="Password">
+                                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-field" id="FormField_2" data-validation="{&quot;type&quot;:&quot;password&quot;,&quot;label&quot;:&quot;Password&quot;,&quot;required&quot;:true,&quot;maxlength&quot;:0}" data-type="Password">
+                                    @Html.Captcha(registerCapcha)
+                                    @Html.TextBox("CaptchaCode")
+                               
+                                </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-4">
-                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-4">
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-4">
-                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    @Html.Captcha(registerCapcha)
-                    @Html.TextBox("CaptchaCode")
-                </div>
-            </div>
-            @*<div class="form-group">
+                                @*<div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        @Html.Captcha(registerCapcha)
+                                        @Html.TextBox("CaptchaCode")
+                                    </div>
+                                </div>*@
+                                @*<div class="form-group">
             @Html.LabelFor(model => model.ProvinceID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-4">
                 @Html.tex(model => model.ProvinceID, new { htmlAttributes = new { @class = "form-control" } })
@@ -141,18 +149,23 @@
                 @Html.ValidationMessageFor(model => model.DistrictID, "", new { @class = "text-danger" })
             </div>
         </div>*@
-            @*<div class="form-group">
+                                @*<div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 @Html.Captcha(registerCapcha)
                 @Html.TextBox("CaptchaCode")
             </div>
         </div>*@
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-4">
-                    <input type="submit" value="Đăng ký" class="btn btn-default" />
-                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-4">
+                                        <input type="submit" value="Đăng ký" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
             </div>
-        </div>
-    </div>
-}
+        
+                    
+                </div>
+</div>
+</div>
 
+</div>}

@@ -55,7 +55,7 @@
                                         <th>@item.CreateDate</th>
 
                                         <td>
-                                            <a href="~/Admin/ContentCategory/Edit/@item.ID" class="btn btn-sm btn-default" title="Edit"><i class="icon-pencil"></i></a>
+                                            <a href="~/Admin/Category/Edit/@item.ID" class="btn btn-sm btn-default" title="Edit"><i class="icon-pencil"></i></a>
                                             @*<button type="button" class="btn btn-sm btn-default js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o text-danger"></i></button>*@
                                             @Ajax.ActionLink("Xoá", "Delete",null, new { @id = item.ID }, new AjaxOptions
                                        {

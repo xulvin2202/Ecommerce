@@ -16,6 +16,10 @@ namespace Model.Dao
         {
             db = new EcommerceDbContext();
         }
+        public Brand GetByID(long id)
+        {
+            return db.Brands.Find(id);
+        }
         public List<Brand> ListBrand()
         {
             return db.Brands.OrderByDescending(x => x.CreateDate).ToList();

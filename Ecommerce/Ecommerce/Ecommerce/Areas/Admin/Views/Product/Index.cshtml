@@ -5,18 +5,7 @@
 }
 @section header{Danh sách sản phẩm}
 @section jsFooter{}
-@helper Truncate(string input, int length)
-{
-    if (input.Length <= length)
-    {
-        @Html.Raw(input)
-    }
-    else
-    {
-        var thisString = input.Substring(0, length);
-        @Html.Raw(thisString)
-    }
-}
+
 <div class="row">
     <div class="col-12">
         <div class="card-box">
@@ -45,11 +34,11 @@
                                 <tr>
                                     <th></th>
                                     <th class="w60">Tên</th>
-                                    <th class="w60">Title</th>
+                                   
                                     <th>Giá</th>
                                     <th>Giá Sale</th>
                                     <th>Mô tả</th>
-                                    <th>Chi tiết</th>
+                                   
                                     <th>Ngày tạo</th>
                                     <th class="w100">#</th>
                                 </tr>
@@ -76,12 +65,10 @@
                                             @String.Format("{0:#,0 Đồng}", @item.PromotionPrice)
                                         </td>
                                         <td>
-                                            @*@Html.Raw(item.Description)*@
-                                            @Truncate(item.Description, 100)
+                                            @Html.Raw(item.Description)
+                                      
                                         </td>
-                                        <td>
-                                            @Html.Raw(item.Detail)
-                                        </td>
+                                        
                                         <td>
                                             @item.CreateDate
                                         </td>
