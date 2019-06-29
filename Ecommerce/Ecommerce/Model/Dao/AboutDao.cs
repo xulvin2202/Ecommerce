@@ -22,17 +22,18 @@ namespace Model.Dao
             db.SaveChanges();
             return entity.ID;
         }
-        public List<About> LstAbout(long id)
+        public IEnumerable<About> ListAbout()
         {
-            return db.Abouts.ToList();
+            IQueryable<About> model = db.Abouts;
+
+            return model.ToList();
         }
         public bool Update(About entity)
         {
             try
             {
-                var content = db.Contents.Find(entity.ID);               
-                content.Detail = entity.Detail;              
-                content.ModifiedDate = DateTime.Now;
+                var about = db.Abouts.Find(entity.ID);
+                about.Detail = entity.Detail;
                 db.SaveChanges();
                 return true;
             }

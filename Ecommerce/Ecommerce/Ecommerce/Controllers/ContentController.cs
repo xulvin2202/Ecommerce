@@ -11,11 +11,13 @@ namespace Ecommerce.Controllers
     public class ContentController : Controller
     {
         // GET: Content
-        public ActionResult Index()
+        public ActionResult Index(int page =1, int pageSize = 5)
         {
             var dao = new ContentDao();
-            var model = dao.ListAllContent();
-           
+            var model = dao.ListAllContentUI(page,pageSize);
+            var m = new ContentDao();
+            ViewBag.Cate = new ContentCategoryDao().ListAllContentCategory();
+            ViewBag.Content = m.ListContent(5);
             return View(model);
             
         }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model.EF;
+using PagedList;
+
 namespace Model.Dao
 {
     public class CategoryDao
@@ -13,10 +15,15 @@ namespace Model.Dao
         {
             db = new EcommerceDbContext();
         }
+        public IEnumerable<Category> ListAllCategories(int page,int pageSize)
+        {
+            IQueryable<Category> model = db.Categories;
+            return model.OrderBy(x => x.CreateDate).ToPagedList(page,pageSize);           
+        }
         public IEnumerable<Category> ListAllCategory()
         {
             IQueryable<Category> model = db.Categories;
-            return model.OrderBy(x => x.CreateDate).ToList();           
+            return model.OrderBy(x => x.CreateDate).ToList();
         }
         public IEnumerable<Category> ListCategory()
         {
@@ -51,7 +58,6 @@ namespace Model.Dao
                 category.Image = entity.Image;
                 category.CreateDate = DateTime.Now;
                 category.ParentID = entity.ParentID;
-                category.CreateDate = entity.CreateDate;
                 db.SaveChanges();
                 return true;
             }

@@ -64,6 +64,7 @@ namespace Ecommerce.Controllers
         }
         public ActionResult Search(string keyword, int page = 1, int pageSize = 1)
         {
+            ViewBag.Category = new CategoryDao().ListCategory();
             int totalRecord = 0;
             var model = new ProductDao().Search(keyword, ref totalRecord, page, pageSize);
 

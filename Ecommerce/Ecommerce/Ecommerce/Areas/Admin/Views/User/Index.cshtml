@@ -48,9 +48,11 @@
                         <table class="table table-hover table-custom spacing8">
                             <thead>
                                 <tr>
-                                    <th></th>
-                                    <th class="w60">Tên</th>
-                                    <th class="w60">Account</th>
+                                  
+                                    <th class="w60">
+                                    Tên
+                                    </th>
+                                    <th class="w60">Tài khoản</th>
 
                                     <th>Điện thoại</th>
                                     <th>Địa chỉ</th>
@@ -63,10 +65,7 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        <td>
-                                            @*<img src="~/Image/@item.Image" data-toggle="tooltip" data-placement="top" title="" alt="Avatar" class="w35 h35 rounded" data-original-title="Avatar Name">*@
-                                            @item.ID
-                                        </td>
+                                        
                                         <td>
                                             <h6 class="mb-0" autocomplete="off">@item.Name</h6>
                                             <span autocomplete="off">@item.Email</span>

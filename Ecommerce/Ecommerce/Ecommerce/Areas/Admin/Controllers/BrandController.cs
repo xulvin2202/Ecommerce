@@ -15,25 +15,25 @@ namespace Ecommerce.Areas.Admin.Controllers
     {
         EcommerceDbContext db = new EcommerceDbContext();
         // GET: Admin/Brand
-        public ActionResult Index( int page = 1, int pageSize = 5)
+        public ActionResult IndexBrand( int page = 1, int pageSize = 5)
         {
             var dao = new BrandDao();
             var model = dao.ListBrand( page, pageSize);
             return View(model);
         }
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult CreateBrand()
         {
             SetViewBag();
             return View();
         }
         [HttpDelete]
-        public ActionResult Delete(int id)
+        public ActionResult DeleteBrand(int id)
         {
             new BrandDao().Delete(id);
             return RedirectToAction("Index");
         }
-        public ActionResult Edit(long id)
+        public ActionResult EditBrand(long id)
         {
             var dao = new BrandDao();
             var brand = dao.GetByID(id);
@@ -41,7 +41,7 @@ namespace Ecommerce.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "ID,Name,MetaTitleImage,CreateDate,CreateBy,ModifiedDate,ModifiedBy,Category_ID,Status")]Brand model, HttpPostedFileBase image)
+        public ActionResult EditBrand([Bind(Include = "ID,Name,MetaTitleImage,CreateDate,CreateBy,ModifiedDate,ModifiedBy,Category_ID,Status")]Brand model, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace Ecommerce.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create([Bind(Include = "ID,Name,MetaTitle,Image,CreateDate,CreateBy,Category_ID,Status")]Brand brand, HttpPostedFileBase image)
+        public ActionResult CreateBrand([Bind(Include = "ID,Name,MetaTitle,Image,CreateDate,CreateBy,Category_ID,Status")]Brand brand, HttpPostedFileBase image)
         {
             try
             {
@@ -138,7 +138,7 @@ namespace Ecommerce.Areas.Admin.Controllers
             SetViewBag();
             return View(brand);
         }
-        public void SetViewBag(long? seletedID = null)
+        public void SetViewBagBrand(long? seletedID = null)
         {
             var dao = new Model.Dao.BrandDao();
             ViewBag.Category_ID = new SelectList(dao.ListBrand(), "ID", "Name", seletedID);

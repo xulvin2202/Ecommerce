@@ -125,7 +125,6 @@ namespace Ecommerce.Areas.Admin.Controllers
                     //    content.Image = "~/Image/logo.png";
                     //}
                     content.Name = content.Name;
-                    content.CreateDate = Convert.ToDateTime(DateTime.UtcNow.ToLocalTime());
                     content.MetaTitle = StringHelper.ToUnsignString(content.Name);
                     content.Description = content.Description;
                     content.Detail = content.Detail;

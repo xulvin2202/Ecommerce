@@ -34,7 +34,7 @@ namespace Model.Dao
         {
             IQueryable<Brand> model = db.Brands;
 
-            return model.OrderByDescending(x => x.CreateDate).ToPagedList(page, pageSize);
+            return model.OrderBy(x => x.CreateDate).ToPagedList(page, pageSize);
         }
 
         public bool Update(Brand entity)

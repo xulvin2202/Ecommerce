@@ -20,6 +20,7 @@ namespace Ecommerce
                 url: "san-pham/{metatitle}-{cateid}",
                 defaults: new { controller = "Product", action = "Category", id = UrlParameter.Optional },
                 namespaces: new[] { "Ecommerce.Controllers" });
+            
             routes.MapRoute(
                 name: "Category Brand",
                 url: "thuong-hieu/{metatitle}-{cateid}",
@@ -46,7 +47,7 @@ namespace Ecommerce
                 name: "About",
                 url: "gioi-thieu",
                 defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] { "Ecommerce.Controllers" }
+                namespaces: new[] { "ecommerce.controllers" }
             );
             routes.MapRoute(
                 name: "Add Cart",

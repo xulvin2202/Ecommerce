@@ -1,5 +1,5 @@
-﻿@model List<Model.EF.Content>
-
+﻿@model PagedList.IPagedList<Model.EF.Content>
+@using PagedList.Mvc;
 @{
     /**/
 
@@ -32,28 +32,15 @@
             <div class="responsive-table-plugin">
                 <div class="table-rep-plugin">
                     <div class="table-responsive" data-pattern="priority-columns">
-                        @*<div class="body">
-                                @using (Html.BeginForm("Index", "Content", FormMethod.Get))
-                                {
-                                    <form id="navbar-search" class="navbar-form search-form">
-                                        <div class="input-group mb-0">
-                                            <input type="text" class="form-control" value="@ViewBag.SearchStringContent" name="searchStringContent" placeholder="Search..." autocomplete="off">
-                                            <div class="input-group-append">
-                                                <button href="javascript:void(0);" class="btn btn-success" title="" type="submit">Search</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                }
-                            </div>*@
                         <table id="tech-companies-1" class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Company</th>
-                                    <th data-priority="1">Ảnh</th>
-                                    <th data-priority="3">Tên</th>
-                                    <th data-priority="1">Mô tả</th>
-                                    <th data-priority="3">Ngày Đăng</th>
+                                    <th></th>
+                                    <th data-priority="1">Tên</th>
+                                    <th data-priority="3">Mô tả</th>
+                                    <th data-priority="1">Ngày Đăng</th>
                                     <th data-priority="3">#</th>
+                                    <th data-priority="3"></th>
 
                                 </tr>
                             </thead>
@@ -70,7 +57,16 @@
                                             <label class="mb-0" autocomplete="off">@item.MetaTitle</label>
                                         </td>
                                         <td>
-                                            @item.Description
+                                            @{
+
+                                                string x = item.Description;
+
+                                                if (x != null && x.Length > 60)
+                                                {
+                                                    x = x.Substring(0, 60);
+                                                }
+                                            }
+                                            @Html.Raw(x)<text>...</text>
                                         </td>
                                         <td autocomplete="off">@item.CreateDate</td>
                                         <td>
@@ -91,7 +87,13 @@
                                 }
                             </tbody>
                         </table>
+                        <div class="pagination">
+                            <ul class="pagination-list">
 
+                                @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page, @class = "pagination-link" }), PagedListRenderOptions.PageNumbersOnly)
+
+                            </ul>
+                        </div>
 
                     </div>
                 </div>

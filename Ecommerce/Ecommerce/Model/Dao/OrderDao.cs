@@ -1,4 +1,5 @@
 ﻿using Model.EF;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,11 @@ namespace Model.Dao
             db.Orders.Add(order);
             db.SaveChanges();
             return order.ID;
+        }
+        public IEnumerable<Order> ListOrder(int page,int pageSize)
+        {
+            IQueryable<Order> model = db.Orders;
+            return model.OrderBy(x => x.ID).ToPagedList(page,pageSize);
         }
     }
 }

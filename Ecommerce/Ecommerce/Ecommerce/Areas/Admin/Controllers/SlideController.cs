@@ -14,10 +14,10 @@ namespace Ecommerce.Areas.Admin.Controllers
     {
         // GET: Admin/Slide
         EcommerceDbContext db = new EcommerceDbContext();
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pageSize = 5)
         {
             var dao = new SlideDao();
-            var model = dao.ListSlide();
+            var model = dao.ListSlide(page,pageSize);
             return View(model);
         }
         [HttpGet]
@@ -101,7 +101,6 @@ namespace Ecommerce.Areas.Admin.Controllers
                     //    content.Image = "~/Image/logo.png";
                     //}
                     slide.Link = slide.Link;
-                    slide.CreateDate = Convert.ToDateTime(DateTime.UtcNow.ToLocalTime());
                     slide.Status = Convert.ToBoolean(true);
                     var result = dao.Update(slide);
                     if (result)

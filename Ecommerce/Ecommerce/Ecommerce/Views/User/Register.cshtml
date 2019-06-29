@@ -64,20 +64,20 @@
                             <div class="form-row form-row--half">
                                 <div class="form-field" id="FormField_1" data-validation="{&quot;type&quot;:&quot;singleline&quot;,&quot;label&quot;:&quot;Email Address&quot;,&quot;required&quot;:true,&quot;maxlength&quot;:0}" data-type="EmailAddress">
                                     <label class="form-label" for="FormField_1_input">
-                                        Email Address
+                                        Tài khoản
                                         <small>Required</small>
                                     </label>
-                                    <input type="text" id="UserName" data-label="Email Address" name="UserName" class="form-input" placeholder="UserName" autocomplete="off" autofocus aria-required="true" data-field-type="EmailAddress">
+                                    <input type="text" id="UserName" data-label="Email Address" name="UserName" class="form-input" placeholder="Tài khoản" autocomplete="off" autofocus aria-required="true" data-field-type="EmailAddress">
                                     @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
                                 </div>
 
 
                                 <div class="form-field" id="FormField_2" data-validation="{&quot;type&quot;:&quot;password&quot;,&quot;label&quot;:&quot;Password&quot;,&quot;required&quot;:true,&quot;maxlength&quot;:0}" data-type="Password">
                                     <label class="form-label" for="FormField_2_input">
-                                        Password
+                                        Mật khẩu
                                         <small>Required</small>
                                     </label>
-                                    <input type="password" class="form-input" id="Password" data-label="Password" name="Password" value="" autocomplete="off" aria-required="true" data-field-type="Password">
+                                    <input type="password" class="form-input" id="Password" data-label="Password" name="Password" value="" autocomplete="off" placeholder="Mật khẩu" aria-required="true" data-field-type="Password">
                                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                                 </div>
 
@@ -86,24 +86,24 @@
                                         Nhập lại mật khẩu
                                         <small>Required</small>
                                     </label>
-                                    <input type="password" class="form-input" id="ConfirmPassword" data-label="Password" name="ConfirmPassword" value="" autocomplete="off" aria-required="true" data-field-type="Password">
+                                    <input type="password" class="form-input" id="ConfirmPassword" data-label="Password" name="ConfirmPassword" value="" placeholder=" Nhập lại mật khẩu" autocomplete="off" aria-required="true" data-field-type="Password">
                                     @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
                                 </div>
 
                                 <div class="form-field" id="FormField_2" data-validation="{&quot;type&quot;:&quot;password&quot;,&quot;label&quot;:&quot;Password&quot;,&quot;required&quot;:true,&quot;maxlength&quot;:0}" data-type="Password">
                                     <label class="form-label" for="FormField_2_input">
-                                        Name
+                                        Tên
                                         <small>Required</small>
                                     </label>
-                                    <input type="text" class="form-input" id="Name" data-label="Password" name="Name" value="" autocomplete="off" aria-required="true" data-field-type="Password">
+                                    <input type="text" class="form-input" id="Name" data-label="Password" name="Name" value="" autocomplete="off" placeholder="Tên" aria-required="true" data-field-type="Password">
                                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="form-field" id="FormField_2" data-validation="{&quot;type&quot;:&quot;password&quot;,&quot;label&quot;:&quot;Password&quot;,&quot;required&quot;:true,&quot;maxlength&quot;:0}" data-type="Password">
                                     <label class="form-label" for="FormField_2_input">
-                                        Address
+                                        Địa chỉ
                                         <small>Required</small>
                                     </label>
-                                    <input type="text" class="form-input" id="Address" data-label="Password" name="Address" value="" autocomplete="off" aria-required="true" data-field-type="Password">
+                                    <input type="text" class="form-input" id="Address" data-label="Password" name="Address" value="" placeholder="Địa chỉ" autocomplete="off" aria-required="true" data-field-type="Password">
                                     @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="form-field" id="FormField_2" data-validation="{&quot;type&quot;:&quot;password&quot;,&quot;label&quot;:&quot;Password&quot;,&quot;required&quot;:true,&quot;maxlength&quot;:0}" data-type="Password">
@@ -111,15 +111,15 @@
                                         Email
                                         <small>Required</small>
                                     </label>
-                                    <input type="email" class="form-input" id="Email" data-label="Password" name="Email" value="" autocomplete="off" aria-required="true" data-field-type="Password">
+                                    <input type="email" class="form-input" id="Email" data-label="Password" name="Email" value="" placeholder="Email" autocomplete="off" aria-required="true" data-field-type="Password">
                                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="form-field" id="FormField_2" data-validation="{&quot;type&quot;:&quot;password&quot;,&quot;label&quot;:&quot;Password&quot;,&quot;required&quot;:true,&quot;maxlength&quot;:0}" data-type="Password">
                                     <label class="form-label" for="FormField_2_input">
-                                        Email
+                                        Điện thoại
                                         <small>Required</small>
                                     </label>
-                                    <input type="text" class="form-input" id="Phone" data-label="Password" name="Phone" value="" autocomplete="off" aria-required="true" data-field-type="Password">
+                                    <input type="text" class="form-input" id="Phone" data-label="Password" name="Phone" value="" placeholder="Điện thoại" autocomplete="off" aria-required="true" data-field-type="Password">
                                     @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="form-field" id="FormField_2" data-validation="{&quot;type&quot;:&quot;password&quot;,&quot;label&quot;:&quot;Password&quot;,&quot;required&quot;:true,&quot;maxlength&quot;:0}" data-type="Password">

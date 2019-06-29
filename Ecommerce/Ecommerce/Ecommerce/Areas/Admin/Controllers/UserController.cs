@@ -14,7 +14,7 @@ namespace Ecommerce.Areas.Admin.Controllers
     {
         // GET: Admin/User
         //[HasCredential(RoleID = "VIEW_USER")]
-        public ActionResult Index(string searchString, int page = 1, int pageSize = 5 )
+        public ActionResult Index(string searchString, int page = 1, int pageSize = 8 )
         {
             var dao = new UserDao();
             var model = dao.ListAllPaging(searchString, page, pageSize);
@@ -73,6 +73,7 @@ namespace Ecommerce.Areas.Admin.Controllers
                     a.Address = user.Address;
                     a.Email = user.Email;
                     a.Phone = user.Phone;
+                    a.GroupID = user.GroupID;
                     a.Status = true;
                     var id = dao.Insert(user);
                     if (id > 0)
@@ -89,7 +90,7 @@ namespace Ecommerce.Areas.Admin.Controllers
                 }
                 
             }
-          
+            SetViewBag(user.GroupID);
             return View(user);
 
         }
@@ -124,6 +125,7 @@ namespace Ecommerce.Areas.Admin.Controllers
                 a.Address = user.Address;
                 a.Email = user.Email;
                 a.Phone = user.Phone;
+                a.GroupID = user.GroupID;
                 a.Status = true;
                 var result = dao.Update(user);
                 if (result)
@@ -138,6 +140,7 @@ namespace Ecommerce.Areas.Admin.Controllers
                     ModelState.AddModelError("", "Cập nhật ko thành công");
                 }
             }
+            SetViewBag(user.GroupID);
             return View(user);
 
         }
@@ -158,12 +161,17 @@ namespace Ecommerce.Areas.Admin.Controllers
                 status = result
             });
         }
-        //public void SetViewBag(long? seletedID = null)
-        //{
-        //    var dao = new Model.Dao.UserDao();
-        //    ViewBag.GroupID = new SelectList(dao.ListUser(), "ID", "Name", seletedID);
+        public void SetViewBag(string seletedID = null)
+        {
+            var dao = new Model.Dao.UserDao();
+            ViewBag.GroupID = new SelectList(dao.ListUserGroup(), "ID", "Name", seletedID);
 
-        //}
+        }
+        public ActionResult Logout()
+        {
+            Session[CommonConstants.USER_SESSION] = null;
+            return Redirect("/");
+        }
 
     }
 }

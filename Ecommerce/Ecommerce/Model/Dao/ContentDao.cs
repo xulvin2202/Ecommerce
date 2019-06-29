@@ -40,7 +40,6 @@ namespace Model.Dao
                 content.Description = entity.Description;
                 content.Image = entity.Image;
                 content.Detail = entity.Detail;
-                content.CreateDate = entity.CreateDate;
                 content.Status = entity.Status;
                 db.SaveChanges();
                 return true;
@@ -64,7 +63,7 @@ namespace Model.Dao
             {
                 model = model.Where(x => x.Name.Contains(searchStringContent) || x.MetaTitle.Contains(searchStringContent) || x.Detail.Contains(searchStringContent) || x.Description.Contains(searchStringContent));
             }
-            return model.OrderByDescending(x => x.CreateDate).ToList();
+            return model.OrderByDescending(x => x.CreateDate).ToPagedList(page,pageSize);
         }
         //public IEnumerable<Content> ListAllContent(string searchString)
         //{
@@ -96,11 +95,17 @@ namespace Model.Dao
 
         }
        
-        public IEnumerable<Content> ListAllContent()
+        public IEnumerable<Content> ListAllContentUI()
         {
             IQueryable<Content> model = db.Contents;
 
             return model.OrderByDescending(x => x.CreateDate).ToList();
+        }
+        public IEnumerable<Content> ListAllContentUI(int page,int pageSize)
+        {
+            IQueryable<Content> model = db.Contents;
+
+            return model.OrderByDescending(x => x.CreateDate).ToPagedList(page,pageSize);
         }
         public Content ViewDetail(long id)
         {

@@ -15,10 +15,10 @@ namespace Ecommerce.Areas.Admin.Controllers
     {
         EcommerceDbContext db = new EcommerceDbContext();
         // GET: Admin/Category
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pageSize=12)
         {
             var dao = new CategoryDao();
-            var model = dao.ListAllCategory();
+            var model = dao.ListAllCategories(page,pageSize);
             return View(model);
         }        
         [HttpGet]
@@ -106,7 +106,6 @@ namespace Ecommerce.Areas.Admin.Controllers
                     category.Name = category.Name;
                     category.Icon = category.Icon;
                     category.MetaTitle = StringHelper.ToUnsignString(category.Name);
-                    category.CreateDate = Convert.ToDateTime(DateTime.UtcNow.ToLocalTime());
                     category.ParentID = category.ParentID;
                     category.Status = Convert.ToBoolean(true);
                     var result = dao.Update(category);

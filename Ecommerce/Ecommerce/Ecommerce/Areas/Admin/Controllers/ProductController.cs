@@ -16,10 +16,10 @@ namespace Ecommerce.Areas.Admin.Controllers
     {
         EcommerceDbContext db = new EcommerceDbContext();
         // GET: Admin/Product
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pageSize = 12)
         {
             var dao = new ProductDao();
-            var model = dao.ListAllProduct();
+            var model = dao.ListAllProductAdmin(page,pageSize);
             return View(model);
         }
         [HttpGet]
@@ -119,7 +119,6 @@ namespace Ecommerce.Areas.Admin.Controllers
                 //    content.Image = "~/Image/logo.png";
                 //}
                 product.Name = product.Name;
-                product.CreateDate = Convert.ToDateTime(DateTime.UtcNow.ToLocalTime());
                 product.MetaTitle = StringHelper.ToUnsignString(product.Name);
                 product.Description = product.Description;
                 product.Detail = product.Detail;
@@ -164,6 +163,14 @@ namespace Ecommerce.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             return View(product);
+        }
+        public JsonResult ChangeStatus(long id)
+        {
+            var result = new ProductDao().ChangeStatus(id);
+            return Json(new
+            {
+                status = result
+            });
         }
         public void SetViewBag(long? seletedID = null)
         {

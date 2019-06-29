@@ -32,7 +32,7 @@ namespace Model.Dao
         }
         public List<Product> ListNewProduct(int top)
         {
-            return db.Products.OrderByDescending(x => x.CreateDate).Take(top).ToList();
+            return db.Products.Where(x => x.PromotionPrice == null).OrderByDescending(x => x.CreateDate).Take(top).ToList();
         }
         public List<string> ListName(string keyword)
         {
@@ -54,7 +54,6 @@ namespace Model.Dao
                 product.Detail = entity.Detail;
                 product.Price = entity.Price;
                 product.PromotionPrice = entity.PromotionPrice;
-                product.CreateDate = entity.CreateDate;
                 product.Status = product.Status;
                 db.SaveChanges();
                 return true;
@@ -66,6 +65,12 @@ namespace Model.Dao
             }
 
         }
+        public IEnumerable<Product> ListAllProductAdmin(int page,int pageSize)
+        {
+            IQueryable<Product> model = db.Products;
+
+            return model.OrderByDescending(x => x.CreateDate).ToPagedList(page, pageSize);
+        }
         public IEnumerable<Product> ListAllProduct()
         {
             IQueryable<Product> model = db.Products;
@@ -76,7 +81,8 @@ namespace Model.Dao
         {
             return db.Categories.Where(x => x.Status == true && x.ParentID != null).ToList();
         }
-      
+
+
         public List<Brand> ListAllBrand()
         {
             return db.Brands.Where(x => x.Status == true).ToList();
@@ -96,7 +102,42 @@ namespace Model.Dao
         {
             return db.Products.Where(x => x.TopHot != null && x.TopHot > DateTime.Now).OrderByDescending(x => x.CreateDate).Take(top).ToList();
         }
-
+        public List<ProductViewModel> Listbestseller(long categoryID)
+        {
+            var model = (from a in db.Products
+                         join b in db.Brands
+                         on a.Brand_ID equals b.ID
+                         where a.Brand_ID == categoryID
+                         select new
+                         {
+                             CateMetaTitle = b.MetaTitle,
+                             CateName = b.Name,
+                             CreateDate = a.CreateDate,
+                             ID = a.ID,
+                             Image = a.Image,
+                             Name = a.Name,
+                             MetaTitle = a.MetaTitle,
+                             Price = a.Price
+                         }).AsEnumerable().Select(x => new ProductViewModel()
+                         {
+                             CateMetaTitle = x.MetaTitle,
+                             CateName = x.Name,
+                             CreateDate = x.CreateDate,
+                             ID = x.ID,
+                             Image = x.Image,
+                             Name = x.Name,
+                             MetaTitle = x.MetaTitle,
+                             Price = x.Price
+                         });
+            return model.ToList();
+        }
+        public bool ChangeStatus(long id)
+        {
+            var product = db.Products.Find(id);
+            product.Status = !product.Status;
+            db.SaveChanges();
+            return product.Status;
+        }
         public List<Product> ListSaleProduct(int top)
         {
             return db.Products.OrderByDescending(x => x.PromotionPrice).Take(top).ToList();

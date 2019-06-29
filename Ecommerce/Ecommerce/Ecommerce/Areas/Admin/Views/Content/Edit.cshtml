@@ -18,47 +18,6 @@
                 @Html.AntiForgeryToken()
 
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @*
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            <div class="checkbox">
-                                @Html.EditorFor(model => model.Status)
-                                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.TopHot, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.TopHot, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.TopHot, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ViewCount, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.ViewCount, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ViewCount, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Tags, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Tags, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                *@
-
-
-
-
-
                 <div class="row">
                     <div class="col-12">
                         <div class="card-box">
@@ -101,26 +60,6 @@
                                         <input class="form-control" type="text" id="CreateBy" name="CreateBy" autocomplete="off">
                                     </div>
                                 </div>
-                                @*<div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">TopHot</label>
-                                        <div class="col-sm-10">
-                                            <input class="form-control" type="text" id="TopHot" name="TopHot">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">ViewCount</label>
-                                        <div class="col-sm-10">
-                                            <input class="form-control" type="text" name="TopHot" id="TopHot" autocomplete="off">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Tags</label>
-                                        <div class="col-sm-10">
-                                            <input class="form-control" type="text" name="Tags" id="Tags" autocomplete="off">
-                                        </div>
-                                    </div>*@
                                 <div class="form-group row">
                                     @Html.LabelFor(model => model.Content_Category_ID, "Danh mục", htmlAttributes: new { @class = "col-sm-2 col-form-label" })
                                     <div class="col-md-10">

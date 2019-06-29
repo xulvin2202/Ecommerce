@@ -1,4 +1,5 @@
 ﻿using Model.EF;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,48 +15,52 @@ namespace Model.Dao
         {
             db = new EcommerceDbContext();
         }
-        public long Insert(Slide entity)
-        {
-            db.Slides.Add(entity);
-            db.SaveChanges();
-            return entity.ID;
-        }
-        public IEnumerable<Slide> ListSlide()
+
+        public IEnumerable<Slide> ListSlide(int page, int pageSize)
         {
             IQueryable<Slide> model = db.Slides;
-            
-            return model.OrderByDescending(x => x.CreateDate).ToList();
+            return model.OrderBy(x => x.CreateDate).ToPagedList(page, pageSize);
         }
-        public bool Delete(int id)
+        public long Insert(Slide qandA)
         {
-            try
-            {
-                var slide = db.Slides.Find(id);
-                db.Slides.Remove(slide);
-                db.SaveChanges();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-
+            db.Slides.Add(qandA);
+            db.SaveChanges();
+            return qandA.ID;
         }
         public bool Update(Slide entity)
         {
             try
             {
-                var slide = db.Slides.Find(entity.ID);
-                slide.Link = entity.Link;
-                slide.Image = entity.Image;
-                slide.ModifiedBy = entity.ModifiedBy;
-                slide.ModifiedDate = DateTime.Now;
+                var qandA = db.Slides.Find(entity.ID);
+                qandA.Link = entity.Link;
+                qandA.Image = qandA.Image;
+                qandA.ModifiedBy = entity.ModifiedBy;
+                qandA.ModifiedDate = DateTime.Now;
                 db.SaveChanges();
                 return true;
             }
             catch (Exception ex)
             {
                 //logging
+                return false;
+            }
+
+        }
+        public Slide GetByID(long id)
+        {
+            return db.Slides.Find(id);
+        }
+        public bool Delete(int id)
+        {
+            try
+            {
+                var qa = db.Slides.Find(id);
+                db.Slides.Remove(qa);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
                 return false;
             }
 

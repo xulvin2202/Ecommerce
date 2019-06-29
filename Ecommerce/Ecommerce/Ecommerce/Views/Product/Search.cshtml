@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Kết quả tìm kiếm";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var category = (List<Model.EF.Category>)ViewBag.Category;
 
 }
 
@@ -53,88 +54,13 @@
                         <h5 class="block-title"> All Categories</h5>
                         <div class="block-content clearfix">
                             <ul class="navList">
-                                @*@foreach (var item in categoryProduct)
-                                    {*@
+                            @foreach(var item in category)
+                            { 
                                 <li class="navList-item">
-                                    <a class="navList-action has-subMenu is-current" href="index.html"> Collections </a>
-                                    <a class="navList-toggle" data-collapsible="navList-category-23"><i class="icon navList-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i></a>
-
-                                    <ul class="navList-subMenu-list" id="navList-category-23">
-                                        <li class="navList-subMenu-item">
-                                            <a class="navList-subMenu-action navList-action has-subMenu" href="../smartphone/electronic/index.html" alt="Electronic" title="Electronic">Electronic </a>
-                                            <a class="navList-subMenu-toggle navList-toggle" data-collapsible="navList-category-24"><i class="icon navList-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i></a>
-                                            <ul class="navList-childList" id="navList-category-24">
-                                                <li class="navList-childList-item">
-                                                    <a class="navList-childList-action navList-action" href="../smartphone/electronic/fans/index.html">Fans</a>
-                                                </li>
-                                                <li class="navList-childList-item">
-                                                    <a class="navList-childList-action navList-action" href="../smartphone/electronic/headphone/index.html">Headphone</a>
-                                                </li>
-                                                <li class="navList-childList-item">
-                                                    <a class="navList-childList-action navList-action" href="../smartphone/electronic/smartphone/index.html">Smartphone</a>
-                                                </li>
-                                                <li class="navList-childList-item">
-                                                    <a class="navList-childList-action navList-action" href="../smartphone/electronic/tv/index.html">TV</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="navList-subMenu-item">
-                                            <a class="navList-subMenu-action navList-action has-subMenu" href="../smartphone/game-box/index.html" alt="Game box" title="Game box">Game box </a>
-                                            <a class="navList-subMenu-toggle navList-toggle" data-collapsible="navList-category-26"><i class="icon navList-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i></a>
-                                            <ul class="navList-childList" id="navList-category-26">
-                                                <li class="navList-childList-item">
-                                                    <a class="navList-childList-action navList-action" href="../smartphone/game-box/accessories/index.html">Accessories</a>
-                                                </li>
-                                                <li class="navList-childList-item">
-                                                    <a class="navList-childList-action navList-action" href="../smartphone/game-box/microsoft/index.html">Microsoft</a>
-                                                </li>
-                                                <li class="navList-childList-item">
-                                                    <a class="navList-childList-action navList-action" href="../smartphone/game-box/nvidia/index.html">Nvidia</a>
-                                                </li>
-                                                <li class="navList-childList-item">
-                                                    <a class="navList-childList-action navList-action" href="../smartphone/game-box/sony/index.html">Sony</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="navList-subMenu-item">
-                                            <a class="navList-subMenu-action navList-action has-subMenu" href="headphone/index.html" alt="Headphone" title="Headphone">Headphone </a>
-                                            <a class="navList-subMenu-toggle navList-toggle" data-collapsible="navList-category-27"><i class="icon navList-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i></a>
-                                            <ul class="navList-childList" id="navList-category-27">
-                                                <li class="navList-childList-item">
-                                                    <a class="navList-childList-action navList-action" href="../smartphone/headphone/apple/index.html">Apple</a>
-                                                </li>
-                                                <li class="navList-childList-item">
-                                                    <a class="navList-childList-action navList-action" href="../smartphone/headphone/beats-audio/index.html">Beats Audio</a>
-                                                </li>
-                                                <li class="navList-childList-item">
-                                                    <a class="navList-childList-action navList-action" href="../smartphone/headphone/microlab/index.html">Microlab</a>
-                                                </li>
-                                                <li class="navList-childList-item">
-                                                    <a class="navList-childList-action navList-action" href="../smartphone/headphone/sony-walkman/index.html">Sony walkman</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="navList-subMenu-item">
-                                            <a class="navList-subMenu-action navList-action has-subMenu" href="../smartphone/camera/index.html" alt="Camera" title="Camera">Camera </a>
-                                            <a class="navList-subMenu-toggle navList-toggle" data-collapsible="navList-category-25"><i class="icon navList-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i></a>
-                                            <ul class="navList-childList" id="navList-category-25">
-                                                <li class="navList-childList-item">
-                                                    <a class="navList-childList-action navList-action" href="../smartphone/camera/accessories/index.html">Accessories</a>
-                                                </li>
-                                                <li class="navList-childList-item">
-                                                    <a class="navList-childList-action navList-action" href="../smartphone/camera/cannon/index.html">Cannon</a>
-                                                </li>
-                                                <li class="navList-childList-item">
-                                                    <a class="navList-childList-action navList-action" href="../smartphone/camera/lg/index.html">LG</a>
-                                                </li>
-                                                <li class="navList-childList-item">
-                                                    <a class="navList-childList-action navList-action" href="../smartphone/camera/nikon/index.html">Nikon</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
+                                    <a class="navList-action has-subMenu is-current" href="/san-pham/@item.MetaTitle-@item.ID" style="color:black" > @item.Name </a>
+                                   
                                 </li>
-                                @*}*@
+                                }
                             </ul>
                         </div>
                     </div>
@@ -163,63 +89,6 @@
                         </div>
                     </div>
 
-
-                    <div class="module sb-banner sb-banner--cmsblock ">
-                        <div class="row">
-                            <div class="col-sm-12 col-12">
-
-                                <h5 class="block-title"> Custom CMS Block</h5>
-
-                                <div class="block-content clearfix ">
-
-
-
-                                    <div class="banners info-">
-                                        <div class="banner-figure">
-
-                                            <a href="#">
-                                                <img class="img-fluid" src="../../cdn11.bigcommerce.com/s-5jeysafj8q/content/home2/banners/3.jpg" alt="Custom Title" />
-                                            </a>
-                                        </div>
-
-                                        <div class="banner-figcaption">
-                                            <div class="banner-figcaption__body">
-                                                <h5 class="banner-figcaption__title">Custom Title</h5>
-
-                                                <p class="banner-figcaption__text"><p>Custom CMS block displayed at the left sidebar on the Catalog Page. Put your own content here: text, html, images, media... whatever you like.</p></p>
-
-                                                <a href="#" class="button button--primary  banner-figcaption__button"> Read More</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="module sb-banner sb-banner--sidebarBanner ">
-                        <div class="row">
-                            <div class="col-sm-12 col-12">
-
-
-                                <div class="block-content clearfix ">
-
-
-
-                                    <div class="banners info-">
-                                        <div class="banner-figure">
-
-                                            <a href="#">
-                                                <img class="img-fluid" src="../../cdn11.bigcommerce.com/s-5jeysafj8q/content/home1/banners/image-left.jpg" alt=" " />
-                                            </a>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
 
 

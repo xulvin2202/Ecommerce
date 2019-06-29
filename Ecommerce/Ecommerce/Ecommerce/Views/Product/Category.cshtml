@@ -101,59 +101,7 @@
                                 }
                             </ul>
                         </div>
-                    </div>
-                    <select id="sort">
-                        <option data-price="0:@Int32.MaxValue" value="all">All</option>
-                        <option data-price="0:50000" value="1">$0 - $50</option>
-                        <option data-price="51000:100000" value="2">$51 - $100</option>
-                        <option data-price="110000:200000" value="3">$101 - 1000</option>
-                        <option data-price="210000:@Int32.MaxValue" value="4">1001 + </option>
-                    </select>
-                    <script>$(function () {
-
-    var $cards = $("#my-products").find("[data-productprice]");
-    $("#sort").change(function () {
-        var t = $(this).find(':selected').data('price');
-        var a = t.split(':');
-        var l = parseFloat(a[0]);
-        var u = parseFloat(a[1]);
-
-        $.each($cards, function (a, b) {
-            var p = parseFloat($(b).data("productprice"));
-            if (p >= l && p <= u) {
-                $(b).show();
-            } else {
-                $(b).hide();
-            }
-        });
-
-    });
-
-});</script>
-
-                    <div class="module">
-                        <h5 class="block-title">Shop By Price</h5>
-                        <div class="block-content clearfix">
-                            <ul class="navList">
-                                <li class="navList-item">
-                                    <a class="navList-action " href="indexe8e8.html?price_min=0&amp;price_max=51&amp;sort=featured" alt="$0.00 - $51.00" title="$0.00 - $51.00">$0.00 - $51.00</a>
-                                </li>
-                                <li class="navList-item">
-                                    <a class="navList-action " href="index930c.html?price_min=51&amp;price_max=94&amp;sort=featured" alt="$51.00 - $94.00" title="$51.00 - $94.00">$51.00 - $94.00</a>
-                                </li>
-                                <li class="navList-item">
-                                    <a class="navList-action " href="indexc96c.html?price_min=94&amp;price_max=138&amp;sort=featured" alt="$94.00 - $138.00" title="$94.00 - $138.00">$94.00 - $138.00</a>
-                                </li>
-                                <li class="navList-item">
-                                    <a class="navList-action " href="index2200.html?price_min=138&amp;price_max=181&amp;sort=featured" alt="$138.00 - $181.00" title="$138.00 - $181.00">$138.00 - $181.00</a>
-                                </li>
-                                <li class="navList-item">
-                                    <a class="navList-action " href="indexc8fe.html?price_min=181&amp;price_max=225&amp;sort=featured" alt="$181.00 - $225.00" title="$181.00 - $225.00">$181.00 - $225.00</a>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
+               
 
 
 

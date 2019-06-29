@@ -95,39 +95,6 @@
                             </ul>
                         </div>
                     </div>
-
-                    <div class="module">
-                        <h5 class="block-title">Shop By Price</h5>
-                        <div class="block-content clearfix">
-                            <ul class="navList">
-                                <li class="navList-item">
-                                    <a class="navList-action " href="indexe8e8.html?price_min=0&amp;price_max=51&amp;sort=featured" alt="$0.00 - $51.00" title="$0.00 - $51.00">$0.00 - $51.00</a>
-                                </li>
-                                <li class="navList-item">
-                                    <a class="navList-action " href="index930c.html?price_min=51&amp;price_max=94&amp;sort=featured" alt="$51.00 - $94.00" title="$51.00 - $94.00">$51.00 - $94.00</a>
-                                </li>
-                                <li class="navList-item">
-                                    <a class="navList-action " href="indexc96c.html?price_min=94&amp;price_max=138&amp;sort=featured" alt="$94.00 - $138.00" title="$94.00 - $138.00">$94.00 - $138.00</a>
-                                </li>
-                                <li class="navList-item">
-                                    <a class="navList-action " href="index2200.html?price_min=138&amp;price_max=181&amp;sort=featured" alt="$138.00 - $181.00" title="$138.00 - $181.00">$138.00 - $181.00</a>
-                                </li>
-                                <li class="navList-item">
-                                    <a class="navList-action " href="indexc8fe.html?price_min=181&amp;price_max=225&amp;sort=featured" alt="$181.00 - $225.00" title="$181.00 - $225.00">$181.00 - $225.00</a>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-
-
-                    
-
-
-                    
-
-
-
                 </nav>
             </aside>
 
@@ -202,12 +169,12 @@
                                             <div class="price-section price-section--withoutTax ">
                                                 @if (item.PromotionPrice != null)
                                                 {
-                                                    <span data-product-price-without-tax class="price price--withoutTax">@String.Format("{0:#,0 VND}", @item.PromotionPrice)  </span>
+                                                    <span data-product-price-without-tax class="price price--withoutTax">@String.Format("{0:#,0 đ}", @item.PromotionPrice)  </span>
                                                     <span data-product-non-sale-price-without-tax class="price price--rrp">@String.Format("{0:0,0}", item.Price)</span>
                                                 }
                                                 else
                                                 {
-                                                    <span data-product-price-without-tax class="price price--withoutTax">@String.Format("{0:#,0 VND}", item.Price)</span>
+                                                    <span data-product-price-without-tax class="price price--withoutTax">@String.Format("{0:#,0 đ}", item.Price)</span>
                                                 }
 
 
@@ -259,7 +226,7 @@
 
                                             <div class="button-group">
 
-                                                <div class="action-item wishlist">
+                                                @*<div class="action-item wishlist">
                                                     <form class="form" method="post" action="https://sb-clickboom.mybigcommerce.com/wishlist.php?action=add&amp;product_id=93" data-wishlist-add>
                                                         <input type="hidden" name="variation_id" value="">
                                                         <input class="button button--small card-figcaption-button" type="hidden" value="Add to Wish List">
@@ -269,7 +236,7 @@
                                                         </button>
                                                     </form>
 
-                                                </div>
+                                                </div>*@
 
 
                                                 <div class="action-item addToCart option">
@@ -277,12 +244,12 @@
                                                 </div>
 
 
-                                                <div class="action-item compare ">
+                                                @*<div class="action-item compare ">
                                                     <input class="form-check-input" type="checkbox" name="products[]" value="93" data-compare-id="93">
                                                     <label class="form-check-label">
                                                         <i class="fa fa-refresh"></i>
                                                     </label>
-                                                </div>
+                                                </div>*@
 
                                             </div>
                                         </div>

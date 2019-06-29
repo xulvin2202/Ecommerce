@@ -1,4 +1,5 @@
 ﻿using Model.EF;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace Model.Dao
         {
             IQueryable<Feedback> model = db.Feedbacks;
             
-            return model.OrderByDescending(x => x.CreateDate).ToList();
+            return model.OrderByDescending(x => x.CreateDate).ToPagedList(page,pageSize);
         }
         public bool Delete(int id)
         {

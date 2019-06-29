@@ -41,6 +41,7 @@ namespace Model.Dao
 
             return model.OrderByDescending(x => x.CreateDate).ToList();
         }
+       
         public bool Update(ContentCategory contentCategory)
         {
             try

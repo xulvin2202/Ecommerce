@@ -15,77 +15,7 @@ namespace Ecommerce.Controllers
     public class UserController : Controller
     {
         EcommerceDbContext db = new EcommerceDbContext();
-        //public ActionResult Acc()
-        //{
-        //    Session[Constants.USER_ID] = true;
-        //    return Redirect(Request.UrlReferrer.ToString());
-        //}
-        //public ActionResult SigninSuccess()
-        //{
-        //    if (Session[Constants.USER_ID] == null)
-        //    {
-        //        return PartialView("SigninNull");
-        //    }
-        //    else
-        //    {
-        //        var item = from t in db.Users
-        //                   select t;
-        //        return PartialView(item.SingleOrDefault());
-        //    }
-        //}
-
-
-        //public ActionResult SigninNull()
-        //{
-        //    return PartialView();
-        //}
-        ////public ActionResult SigninSuccess()
-        ////{
-
-        ////    var acc = from t in db.Users
-        ////              select t;
-        ////    return PartialView(acc.SingleOrDefault());
-        ////}
-
-        //public bool isLoginUser()
-        //{
-        //    if (Session[Constants.USER_ID] == null)
-        //    {
-        //        return false;
-        //    }
-        //    else
-        //    {
-        //        return true;
-        //    }
-        //}
-
-        //public bool isLogined()
-        //{
-        //    if (Session[Constants.USER_ID] == null || Session[Constants.USER_PASSWORD] == null)
-        //    {
-        //        return false;
-        //    }
-        //    else
-        //    {
-        //        return true;
-        //    }
-        //}
-        //public bool isLoginSucess(string id, string password)
-        //{
-        //    //Check user's id and password
-        //    foreach (User a in db.Users)
-        //    {
-        //        if (a.UserName.Replace(" ", "") == id)
-        //        {
-        //            if (a.Password.Replace(" ", "") == password)
-        //            {
-        //                return true;
-        //            }
-        //        }
-        //    }
-        //    return false;
-        //}
-        // GET: User
+       
         public ActionResult Index()
         {
             return View();

@@ -66,7 +66,6 @@ namespace Ecommerce.Areas.Admin.Controllers
                 var dao = new ContentCategoryDao();
                 var a = new ContentCategory();
                 model.Name = model.Name;
-                model.CreateDate = Convert.ToDateTime(DateTime.UtcNow.ToLocalTime());
                 model.MetaTitle = StringHelper.ToUnsignString(model.Name);
                 model.Status = Convert.ToBoolean(true);
                 var result = dao.Update(model);

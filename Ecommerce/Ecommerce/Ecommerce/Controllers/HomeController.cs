@@ -22,7 +22,7 @@ namespace Ecommerce.Controllers
             ViewBag.Brand = product.ListBrand(12);
             //ViewBag.Content = product.ListContent(6);
             var qa = new QandADao();
-            ViewBag.QA = qa.ListAllQandA();
+            ViewBag.QA = qa.ListQA();
            
             return View(model);
         }

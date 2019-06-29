@@ -72,9 +72,7 @@
 
                                         <li class="navList-item">
                                             <a class="navList-action has-subMenu is-current" href="/san-pham/@item.MetaTitle-@item.ID" style="color:black"> @item.Name </a>
-                                            <a class="navList-toggle" data-collapsible="navList-category-23"><i class="icon navList-action-moreIcon" aria-hidden="true"><svg><use xlink:href="#icon-chevron-down" /></svg></i></a>
-
-                                            <ul class="navList-subMenu-list" id="navList-category-23"></ul>
+                                            
                                         </li>
                                     }
                                 </ul>
@@ -103,36 +101,6 @@
                             </ul>
                         </div>
                     </div>
-
-                    <div class="module">
-                        <h5 class="block-title">Shop By Price</h5>
-                        <div class="block-content clearfix">
-                            <ul class="navList">
-                                <li class="navList-item">
-                                    <a class="navList-action " href="indexe8e8.html?price_min=0&amp;price_max=51&amp;sort=featured" alt="$0.00 - $51.00" title="$0.00 - $51.00">$0.00 - $51.00</a>
-                                </li>
-                                <li class="navList-item">
-                                    <a class="navList-action " href="index930c.html?price_min=51&amp;price_max=94&amp;sort=featured" alt="$51.00 - $94.00" title="$51.00 - $94.00">$51.00 - $94.00</a>
-                                </li>
-                                <li class="navList-item">
-                                    <a class="navList-action " href="indexc96c.html?price_min=94&amp;price_max=138&amp;sort=featured" alt="$94.00 - $138.00" title="$94.00 - $138.00">$94.00 - $138.00</a>
-                                </li>
-                                <li class="navList-item">
-                                    <a class="navList-action " href="index2200.html?price_min=138&amp;price_max=181&amp;sort=featured" alt="$138.00 - $181.00" title="$138.00 - $181.00">$138.00 - $181.00</a>
-                                </li>
-                                <li class="navList-item">
-                                    <a class="navList-action " href="indexc8fe.html?price_min=181&amp;price_max=225&amp;sort=featured" alt="$181.00 - $225.00" title="$181.00 - $225.00">$181.00 - $225.00</a>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-
-
-        
-
-
-
                 </nav>
             </aside>
 
@@ -313,7 +281,7 @@
                     <div class="pagination">
                         <ul class="pagination-list">
 
-                            @Html.PagedListPager(Model, Page => Url.Action("Category", new { Page, @class = "pagination-link" }), PagedListRenderOptions.PageNumbersOnly)
+                            @Html.PagedListPager(Model, Page => Url.Action("Brand", new { Page, @class = "pagination-link" }), PagedListRenderOptions.PageNumbersOnly)
 
                         </ul>
                     </div>

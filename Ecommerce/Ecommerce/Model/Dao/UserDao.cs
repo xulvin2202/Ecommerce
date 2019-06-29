@@ -107,6 +107,8 @@ namespace Model.Dao
                
                 user.Address = entity.Address;
                 user.Email = entity.Email;
+                user.Phone = entity.Phone;
+                user.GroupID = entity.GroupID;
                 user.ModifiedBy = entity.ModifiedBy;
                 user.ModifiedDate = DateTime.Now;
                 db.SaveChanges();
@@ -133,6 +135,11 @@ namespace Model.Dao
                 model = model.Where(x => x.UserName.Contains(searchString) || x.Name.Contains(searchString) || x.Phone.Contains(searchString) || x.Address.Contains(searchString) || x.Email.Contains(searchString));
             }
             return model.OrderByDescending(x => x.CreateDate).ToPagedList(page,pageSize);
+        }
+        public IEnumerable<UserGroup> ListUserGroup()
+        {
+            IQueryable<UserGroup> model = db.UserGroups;
+            return model.ToList();
         }
         public User GetById(string userName)
         {
@@ -192,9 +199,6 @@ namespace Model.Dao
         {
             return db.Users.Count(x => x.Email == email) > 0;
         }
-        public List<UserGroup> ListUser()
-        {
-            return db.UserGroups.ToList();
-        }
+        
     }
 }
